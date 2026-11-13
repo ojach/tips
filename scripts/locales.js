@@ -2,7 +2,7 @@ const dictionaries = {
   ja: {
     articles: '記事一覧', rss: 'RSS', search: '記事を検索', searchPlaceholder: 'タイトル・説明文から検索',
     noArticles: '記事はまだありません。', noDate: '日付未設定',
-    introTitle: 'OJapp Tips', introDescription: 'ツール開発者が書く Web のノウハウ集',
+    introTitle: 'OJapp Tips', introDescription: 'PWAツール開発者が書く Web のノウハウ集',
     sideDescription: '机上の理論だけじゃない。実際に作って、試して得た知見を。',
     toc: '目次', summary: '1分で読める要約', next: '次に読む',
     author: 'この記事を書いた人', profile: 'プロフィールを見る',
