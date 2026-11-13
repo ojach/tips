@@ -1,0 +1,112 @@
+{
+  "title": "OJapp Tips",
+  "description": "ツール開発者が書く Web のノウハウ集",
+  "url": "https://tips.ojapp.app",
+  "brand_color": "#006980",
+  "icon": "tips-icon.webp",
+  "author_image": "54D65B1A-C855-41FC-B2AC-7640442B22DB.png",
+  "features": {
+    "article_summary": true,
+    "article_pwa_icons": true
+    },
+  "author_locales": {
+    "ja": {
+      "name": "おじゃち",
+      "description": "OJapp代表 WPプラグインPWAマーケティング・OnePage.OneApp.(1P1A)・ホーム画面名刺＆SNSのPetal・その他OJappToolsなどを開発。PWA・ホーム画面・Safari挙動・軽量Web体験を中心に、実験しながらWebアプリを開発しています。",
+      "url": "https://ojapp.app/ojach/app/"
+    },
+    "en": {
+      "name": "Ojach",
+      "description": "Hi, I'm a solo web developer based in Japan.I'm the creator of One Page. One App. (1P1A), a page-first approach to Progressive Web Apps. I build WordPress plugins and web tools that make it easy to turn individual web pages into installable home screen apps.Most articles on this site are first written in Japanese and then translated into English. While the English may not always be perfect, every article is based on extensive real-device testing with iPhone, Android, Safari, Chrome, Web App Manifest, Service Workers, and modern PWA architecture.",
+      "url": "https://ojapp.app/ojach/app/"
+    }
+  },
+  "ads": {
+   "1": {
+     "image": "1p1a_cta.webp",
+     "url": "https://ojapp.app/one-page-one-app/",
+     "alt": "1P1A"
+    },
+   "2": {
+     "image": "1p1a-en.webp",
+     "url": "https://ojapp.app/one-page-one-app/en/",
+     "alt": "1P1A-EN"
+    },
+   "3": {
+     "image": "1p1a_ja.webp",
+     "url": "https://ojapp.app/one-page-one-app/",
+     "alt": "1P1A_JA"
+    },
+   "4": {
+     "image": "1p1a_en.webp",
+     "url": "https://ojapp.app/one-page-one-app/en/",
+     "alt": "1P1A_EN"
+    },
+   "5": {
+     "image": "ojapp-ja.webp",
+     "url": "https://ojapp.app/top/",
+     "alt": "OJappTools "
+    },
+   "6": {
+     "image": "ojapp-en.webp",
+     "url": "https://ojapp.app/en/",
+     "alt": "OJappTools-en"
+    }
+  },
+  "tools_showcase": [
+  {
+    "name": "OJapp",
+    "description_ja": "Webをもっと自由に。",
+    "description_en": "Make the web more flexible.",
+    "url_ja": "https://ojapp.app/",
+    "url_en": "https://ojapp.app/en/",
+    "image_ja": "/images/ojapp.webp",
+    "image_en": "/images/ojapp-en2.webp"
+  },
+  {
+    "name": "OJapp FREE",
+    "description_ja": "1行でWebページをアプリに。",
+    "description_en": "Turn web pages into apps with one line.",
+    "url_ja": "https://ojapp.app/one-page-one-app/",
+    "url_en": "https://ojapp.app/one-page-one-app/en/",
+    "image_ja": "/images/ojapp-free.webp",
+    "image_en": "/images/ojapp-free-en.webp"
+  },
+  {
+    "name": "MyApp Kit",
+    "description_ja": "自分だけのリンクアプリを作る。",
+    "description_en": "Build your own personal link app.",
+    "url_ja": "https://ojapp.app/myapp/",
+    "url_en": "https://github.com/ojach/myapp-template/",
+    "image_ja": "/images/myapp.webp",
+    "image_en": "/images/myapp-en.webp"
+  },
+  {
+    "name": "OJapp Tools",
+    "description_ja": "便利なWebツールをまとめて。",
+    "description_en": "Explore useful web tools.",
+    "url_ja": "https://ojapp.app/top/",
+    "url_en": "https://ojapp.app/en/",
+    "image_ja": "/images/tools.webp",
+    "image_en": "/images/tools-en.webp"
+  },
+  {
+    "name": "OJapp Blog Kit",
+    "description_ja": "AI時代の軽量ブログエンジン。",
+    "description_en": "A lightweight blog engine for the AI era.",
+    "url_ja": "https://blogkit.ojapp.app/blogkit/",
+    "url_en": "https://blogkit.ojapp.app/blogkit/",
+    "image_ja": "/images/blogkit.webp",
+    "image_en": "/images/blogkit-en.webp"
+  },
+  {
+    "name": "OJapp PRO",
+    "description_ja": "ホーム画面をマーケティングに。",
+    "description_en": "Turn home screen launches into marketing opportunities.",
+    "url_ja": "https://ojapp.app/pro/",
+    "url_en": "https://ojapp.app/pro/en/",
+    "image_ja": "/images/ojapp-pro.webp",
+    "image_en": "/images/ojapp-pro-en.webp"
+  }
+]
+}

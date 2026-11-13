@@ -1,0 +1,51 @@
+{
+  "about": {
+    "title": "このブログについて",
+    "description": "ブログや運営者について紹介する固定ページです。",
+    "permalink": "about",
+    "footer_label": "About Us"
+  },
+  "privacy-policy": {
+    "title": "プライバシーポリシー",
+    "permalink": "privacy-policy",
+    "language": "ja",
+    "footer_label": "プライバシーポリシー"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "permalink": "contact",
+    "language": "ja"
+  },
+  "about-en": {
+  "title": "About OJapp Tips",
+  "description": "Learn about OJapp Tips, its mission, and the developer behind it.",
+  "permalink": "en/about",
+  "language": "en",
+  "footer_label": "About Us"
+},
+"privacy-policy-en": {
+  "title": "Privacy Policy",
+  "permalink": "en/privacy-policy",
+  "language": "en",
+  "footer_label": "Privacy Policy"
+},
+"contact-en": {
+  "title": "Contact",
+  "permalink": "en/contact",
+  "language": "en",
+  "footer_label": "Contact"
+},
+  "appin-2": {
+    "title": "アッピン",
+    "permalink": "appin-2",
+    "language": "ja",
+    "show_in_footer": false
+  },
+  "en--meet-appin": {
+    "title": "Meet Appin: Your Guide to PWA and Home Screen Tips",
+    "permalink": "en/meet-appin",
+    "language": "en",
+    "show_in_footer": false,
+    "description": "Meet Appin, the OJapp Tips character who appears throughout the site to explain PWAs, home screen behavior, Web apps, and lessons from OJapp's real-world testing."
+  }
+}
