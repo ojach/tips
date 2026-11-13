@@ -6,9 +6,8 @@
   "description": "A lightweight static blog engine for your own domain.",
   "scripts": {
   "build": "node scripts/build.js",
-  "deploy": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/deploy.ps1",
-  "push": "npm run build && npm run deploy"
-},
+  "push": "git add . && (git diff --cached --quiet || git commit -m \"update\") && git push"
+ },
   "engines": {
     "node": ">=20"
   },
