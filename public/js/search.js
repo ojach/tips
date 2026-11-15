@@ -8,16 +8,21 @@ if (input && list) {
   let currentPage = 1;
   const originalHtml = list.innerHTML;
   let pagination = null;
-  // Keep the build-generated pagination in its original position.
-  const originalPagination = [...list.parentElement.querySelectorAll('.pagination')]
-    .find((nav) => !list.contains(nav)) || null;
-  const paginationAnchor = originalPagination ? document.createComment('original pagination') : null;
-  if (originalPagination) originalPagination.before(paginationAnchor);
+  // Capture all build-generated pagination elements, regardless of their nesting.
+  const originalPaginations = [...document.querySelectorAll('nav.pagination, .pagination')]
+    .filter((element) => !list.contains(element));
+  const originalPaginationStyles = originalPaginations.map((element) => ({
+    element,
+    display: element.style.getPropertyValue('display'),
+    priority: element.style.getPropertyPriority('display'),
+  }));
 
   const setSearchMode = (active) => {
-    if (!originalPagination) return;
-    if (active && originalPagination.isConnected) originalPagination.remove();
-    if (!active && !originalPagination.isConnected) paginationAnchor.after(originalPagination);
+    for (const { element, display, priority } of originalPaginationStyles) {
+      if (active) element.style.setProperty('display', 'none', 'important');
+      else if (display) element.style.setProperty('display', display, priority);
+      else element.style.removeProperty('display');
+    }
   };
 
   const addText = (parent, tag, text, className) => {
@@ -42,17 +47,17 @@ if (input && list) {
     pagination.className = 'pagination';
     pagination.setAttribute('aria-label', 'Search result pages');
 
-    // Use the same link markup as build.js so existing pagination CSS applies.
+    // Match the build-generated pagination: links, not buttons.
     const previous = document.createElement('a');
     previous.href = '#';
     previous.textContent = '← 前の15件';
-    if (currentPage > 1) {
-      previous.addEventListener('click', (event) => {
-        event.preventDefault();
+    previous.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (currentPage > 1) {
         currentPage -= 1;
         renderResults();
-      });
-    }
+      }
+    });
 
     const status = document.createElement('span');
     status.setAttribute('aria-live', 'polite');
@@ -61,19 +66,18 @@ if (input && list) {
     const next = document.createElement('a');
     next.href = '#';
     next.textContent = '次の15件 →';
-    if (currentPage < pageCount) {
-      next.addEventListener('click', (event) => {
-        event.preventDefault();
+    next.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (currentPage < pageCount) {
         currentPage += 1;
         renderResults();
-      });
-    }
+      }
+    });
 
     if (currentPage > 1) pagination.append(previous);
     pagination.append(status);
     if (currentPage < pageCount) pagination.append(next);
-    if (paginationAnchor) paginationAnchor.before(pagination);
-    else list.after(pagination);
+    list.after(pagination);
   };
 
   const renderResults = () => {
@@ -117,14 +121,17 @@ if (input && list) {
       if (!response.ok) throw new Error('Search index unavailable');
       return response.json();
     })
-    .then((data) => { articles = data; })
+    .then((data) => {
+      articles = Array.isArray(data) ? data : [];
+      if (input.value.trim()) updateSearch();
+    })
     .catch(() => {});
 
-  input.addEventListener('input', () => {
+  const updateSearch = () => {
     const query = input.value.trim().toLocaleLowerCase();
     if (!query) {
-      removePagination();
       setSearchMode(false);
+      removePagination();
       list.innerHTML = originalHtml;
       return;
     }
@@ -147,5 +154,7 @@ if (input && list) {
     }
 
     renderResults();
-  });
+  };
+
+  input.addEventListener('input', updateSearch);
 }
