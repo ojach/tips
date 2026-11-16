@@ -45,6 +45,33 @@ Chromeのガイドでは、1ページに配置できる`<install>`要素の数�
 
 「ボタンを置けるだけ置こう！」という発想で作ると、後から設計を見直すことになりそうです。
 
+### PWA LABで配置上限を検証してみた
+
+Chrome 157で実験的な機能をFlagから有効にし、1ページに`<install>`を30個配置して動作を確認しました。
+
+24個を超えた時点で、Chromeのコンソールには次の警告が表示されました。
+
+```text
+Maximum limit of 24 permission elements has been reached.
+More permission elements can be added but they will not be clickable
+```
+
+ところが、実際に操作してみると少し違う結果になりました。
+
+| 配置数 | 検証結果 |
+|---|---|
+| 24個 | コンソールが示す上限 |
+| 25〜29個目 | クリック可能 |
+| 30個目 | クリック不可 |
+
+**コンソールには24個が上限と表示されたものの、実際には29個目まで操作でき、30個目がクリック不能になりました。**
+
+警告の数字と実際の操作制限が一致していないのは、興味深い挙動です。
+
+今回の結果はChrome 157のFlag有効環境で確認したものです。Chrome 158正式版でも同じ挙動になるかは、今後の確認事項として残しています。
+
+少なくとも、PWA紹介サイトで各アプリに`<install>`を設置する場合、配置数の制限は実際に考慮する必要があります。
+
 ## Manifestはインストール先のアプリ自身が用意する
 
 外部のPWAを紹介するとき、ManifestのURLと`start_url`のオリジンは一致している必要があります。例えばManifestが`https://app.example/manifest.webmanifest`なら、起動先も`https://app.example/`のオリジンに属している必要があります。

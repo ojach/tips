@@ -45,6 +45,33 @@ There is a user-experience tradeoff. When installing another app, the HTML eleme
 
 The temptation to put an install button on every card is understandable. The browser may have other ideas.
 
+### PWA LAB: Testing the `<install>` Element Limit
+
+I tested the placement limit by enabling the experimental feature through Chrome 157's flags and adding 30 `<install>` elements to a single page.
+
+After exceeding 24 elements, Chrome displayed the following warning in the developer console:
+
+```text
+Maximum limit of 24 permission elements has been reached.
+More permission elements can be added but they will not be clickable
+```
+
+However, the actual behavior was a little different.
+
+| Number of elements | Test result |
+|---|---|
+| 24 | Limit indicated by the console warning |
+| 25–29 | Still clickable |
+| 30 | Not clickable |
+
+**Although Chrome reported a limit of 24 elements, I could still click elements 25 through 29. Only the 30th element became unclickable.**
+
+This mismatch between the reported limit and the actual behavior is particularly interesting.
+
+These results were observed in Chrome 157 with the experimental flag enabled. Whether the same behavior occurs in the stable release of Chrome 158 remains to be tested.
+
+For developers building PWA directories or app discovery websites, this experiment confirms that the number of `<install>` elements on a single page is a practical limitation worth considering.
+
 ## The manifest and start URL must belong to the same origin
 
 For cross-origin installation, the target manifest URL and the app's `start_url` must share the same origin. If the manifest is at `https://app.example/manifest.webmanifest`, its launch URL must also belong to `https://app.example`.
