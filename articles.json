@@ -1,4 +1,28 @@
 {
+  "chrome-158-pwa-install-catalog-safety": {
+    "title": "Chrome 158でPWA紹介サイトが増える？作る側・使う側が知っておきたい注意点",
+    "permalink": "chrome-158-pwa-install-catalog-safety",
+    "language": "ja",
+    "show_thumbnail": false,
+    "meta_description": "Chrome 158のWeb InstallでPWA紹介サイトはどう変わる？install要素の配置制限、navigator.install()、ManifestとIDの条件、利用者がインストール前に確認したいことを解説。",
+    "excerpt": "PWA紹介サイトにインストールボタンを並べる前に。開発者と利用者、両方の視点で注意点を整理します。",
+    "summary": "Chrome 158のWeb Installでは、PWA紹介サイトから別のWebアプリのインストールを案内できます。HTMLの`<install>`要素ならブラウザ管理のボタンを置けますが、1ページの配置数には迷惑行為対策による制限があります。大量のアプリを並べるカタログでは、JavaScriptの`navigator.install()`が候補です。ただし後者は、別アプリを入れる際にインストール確認前の追加の権限確認が入ります。\n\n作る側は、対象Manifestと`start_url`が同一オリジンであること、ManifestをHTTPSで適切に配信すること、安定した`id`を用意することを確認しましょう。`manifestid`はIDの上書き機能ではなく照合用です。サブドメインも別オリジンとして扱われます。\n\n使う側は、まずブラウザでPWAを試してからインストールするのがおすすめです。APKとは配布の仕組みが異なりますが、PWAだから安全とは限りません。提供元、URL、求められる権限を確認しましょう。配置上限やData URL対応は今後検証します。",
+    "category": "PWA",
+    "published": "2026-11-16",
+    "translation": "en--chrome-158-pwa-install-catalog-safety"
+  },
+  "en--chrome-158-pwa-install-catalog-safety": {
+    "title": "Chrome 158 PWA Catalogs: What Developers and Users Should Know Before Installing",
+    "permalink": "en/chrome-158-pwa-install-catalog-safety",
+    "language": "en",
+    "show_thumbnail": false,
+    "meta_description": "Chrome 158 brings Web Install to PWA catalogs. Learn the limits of the install element, when to use navigator.install(), manifest identity rules, and how users can evaluate apps before installing.",
+    "excerpt": "Before filling a PWA directory with install buttons, understand the constraints and help visitors try apps safely.",
+    "summary": "Chrome 158's Web Install features allow a PWA catalog to offer installation of another web app directly from its page. The HTML `<install>` element provides a browser-controlled install button, but browsers limit how many such elements can appear on one page to prevent abuse. For a large catalog, `navigator.install()` is a better candidate, although installing another app through that API adds an initial permission prompt before the installation confirmation.\n\nCatalog developers must verify that the target manifest and `start_url` share an origin, that the manifest is correctly served over HTTPS, and that the app has a stable identity. The `manifestid` attribute checks an identity; it cannot override it. Subdomains count as separate origins.\n\nUsers should open a PWA in their browser before installing it. PWA installation is different from downloading an Android APK, but being a PWA does not guarantee trustworthiness. Check the operator, URL, and requested permissions. Exact element limits and Data URL manifest behavior remain subjects for later device testing.",
+    "category": "PWA",
+    "published": "2026-11-16",
+    "translation": "chrome-158-pwa-install-catalog-safety"
+  },
   "local-storage-basics": {
     "title": "ローカル保存とは？キャッシュ・Cookie・localStorageの違いと削除時の注意点",
     "permalink": "local-storage-basics",
