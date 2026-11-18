@@ -145,3 +145,70 @@ Chrome 158のWeb Installは、Webサイトをアプリの紹介場所から、�
 実機検証は後日。まずは作る側が守る条件と、使う側が安心して試すためのポイントを押さえておきましょう。
 
 参考資料： [Chrome for Developers — Installing web applications](https://developer.chrome.com/docs/modern-web-guidance/guides/pwa/install-web-app) / [Chrome 158 release notes](https://lighthouse-ci-staging-dot-cr-status.appspot.com/release-notes/158)
+
+## 追記26-11-18：検証データ
+
+### Chrome 158で外部サイトのPWAインストールに成功
+
+Chrome 158で、別ドメインにあるPWAを`<install>`からインストールできることを確認しました。
+
+検証には、Microsoft Edgeのデモサイトで公開されているManifestを使用しました。
+
+```html
+<install manifest="https://microsoftedge.github.io/Demos/pwa-install-element/manifest.json"></install>
+```
+
+このコードを`ojapp.app`のテストページに設置したところ、Chromeのインストール画面が表示されました。[テストページ](https://ojapp.app/install-test/)
+
+画面にはインストール対象のアプリ名と提供元のドメインが表示され、通常のインストール操作へ進める状態になりました。
+
+**PWA紹介サイト側にアプリ本体を置かなくても、外部サイトのManifestを指定することでインストール画面を呼び出せます。**
+
+これはPWA紹介サイトを作るうえで、かなり重要な確認結果です。
+
+### `<install>`の配置制限は単純な先着順ではなかった
+
+以前、Chrome 157のFlag有効環境では、コンソールに24個という上限警告が表示される一方、29個目までクリックでき、30個目が反応しないという結果を確認していました。
+
+ところが、Chrome 158で多数の`<install>`を並べて再検証すると、さらに興味深い挙動が見つかりました。
+
+例えば、25個目と26個目ではインストール画面が表示されないのに、32個目では表示されるケースがありました。
+
+つまり、**先頭から24個だけが有効になり、それ以降がすべて無効になるという単純な仕組みではありませんでした。**
+
+| 検証項目 | 結果 |
+|---|---|
+| コンソールで示された上限（Chrome 157） | 24個 |
+| Chrome 157での初回確認 | 29個目まで操作可能、30個目は不可 |
+| Chrome 158での再検証 | 25・26個目が反応せず、32個目は反応するケースを確認 |
+| 有効になる要素の決定条件 | 未特定 |
+
+Chrome 157での結果も、配置数だけでなく、どの要素が有効になっていたかを調べる必要がありそうです。
+
+現時点では、**大量に配置した場合、どの`<install>`が操作可能になるかを配置順だけでは判断できない**というのが実測結果です。
+
+PWA紹介サイトで各アプリのカードに`<install>`を並べる場合、この挙動には注意が必要です。
+
+### Data URL Manifestは`<install>`で使用できなかった
+
+OJapp FREEでは、JavaScriptでManifestを動的生成し、Data URLとして`<link rel="manifest">`に設定する方式を使用しています。
+
+この方式が`<install>`でも利用できるか、Chrome 158で検証しました。
+
+結果は、**Data URL Manifestを`<install>`の`manifest`属性に直接指定してもインストールできませんでした。**
+
+通常の`<link rel="manifest">`で利用できるData URLが、`<install>`でも同じように使えるとは限らないわけです。
+
+今回確認した`<install>`のManifest取得条件は、次のとおりです。
+
+- `https://`で取得できるManifestであること
+- リダイレクトなしで取得できること
+- 認証なしでアクセスできること
+- JSONのMIMEタイプで配信されていること
+- Manifestと`start_url`が同一オリジンであること
+
+OJapp FREEのようにData URL Manifestを生成する仕組みを、外部PWA紹介サイトからそのままインストールする用途には利用できませんでした。
+
+**今回の検証では、外部サイトのHTTPS Manifestは利用できましたが、Data URL Manifestは利用できませんでした。**
+
+PWA紹介サイトを作る場合、Manifestの公開方法も設計上の重要なポイントになります。

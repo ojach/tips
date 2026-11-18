@@ -139,3 +139,72 @@ This article is based on those published requirements and on design consideratio
 For now, the advice is straightforward: developers should build catalogs around the browser's actual constraints, and users should **try the web app before deciding to install it**.
 
 References: [Chrome for Developers — Installing web applications](https://developer.chrome.com/docs/modern-web-guidance/guides/pwa/install-web-app) / [Chrome 158 release notes](https://lighthouse-ci-staging-dot-cr-status.appspot.com/release-notes/158)
+
+## Update: November 18, 2026 — Test Results
+
+### Chrome 158 Successfully Opens the Install Dialog for an External PWA
+
+In Chrome 158, I confirmed that an `<install>` element can open the installation dialog for a PWA hosted on a different domain.
+
+For this test, I used the public manifest from Microsoft's PWA installation demo:
+
+```html
+<install manifest="https://microsoftedge.github.io/Demos/pwa-install-element/manifest.json"></install>
+```
+
+I placed this element on a test page hosted at `ojapp.app`.
+
+Chrome displayed the installation dialog, including the target app's name and source domain, allowing me to proceed with the installation process.
+
+**A PWA directory does not need to host the app itself. It can reference a manifest on another website and open the installation dialog.**
+
+This is an important result for developers building PWA discovery and directory websites.
+
+### The `<install>` Element Limit Is Not Simply First Come, First Served
+
+In an earlier test using Chrome 157 with the experimental flag enabled, the developer console reported a limit of 24 permission elements.
+
+However, elements up to number 29 were clickable, while element 30 did not respond.
+
+Further testing in Chrome 158 revealed something even more interesting.
+
+In one test, elements 25 and 26 did not open the installation dialog, but element 32 did.
+
+**This means the browser was not simply enabling the first 24 elements and disabling everything after them.**
+
+| Test | Result |
+|---|---|
+| Console-reported limit in Chrome 157 | 24 elements |
+| Initial Chrome 157 test | Elements through 29 worked; element 30 did not |
+| Chrome 158 retest | Elements 25 and 26 failed, while element 32 worked in one test |
+| Rule determining which elements remain active | Not yet identified |
+
+The earlier Chrome 157 results may also need to be reconsidered. The number of elements alone does not explain which ones remain interactive.
+
+For now, the observed result is clear: **when many `<install>` elements are placed on a page, their position alone does not reliably predict which ones will work.**
+
+This is an important limitation for PWA directories that place an installation button on every app card.
+
+### Data URL Manifests Did Not Work with `<install>`
+
+OJapp FREE dynamically generates a Web App Manifest using JavaScript and assigns it as a Data URL through `<link rel="manifest">`.
+
+I tested whether the same approach could work with Chrome 158's `<install>` element.
+
+The result was disappointing: **specifying a Data URL directly in the `manifest` attribute did not work.**
+
+A Data URL that works with a regular `<link rel="manifest">` cannot automatically be used with `<install>`.
+
+The manifest requirements considered in this test were:
+
+- The manifest must be accessible through `https://`
+- It must be fetched without redirects
+- It must be publicly accessible without authentication
+- It must be served with a JSON MIME type
+- The manifest and its `start_url` must share the same origin
+
+This means OJapp FREE's dynamically generated Data URL manifest could not be used directly for cross-site installation through `<install>` in this test.
+
+**Chrome 158 successfully opened the installation dialog for an external HTTPS manifest, but the Data URL approach did not work.**
+
+For developers building PWA directories, the way an app exposes its manifest is an important part of installation compatibility.
