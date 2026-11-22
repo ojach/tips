@@ -1,8 +1,12 @@
+---
+updated: 2026-11-23
+---
+
 Chrome 158 changes what a PWA catalog can do. A website can now offer installation of another web app directly from its own page, provided the target app meets the Web Install requirements. Instead of merely linking to an app's website, a catalog can become an entry point for installation.
 
 That opens up an interesting direction for PWA discovery: collections of useful tools, curated app directories, and articles that recommend a few specific web apps. The install button can sit alongside the description and the link to try the app.
 
-There are practical constraints, though. Developers need to understand the limits of the HTML `<install>` element, the requirements for a target manifest, and how app identity is checked. Users also deserve a simple rule: **try the PWA in your browser first, then install it if you like it.** This article covers both sides using Chrome's published guidance. Hands-on Android testing, including element limits and Data URL manifests, will come later.
+There are practical constraints, though. Developers need to understand the limits of the HTML `<install>` element, the requirements for a target manifest, and how app identity is checked. Users also deserve a simple rule: **try the PWA in your browser first, then install it if you like it.** This article covers both sides using Chrome's published guidance. Hands-on Chrome testing of element limits and Data URL manifests is documented in the updates below.
 
 ## What Chrome 158's Web Install features offer
 
@@ -68,7 +72,7 @@ However, the actual behavior was a little different.
 
 This mismatch between the reported limit and the actual behavior is particularly interesting.
 
-These results were observed in Chrome 157 with the experimental flag enabled. Whether the same behavior occurs in the stable release of Chrome 158 remains to be tested.
+These results were observed in Chrome 157 with the experimental flag enabled. These were the initial Chrome 157 observations. Further testing in Chrome 158 found that elements 25 and 26 could fail while element 32 still worked, as described in the update below.
 
 For developers building PWA directories or app discovery websites, this experiment confirms that the number of `<install>` elements on a single page is a practical limitation worth considering.
 
@@ -86,7 +90,7 @@ A stable manifest `id` is important because it identifies the web app independen
 
 The `<install>` element's `manifestid` attribute does not let a catalog assign a new identity to someone else's app. It is used to check the identity derived from the target manifest. If the manifest has no explicit `id`, the browser computes a fallback identity from its `start_url`, and the provided `manifestid` must match that processed value.
 
-In other words, if you want an app to have a stable identity, configure the app's own manifest correctly. A catalog cannot repair an unstable identity simply by supplying a different attribute.
+In other words, if you want an app to have a stable identity, configure the app's own manifest correctly. In a later YouTube test, a manifest without an explicit `id` worked when `manifestid` matched the effective identity derived from `start_url`. See the update below.
 
 <div class="balloon balloon-boder">
 <figure class="balloon__img balloon__img-left">
@@ -102,7 +106,7 @@ OJapp FREE dynamically generates manifests, which makes the Web Install requirem
 
 That raises a concrete question: **can a catalog install a PWA whose manifest is generated as a Data URL?** What happens if a Data URL is passed directly to the `manifest` attribute? Can a separate catalog page reference a manifest dynamically associated with the app's own page?
 
-These questions connect directly to OJapp FREE and the One Page One App approach. Chrome's current guidance describes HTTPS accessibility requirements for installing another app. I have not completed device testing of Data URL behavior for this feature, so I am leaving the outcome open rather than inventing one.
+These questions connect directly to OJapp FREE and the One Page One App approach. Chrome's current guidance describes HTTPS accessibility requirements for installing another app. In my Chrome 158 test, specifying a Data URL directly in `<install>` did not work. See the update below.
 
 ## For users: try the PWA in your browser before installing
 
@@ -134,9 +138,7 @@ It is also the direction I would consider for a future catalog such as PWA UP. T
 
 Chrome 158's Web Install capabilities make it possible for a website to act as an installation entry point for other PWAs. The published guidance gives developers important rules: use `<install>` thoughtfully, consider `navigator.install()` for large catalogs, provide a valid same-origin manifest/start URL pair, and keep app identity stable.
 
-This article is based on those published requirements and on design considerations for PWA catalogs. It does not claim to have measured the maximum number of install elements or tested cross-origin and Data URL behavior on a new Android device. Those experiments belong in a separate follow-up.
-
-For now, the advice is straightforward: developers should build catalogs around the browser's actual constraints, and users should **try the web app before deciding to install it**.
+This article combines the published requirements with Chrome 157 and 158 test results, documented below. The observations cover cross-origin installation, element limits, Data URL manifests, manifest identity matching, and style-related activation failures. Users should still **try the web app before deciding to install it**.
 
 References: [Chrome for Developers — Installing web applications](https://developer.chrome.com/docs/modern-web-guidance/guides/pwa/install-web-app) / [Chrome 158 release notes](https://lighthouse-ci-staging-dot-cr-status.appspot.com/release-notes/158)
 
@@ -208,3 +210,64 @@ This means OJapp FREE's dynamically generated Data URL manifest could not be use
 **Chrome 158 successfully opened the installation dialog for an external HTTPS manifest, but the Data URL approach did not work.**
 
 For developers building PWA directories, the way an app exposes its manifest is an important part of installation compatibility.
+
+## Update: November 22, 2026 — `manifestid` and CSS Tests
+
+### A Manifest Without an Explicit `id` Worked with the Correct `manifestid`
+
+I tested installing YouTube's PWA through `<install>` in Chrome 158. Specifying only its manifest URL did not open the install dialog in my test, but adding `manifestid` made it work.
+
+```html
+<install
+  manifest="https://www.youtube.com/manifest.webmanifest"
+  manifestid="https://www.youtube.com/?feature=ytca">
+</install>
+```
+
+YouTube's manifest contained this `start_url`:
+
+```json
+"start_url": "/?feature\u003dytca"
+```
+
+The Unicode escape `\u003d` represents `=`, so the resolved URL is `https://www.youtube.com/?feature=ytca`—the same value used for `manifestid`.
+
+**This test confirmed that a manifest without an explicit `id` can still work when `manifestid` matches the effective app identity derived from `start_url`.** The `manifestid` attribute checks the app's identity; it does not override it.
+
+In a separate test, OJ-Pass started working after I added an explicit `id` to its manifest. These observations highlight the importance of correct identity matching, but do not establish a universal requirement for every PWA.
+
+### CSS and Layout Can Prevent an `<install>` Element from Activating
+
+On another PWA examples website, the install buttons did not respond in my Chrome 158 environment. DevTools reported these reasons for invalid `<install>` elements:
+
+```text
+style_invalid
+intersection_out_of_viewport_or_clipped
+```
+
+The first points to an invalid style, while the second indicates that an element is outside the viewport or clipped. Chrome applies visibility and styling safeguards to permission elements.
+
+I copied **the exact YouTube `<install>` markup from that website** into my own minimal test page. The installation dialog opened successfully there.
+
+This comparison strongly suggests that **the page's styling, layout, or visibility conditions can affect activation even when the manifest URL and `manifestid` are unchanged.** I did not identify the specific CSS property responsible. Warnings for off-screen elements also do not, by themselves, prove that every visible button is invalid.
+
+If an `<install>` control does not respond, check the DevTools `invalidReason` messages as well as the manifest configuration, clipping, overlapping elements, and styles.
+
+### Switching Manifests on a Single `<install>` Element Worked
+
+I also reused one `<install>` element by changing its `manifest` attribute with JavaScript. In Chrome 158, I successfully opened the install dialogs for both Microsoft's demo PWA and OJ-Pass using the same element.
+
+```js
+const install = document.querySelector('#test-install');
+install.setAttribute('manifest', selectedManifestURL);
+```
+
+**A catalog can potentially reuse one `<install>` control instead of placing many of them on the page.** The selected target manifest must still satisfy the installation requirements.
+
+### `navigator.install()` Displayed an Additional Permission Prompt
+
+I tested `navigator.install({ manifest: ... })` in Chrome 158 as well. Before the installation dialog, Chrome asked whether the page could install web apps. That extra permission step did not appear in my `<install>` tests.
+
+The additional prompt is a meaningful user-experience difference between the two approaches.
+
+Test page: [OJapp install-test](https://ojapp.app/install-test/)

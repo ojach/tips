@@ -1,8 +1,12 @@
+---
+updated: 2026-11-23
+---
+
 Chrome 158で、PWAを紹介するWebサイトの作り方が変わります。紹介ページから別のWebアプリのインストールを案内できるようになるためです。これまでは「アプリのサイトへ移動して、そこでホーム画面に追加する」という流れが中心でしたが、Web Installの仕組みを使えば、紹介ページそのものをインストールの入口にできます。
 
 個人的には、これはPWAの見つけ方を変える可能性がある機能だと思っています。アプリを集めたカタログ、便利なWebツールのまとめ、趣味のPWA紹介ページ。今までリンクを並べるだけだったページに、インストールという選択肢が加わります。
 
-ただし、アプリを紹介する側には実装上の条件があります。そして利用する側にも、知っておくと安心なポイントがあります。今回はChromeの公開資料をもとに、**PWA紹介サイトを作る人・使う人の両方が押さえたい注意点**を整理します。Androidでの配置上限やData URL Manifestの実機検証は、別の機会に扱います。
+ただし、アプリを紹介する側には実装上の条件があります。そして利用する側にも、知っておくと安心なポイントがあります。今回はChromeの公開資料をもとに、**PWA紹介サイトを作る人・使う人の両方が押さえたい注意点**を整理します。配置上限やData URL Manifestについては、後半にChromeでの検証結果を追記しています。
 
 ## Chrome 158のWeb Installで何ができる？
 
@@ -68,7 +72,7 @@ More permission elements can be added but they will not be clickable
 
 警告の数字と実際の操作制限が一致していないのは、興味深い挙動です。
 
-今回の結果はChrome 157のFlag有効環境で確認したものです。Chrome 158正式版でも同じ挙動になるかは、今後の確認事項として残しています。
+この表はChrome 157での初回確認結果です。Chrome 158での追加検証では、25・26個目が反応しない一方、32個目が動くケースも確認しました。詳しくは後半の追記で紹介します。
 
 少なくとも、PWA紹介サイトで各アプリに`<install>`を設置する場合、配置数の制限は実際に考慮する必要があります。
 
@@ -88,7 +92,7 @@ OJappでPWAを扱っていると、Manifestの`id`がアプリの識別にどれ
 
 対象のManifestには、安定した`id`を設定するのが基本です。`<install>`の`manifestid`属性は、対象のアプリIDを好きな値に変更する仕組みではありません。**取得したManifestから決まるIDと、指定したIDが一致するか確認するための値**です。
 
-Manifestに`id`がない場合は、`start_url`から計算されるIDを`manifestid`に指定して照合します。アプリの識別を安定させたいなら、紹介ページ側の属性で工夫するより、アプリ本体のManifestを整える方が先です。
+Manifestに`id`がない場合は、`start_url`から計算されるIDを`manifestid`に指定して照合します。今回のYouTubeの実機検証では、Manifestに明示的な`id`がなくても、`start_url`から決まるIDを`manifestid`に指定するとインストール画面が開きました。詳しくは後半の追記で紹介します。
 
 <div class="balloon balloon-boder">
 <figure class="balloon__img balloon__img-left">
@@ -106,7 +110,7 @@ OJapp FREEでは、Manifestを動的に生成する方式を使っています�
 
 例えば`<install>`の`manifest`属性へData URLを渡したらどうなるのか。現在のページに紐づく動的Manifestを、別ページからどう扱えるのか。これはOJapp FREEや1P1Aの設計に直接関係する疑問です。
 
-Chromeの現行ガイドは、外部アプリのManifestについてHTTPSで到達できるURLなどの条件を示しています。Data URLの扱いについては、今回の時点では実機で確認していません。この記事では対応可否を断定せず、後日の検証項目として残します。
+Chromeの現行ガイドは、外部アプリのManifestについてHTTPSで到達できるURLなどの条件を示しています。Chrome 158で実際に試したところ、`<install>`にData URLを直接指定する方法では動作しませんでした。検証内容は後半に追記しています。
 
 ## 使う側の注意点：まずブラウザで試してみる
 
@@ -140,9 +144,7 @@ APKファイルをダウンロードしてAndroidにインストールする方�
 
 Chrome 158のWeb Installは、Webサイトをアプリの紹介場所から、インストールの入口へ進める機能です。少数のPWAを記事内で紹介する場合と、大規模なカタログを作る場合では、`<install>`と`navigator.install()`の選び方が変わります。
 
-今回整理したのは公開資料から確認できる仕様と、そこから考えられる設計上の注意点です。`<install>`を実際に何個まで置けるのか、外部ドメインやサブドメインでどう動くのか、Data URL Manifestを使えるのかといった実機結果は、まだこの記事には含めていません。
-
-実機検証は後日。まずは作る側が守る条件と、使う側が安心して試すためのポイントを押さえておきましょう。
+公開資料に加え、Chrome 157・158での検証結果を後半に追記しました。配置上限の不規則な挙動、外部PWAのインストール、Data URL Manifestの失敗、Manifest IDの照合、CSSによる無効化などを確認しています。
 
 参考資料： [Chrome for Developers — Installing web applications](https://developer.chrome.com/docs/modern-web-guidance/guides/pwa/install-web-app) / [Chrome 158 release notes](https://lighthouse-ci-staging-dot-cr-status.appspot.com/release-notes/158)
 
@@ -212,3 +214,64 @@ OJapp FREEのようにData URL Manifestを生成する仕組みを、外部PWA�
 **今回の検証では、外部サイトのHTTPS Manifestは利用できましたが、Data URL Manifestは利用できませんでした。**
 
 PWA紹介サイトを作る場合、Manifestの公開方法も設計上の重要なポイントになります。
+
+## 追記26-11-22：`manifestid`とCSSの追加検証
+
+### Manifestに`id`がなくても、正しい`manifestid`なら動作した
+
+Chrome 158でYouTubeのPWAを`<install>`から呼び出す実験を行いました。最初にManifest URLだけを指定したときはインストール画面が開きませんでしたが、`manifestid`を追加すると表示されました。
+
+```html
+<install
+  manifest="https://www.youtube.com/manifest.webmanifest"
+  manifestid="https://www.youtube.com/?feature=ytca">
+</install>
+```
+
+YouTubeのManifestに記載されていた`start_url`は次の値です。
+
+```json
+"start_url": "/?feature\u003dytca"
+```
+
+`\u003d`は`=`を表すため、オリジンを補ったURLは`https://www.youtube.com/?feature=ytca`です。今回指定した`manifestid`と一致します。
+
+**Manifestに明示的な`id`がなくても、`start_url`から決まる実効的なアプリIDと一致する`manifestid`を指定すれば、インストール画面を開けるケースが確認できました。** `manifestid`はIDを上書きする属性ではなく、対象アプリの識別子を照合するためのものです。
+
+なお、OJ-PassではManifestに`id`を追加したことで動作するようになりました。どちらの検証も、アプリの識別子を正しく扱うことの重要性を示しています。すべてのPWAで同じ条件になるとまでは断定していません。
+
+### `<install>`はCSSや表示位置によって無効になる場合がある
+
+別のPWA紹介サイトをChrome 158で確認したところ、`<install>`のボタンが反応せず、DevToolsに次の理由が表示されていました。
+
+```text
+style_invalid
+intersection_out_of_viewport_or_clipped
+```
+
+前者はスタイル条件を満たしていないこと、後者は表示領域外やクリッピングなどで要素が適切に見えていないことを示します。ChromeはPermission Elementの安全対策として、見た目や表示状態にも制限を設けています。
+
+そこで、そのサイトで使われていた**YouTubeの`<install>`コードをそのまま自分のテストページへコピー**したところ、こちらでは正常にインストール画面が開きました。
+
+つまり今回の比較では、Manifest URLや`manifestid`だけでは失敗を説明できず、**ページ側のCSS・レイアウト・表示状態が動作を左右している可能性が強い**とわかりました。ただし、原因となった具体的なCSSプロパティは未特定です。また、画面外の要素に関する警告だけで、画面内のすべてのボタンが無効と断定することもできません。
+
+`<install>`が反応しない場合は、Manifestの設定だけでなく、DevToolsの`invalidReason`や、要素の重なり・クリッピング・スタイルも確認する必要があります。
+
+### 1個の`<install>`でManifestを切り替える方法も成功
+
+追加実験では、1個の`<install>`要素に対してJavaScriptから`manifest`属性を書き換え、Microsoft EdgeのデモPWAとOJ-Passを切り替えて、両方のインストール画面を表示できました。
+
+```js
+const install = document.querySelector('#test-install');
+install.setAttribute('manifest', selectedManifestURL);
+```
+
+**複数のPWAを紹介する場合でも、`<install>`を大量に常設せず、1個を切り替えて使う方法が実際に動作しました。** ただし、切り替え先のManifestがインストール条件を満たしている必要があります。
+
+### `navigator.install()`では追加の権限確認を確認
+
+Chrome 158で`navigator.install({ manifest: ... })`も試したところ、インストール画面に進む前に、ページが「ウェブアプリをインストールする」権限を求める確認画面が表示されました。今回の`<install>`の操作では、この追加確認は表示されませんでした。
+
+どちらの方法にも用途はありますが、実際に操作してみると、**追加の権限確認の有無はユーザー体験の明確な違い**でした。
+
+検証ページ：[OJapp install-test](https://ojapp.app/install-test/)
