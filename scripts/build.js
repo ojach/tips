@@ -204,6 +204,14 @@ await fs.rm(out, { recursive: true, force: true });
 await fs.mkdir(out, { recursive: true });
 
 const [site, metadata, pageMetadata] = await Promise.all([readJson('site.json'), readJson('articles.json'), readJson('pages.json')]);
+// hubs.json is optional so existing Blog Kit sites keep building unchanged.
+let hubs = {};
+try {
+  hubs = await readJson('hubs.json');
+  if (!hubs || typeof hubs !== 'object' || Array.isArray(hubs)) throw new Error('hubs.json must be a JSON object');
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+}
 const shareScript = await fs.readFile(path.join(root, 'public/js/share.js'), 'utf8');
 const homeTemplate = await fs.readFile(path.join(root, 'templates/index.html'), 'utf8');
 const pageTemplate = await fs.readFile(path.join(root, 'templates/page.html'), 'utf8');
@@ -472,7 +480,7 @@ for (const file of files) {
   const permalink = String(frontMatter.permalink ?? meta.permalink ?? defaultPermalink).replace(/^\/+|\/+$/g, '');
   const prefix = permalink.split('/')[0];
   const language = prefix === 'en' ? 'en' : prefix === 'ja' ? 'ja' : (configuredLanguage || (inferredEnglish ? 'en' : siteLanguage));
-  articles.push({ key, title, description, visibleDescription, rawContent: raw, contentTokens, excerpt: explicitExcerpt || description, summary: meta.summary || '', permalink, language, published: frontMatter.published ?? meta.published ?? '', updated: frontMatter.updated ?? meta.updated ?? '', category: frontMatter.category ?? meta.category ?? '', nextArticleKey: meta.next_article || '', translationKey: meta.translation || '', metaLanguage: language, pwaIcon: meta.pwa_icon || '', thumbnail: meta.thumbnail || '', thumbnailAlt: meta.thumbnail_alt || title, showThumbnail: meta.show_thumbnail !== false, tokens, firstHeading });
+  articles.push({ key, title, description, visibleDescription, rawContent: raw, contentTokens, excerpt: explicitExcerpt || description, summary: meta.summary || '', permalink, language, published: frontMatter.published ?? meta.published ?? '', updated: frontMatter.updated ?? meta.updated ?? '', category: frontMatter.category ?? meta.category ?? '', nextArticleKey: meta.next_article || '', hubKey: meta.hub || '', translationKey: meta.translation || '', metaLanguage: language, pwaIcon: meta.pwa_icon || '', thumbnail: meta.thumbnail || '', thumbnailAlt: meta.thumbnail_alt || title, showThumbnail: meta.show_thumbnail !== false, tokens, firstHeading });
 }
 articles.sort((a, b) => (b.published || '').localeCompare(a.published || '') || a.title.localeCompare(b.title));
 
@@ -612,9 +620,23 @@ if (site.features?.article_pwa_icons === true && !article.pwaIcon) {
   const fallbackNext = sameLanguageArticles[sameLanguageArticles.indexOf(article) + 1]
     || sameLanguageArticles.find((candidate) => candidate !== article);
   const nextArticle = explicitNext || fallbackNext;
-  const summaryNextHtml = nextArticle
-    ? `<p class="article-summary-next"><span>${esc(labels.next)}</span><a href="${esc(withBase(basePath, `/${nextArticle.permalink}/`))}">${esc(nextArticle.title)}</a></p>`
-    : '';
+  // Summary navigation: valid hub key wins; otherwise keep existing next-article behavior.
+  const hub = article.hubKey ? hubs[article.hubKey] : null;
+  const hubArticle = hub && typeof hub === 'object'
+    ? articles.find((candidate) => candidate.key === hub.article || candidate.permalink === hub.article)
+    : null;
+  const hubTitle = hub && typeof hub.title === 'string' ? hub.title.trim() : '';
+  const hubUrl = hubArticle
+    ? withBase(basePath, `/${hubArticle.permalink}/`)
+    : (hub && typeof hub.url === 'string' && /^\/(?!\/)/.test(hub.url) && !/[?#]/.test(hub.url)
+      ? withBase(basePath, hub.url)
+      : '');
+  const validHub = hubUrl && hubTitle && (!hubArticle || hubArticle.language === article.language);
+  const summaryNextHtml = validHub
+    ? `<p class="article-summary-next"><span>${article.language === 'en' ? 'Explore this topic' : 'このテーマを詳しく知る'}</span><a href="${esc(hubUrl)}">${esc(hubTitle)}</a></p>`
+    : nextArticle
+      ? `<p class="article-summary-next"><span>${esc(labels.next)}</span><a href="${esc(withBase(basePath, `/${nextArticle.permalink}/`))}">${esc(nextArticle.title)}</a></p>`
+      : '';
   const summaryHtml = site.features?.article_summary !== false && article.summary
     ? `<details class="article-summary"><summary>${esc(labels.summary)}</summary><div class="article-summary-content">${marked.parse(article.summary)}${summaryNextHtml}</div></details>`
     : '';
