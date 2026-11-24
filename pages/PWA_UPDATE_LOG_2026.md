@@ -25,6 +25,12 @@ Chrome 158のデスクトップ版がStableチャンネルへ正式に公開さ�
 - 24個を超えると、単純に上から順ではなく一部のボタンが無効になる場合がある
 - Data URLで生成したManifestは`<install manifest="...">`に指定できない
 - 大量のPWAを並べる場合は、個数制限のない`navigator.install()`が向いている
+- idの指定がないManifestは`<install manifestid="...">`で指定することができる。指定は`start_url`
+- CSSでボタンの領域に重なるものがあると動かない場合がある。
+
+### 関連記事
+
+- [Chrome 158でPWA紹介サイトが増える？作る側・使う側が知っておきたい注意点](https://tips.ojapp.app/chrome-158-pwa-install-catalog-safety/)
 
 ### 一次資料
 
@@ -44,11 +50,9 @@ Chromeだけの独自機能ではなく、Chromium系ブラウザで共通して
 
 `<install>`はブラウザが表示を管理する簡単なボタンです。`navigator.install()`は独自デザインのボタンや動的なアプリ一覧に組み込めます。外部PWAを`navigator.install()`でインストールする場合は、インストール確認の前にサイト権限の確認が入ります。
 
-### 次に確認する点
+### PWA LABで確認したこと
 
-- ChromeとEdgeでインストール画面に違いがあるか
-- Edgeでも`<install>`の有効数が最大24個か
-- 外部PWAを指定した場合の権限確認とエラー表示
+- 基本的にはChromeと同じ。
 
 ### 一次資料
 
