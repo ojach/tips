@@ -1,10 +1,50 @@
 {
-  "pwa": {
-    "title": "PWA完全ガイド",
-    "article": "pwa-guide"
+  "pwa-basics": {
+    "title": "PWAとは？2026年最新！ホーム画面に追加できるWebサイトの仕組みと最も簡単な実装方法",
+    "article": "pwa-explained"
   },
-  "pwa-en": {
-    "title": "Complete PWA Guide",
-    "article": "en/pwa-guide"
+  "ios-pwa": {
+    "title": "PWA×iOSでできること完全まとめ【2026年版】できること・できないことを一発で理解",
+    "article": "pwa-ios-capabilities"
+  },
+  "manifest-ux": {
+    "title": "PWAに必要なmanifest.jsonの基本｜iPhoneとAndroidで効く項目を実験ベースで解説",
+    "article": "pwa-manifest-json-basics"
+  },
+  "1p1a-home": {
+    "title": "1P1A（One Page. One App.）というPWA設計思想",
+    "article": "1p1a-2"
+  },
+  "cache-sw": {
+    "title": "【完全ガイド】PWAのキャッシュ・Service Worker・ローカル保存の仕組みと削除の罠",
+    "article": "service-worker-cache-guide"
+  },
+  "dev-seo": {
+    "title": "個人開発ブログのSEO・AIO戦略｜自作サイトの運営と検索流入を伸ばす実践記録",
+    "article": "dev-seo"
+  },
+  "pwa-basics-en": {
+    "title": "What Is a PWA? 2026 Guide to How Websites Work on the Home Screen and the Easiest Way to Implement One",
+    "article": "en/pwa-explained-2"
+  },
+  "ios-pwa-en": {
+    "title": "What PWAs Can and Cannot Do on iOS in 2026: A Complete Practical Guide",
+    "article": "en/pwa-ios-2026-complete-guide/"
+  },
+  "manifest-ux-en": {
+    "title": "Web App Manifest Basics: Which Settings Matter on iPhone and Android?",
+    "article": "en/pwa-manifest-json-basics"
+  },
+  "1p1a-home-en": {
+    "title": "The PWA Design Philosophy of 1P1A (One Page. One App.)",
+    "article": "en/1p1a"
+  },
+  "cache-sw-en": {
+    "title": "PWA Caching, Service Workers, and Local Storage: How They Work and Deletion Traps",
+    "article": "en/service-worker-cache-guide"
+  },
+  "dev-seo-en": {
+    "title": "Indie Dev SEO & AIO Strategy: Tech and Mindset for Search and AI Citations",
+    "article": "en/dev-seo"
   }
 }
