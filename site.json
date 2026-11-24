@@ -21,6 +21,11 @@
       "url": "https://ojapp.app/ojach/app/"
     }
   },
+  "footer_links": [
+    { "label": "GitHub", "url": "https://github.com/ojach/tips" },
+    { "label": "X", "url": "https://x.com/ojachTwitch" },
+    { "label": "Reddit", "url": "https://www.reddit.com/user/OJapp/" }
+  ],
   "ads": {
    "1": {
      "image": "1p1a_cta.webp",

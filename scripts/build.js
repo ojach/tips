@@ -422,6 +422,19 @@ const footerHtmlFor = (language, articleOnly = false) => {
   const links = pages.filter((page) => page.language === language && page.showInFooter)
     .map((page) => `<a href="${esc(withBase(basePath, `/${page.permalink}/`))}">${esc(page.footerLabel)}</a>`).join('');
   const pageNav = links ? `<nav class="footer-pages" aria-label="${esc(labels.sitePages)}">${links}</nav>` : '';
+  const externalLinks = (Array.isArray(site.footer_links) ? site.footer_links : [])
+    .map((link) => {
+      const label = String(link?.label || '').trim();
+      if (!label) return '';
+      try {
+        const url = new URL(String(link?.url || ''));
+        if (!['https:', 'http:'].includes(url.protocol)) return '';
+        return `<a href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`;
+      } catch { return ''; }
+    }).filter(Boolean).join('');
+  const externalNav = externalLinks
+    ? `<nav class="footer-pages footer-external-links" aria-label="${language === 'en' ? 'External links' : '外部リンク'}">${externalLinks}</nav>`
+    : '';
   const aboutText = language === 'en'
   ? 'OJapp Tips is a technical blog about Progressive Web Apps (PWAs) and web app development. It covers home screen installation, app-like launch experiences, iOS and Android behavior, web standards, implementation, and troubleshooting based on hands-on testing.'
   : 'OJapp Tipsは、PWA（Progressive Web Apps）とWebアプリの設計・開発を扱う技術ブログです。ホーム画面への追加やアプリのような起動体験を中心に、iOS・Androidでの動作検証、Web標準の仕様、実装方法やトラブルの解決策を、実際に試した結果をもとに紹介しています。';
@@ -429,6 +442,7 @@ const footerHtmlFor = (language, articleOnly = false) => {
   ${articleOnly ? toolsShowcaseFor(language) : ''}
   <a class="footer-brand" href="${esc(withBase(basePath, language === localeKey(site.language || 'ja') ? '/' : `/${language}/`))}">${esc(site.title)}</a>
   ${pageNav}
+  ${externalNav}
   <details class="footer-about">
     <summary>${language === 'en' ? 'About OJapp Tips' : 'OJapp Tipsについて'}</summary>
     <p>${esc(aboutText)}</p>
