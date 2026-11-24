@@ -47,5 +47,10 @@
     "language": "en",
     "show_in_footer": false,
     "description": "Meet Appin, the OJapp Tips character who appears throughout the site to explain PWAs, home screen behavior, Web apps, and lessons from OJapp's real-world testing."
+  },
+  "PWA_UPDATE_LOG_2026": {
+    "title": "PWA UPDATE LOG 2026",
+    "permalink": "PWA_UPDATE_LOG_2026",
+    "language": "ja"
   }
 }
