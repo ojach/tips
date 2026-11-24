@@ -633,7 +633,7 @@ if (site.features?.article_pwa_icons === true && !article.pwaIcon) {
       : '');
   const validHub = hubUrl && hubTitle && (!hubArticle || hubArticle.language === article.language);
   const summaryNextHtml = validHub
-    ? `<p class="article-summary-next"><span>${article.language === 'en' ? 'Explore this topic' : 'このテーマを詳しく知る'}</span><a href="${esc(hubUrl)}">${esc(hubTitle)}</a></p>`
+    ? `<p class="article-summary-next"><span>${article.language === 'en' ? 'Explore this topic' : '関連記事まとめ'}</span><a href="${esc(hubUrl)}">${esc(hubTitle)}</a></p>`
     : nextArticle
       ? `<p class="article-summary-next"><span>${esc(labels.next)}</span><a href="${esc(withBase(basePath, `/${nextArticle.permalink}/`))}">${esc(nextArticle.title)}</a></p>`
       : '';
