@@ -2,9 +2,10 @@ const dictionaries = {
   ja: {
     articles: '記事一覧', rss: 'RSS', search: '記事を検索', searchPlaceholder: 'タイトル・説明文から検索',
     noArticles: '記事はまだありません。', noDate: '日付未設定',
+    previousPage: '← 前の15件', nextPage: '次の15件 →',
     introTitle: 'OJapp Tips', introDescription: 'PWAツール開発者が書く Web のノウハウ集',
     sideDescription: '机上の理論だけじゃない。実際に作って、試して得た知見を。',
-    toc: '目次', summary: '1分で読める要約', next: '次に読む',
+    toc: '目次', summary: '1分で読める要約', next: '次に読む', hub: '関連記事まとめ',
     author: 'この記事を書いた人', profile: 'プロフィールを見る',
     recommendations: 'おすすめ記事',
     backToArticles: '← 記事一覧へ戻る', articleActions: '記事の操作',
@@ -19,9 +20,10 @@ const dictionaries = {
   en: {
     articles: 'Articles', rss: 'RSS', search: 'Search articles', searchPlaceholder: 'Search by title or description',
     noArticles: 'No articles yet.', noDate: 'Date not set',
+    previousPage: '← Previous 15', nextPage: 'Next 15 →',
     introTitle: 'OJapp Tips', introDescription: 'Web Tips from a Tool Developer',
     sideDescription:  'Real-world insights from building and testing web tools.',
-    toc: 'Contents', summary: 'A 1-minute summary', next: 'Next to read',
+    toc: 'Contents', summary: 'A 1-minute summary', next: 'Next to read', hub: 'Related Articles',
     author: 'About the author', profile: 'View profile',
     recommendations: 'Recommended articles',
     backToArticles: '← Back to articles', articleActions: 'Article actions',

@@ -562,8 +562,8 @@ for (const language of languages) {
     : '';
   for (let page = 1; page <= pageCount; page += 1) {
   const pageRoute = page === 1 ? route : `${route.replace(/\/$/, '')}/page/${page}/`;
-  const previous = page > 1 ? `<a href="${esc(withBase(basePath, page === 2 ? route : `${route.replace(/\/$/, '')}/page/${page - 1}/`))}">← 前の15件</a>` : '';
-  const next = page < pageCount ? `<a href="${esc(withBase(basePath, `${route.replace(/\/$/, '')}/page/${page + 1}/`))}">次の15件 →</a>` : '';
+  const previous = page > 1 ? `<a href="${esc(withBase(basePath, page === 2 ? route : `${route.replace(/\/$/, '')}/page/${page - 1}/`))}">${esc(labels.previousPage)}</a>` : '';
+  const next = page < pageCount ? `<a href="${esc(withBase(basePath, `${route.replace(/\/$/, '')}/page/${page + 1}/`))}">${esc(labels.nextPage)}</a>` : '';
   const pagination = pageCount > 1 ? `<nav class="pagination" aria-label="記事一覧ページ">${previous}<span>${page} / ${pageCount}</span>${next}</nav>` : '';
   const home = fillTemplate(homeTemplate, {
     introTitle: esc(labels.introTitle),
@@ -647,7 +647,7 @@ if (site.features?.article_pwa_icons === true && !article.pwaIcon) {
       : '');
   const validHub = hubUrl && hubTitle && (!hubArticle || hubArticle.language === article.language);
   const summaryNextHtml = validHub
-    ? `<p class="article-summary-next"><span>${article.language === 'en' ? 'Related Articles' : '関連記事まとめ'}</span><a href="${esc(hubUrl)}">${esc(hubTitle)}</a></p>`
+    ? `<p class="article-summary-next"><span>${esc(labels.hub)}</span><a href="${esc(hubUrl)}">${esc(hubTitle)}</a></p>`
     : nextArticle
       ? `<p class="article-summary-next"><span>${esc(labels.next)}</span><a href="${esc(withBase(basePath, `/${nextArticle.permalink}/`))}">${esc(nextArticle.title)}</a></p>`
       : '';
