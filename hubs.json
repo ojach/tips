@@ -3,48 +3,80 @@
     "title": "PWAとは？2026年最新！ホーム画面に追加できるWebサイトの仕組みと最も簡単な実装方法",
     "article": "pwa-explained"
   },
+  "pwa-basics-en": {
+    "title": "What Is a PWA? 2026 Guide to How Websites Work on the Home Screen and the Easiest Way to Implement One",
+    "article": "en/pwa-explained-2"
+  },
   "ios-pwa": {
     "title": "PWA×iOSでできること完全まとめ【2026年版】できること・できないことを一発で理解",
     "article": "pwa-ios-capabilities"
   },
-  "manifest-ux": {
+  "ios-pwa-en": {
+    "title": "What PWAs Can and Cannot Do on iOS in 2026: A Complete Practical Guide",
+    "article": "en/pwa-ios-2026-complete-guide"
+  },
+  "manifest": {
     "title": "PWAに必要なmanifest.jsonの基本｜iPhoneとAndroidで効く項目を実験ベースで解説",
     "article": "pwa-manifest-json-basics"
   },
-  "1p1a-home": {
+  "manifest-en": {
+    "title": "Web App Manifest Basics: Which Settings Matter on iPhone and Android?",
+    "article": "en/pwa-manifest-json-basics"
+  },
+  "pwa-install": {
+    "title": "PWAのインストールと表示UX完全ガイド｜追加ボタン・アイコン・起動方法を整理",
+    "article": "pwa-install"
+  },
+  "pwa-install-en": {
+    "title": "PWA Installation and Display UX Guide: Install Buttons, Icons, and Launch Behavior",
+    "article": "en/pwa-install"
+  },
+  "1p1a": {
     "title": "1P1A（One Page. One App.）というPWA設計思想",
     "article": "1p1a-2"
   },
+  "1p1a-en": {
+    "title": "The PWA Design Philosophy of 1P1A (One Page. One App.)",
+    "article": "en/1p1a"
+  },
+  "home-marketing": {
+    "title": "ホーム画面マーケティングとは？PWAで「ページを届ける」という新しいWeb戦略",
+    "article": "home-screen-marketing"
+  },
+  "home-marketing-en": {
+    "title": "What Is Home Screen Marketing? A New Web Strategy for “Delivering Pages” with PWA",
+    "article": "en/home-screen-marketing-2"
+  },
+  "home-design": {
+    "title": "ホーム画面デザイン・カスタマイズまとめ｜アイコンと使いやすさを考える",
+    "article": "home-screen-design"
+  },
+  "home-design-en": {
+    "title": "Home Screen Design and Customization: Icons, Layouts, and Usability",
+    "article": "en/home-screen-design"
+  },
   "cache-sw": {
     "title": "【完全ガイド】PWAのキャッシュ・Service Worker・ローカル保存の仕組みと削除の罠",
-    "article": "service-worker-cache-guide"
+    "article": "cache-sw"
+  },
+  "cache-sw-en": {
+    "title": "PWA Caching, Service Workers, and Local Storage: How They Work and Deletion Traps",
+    "article": "en/cache-sw"
   },
   "dev-seo": {
     "title": "個人開発ブログのSEO・AIO戦略｜自作サイトの運営と検索流入を伸ばす実践記録",
     "article": "dev-seo"
   },
-  "pwa-basics-en": {
-    "title": "What Is a PWA? 2026 Guide to How Websites Work on the Home Screen and the Easiest Way to Implement One",
-    "article": "en/pwa-explained-2"
-  },
-  "ios-pwa-en": {
-    "title": "What PWAs Can and Cannot Do on iOS in 2026: A Complete Practical Guide",
-    "article": "en/pwa-ios-2026-complete-guide/"
-  },
-  "manifest-ux-en": {
-    "title": "Web App Manifest Basics: Which Settings Matter on iPhone and Android?",
-    "article": "en/pwa-manifest-json-basics"
-  },
-  "1p1a-home-en": {
-    "title": "The PWA Design Philosophy of 1P1A (One Page. One App.)",
-    "article": "en/1p1a"
-  },
-  "cache-sw-en": {
-    "title": "PWA Caching, Service Workers, and Local Storage: How They Work and Deletion Traps",
-    "article": "en/service-worker-cache-guide"
-  },
   "dev-seo-en": {
     "title": "Indie Dev SEO & AIO Strategy: Tech and Mindset for Search and AI Citations",
     "article": "en/dev-seo"
+  },
+  "pwa-security": {
+    "title": "PWAは安全？危険？Webサイトとの違いとセキュリティをわかりやすく解説",
+    "article": "pwa-security-safety"
+  },
+  "pwa-security-en": {
+    "title": "Are PWAs Safe? Security Risks, Permissions, Service Workers, and Web App Differences Explained",
+    "article": "en/pwa-security-safety-2"
   }
 }
