@@ -7,8 +7,6 @@ PWA、ホーム画面UX、Web Appのインストール挙動、Web App Manifest�
 > **最終更新：2026年11月24日**  
 > 新しい情報を上に追加しています。
 
----
-
 ## 2026年11月23日｜Chrome 158が正式リリース
 
 **対象：Chrome／Web Install**
@@ -38,8 +36,6 @@ Chrome 158のデスクトップ版がStableチャンネルへ正式に公開さ�
 - [Chrome 158 Stable Channel Update](https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01734282054.html)
 - [Installing web applications — Chrome for Developers](https://developer.chrome.com/docs/modern-web-guidance/guides/pwa/install-web-app)
 
----
-
 ## 2026年11月19日｜Microsoft Edge 158がWeb Installに対応
 
 **対象：Microsoft Edge／Web Install**
@@ -57,8 +53,6 @@ Chromeだけの独自機能ではなく、Chromium系ブラウザで共通して
 ### 一次資料
 
 - [Microsoft Edge 158 web platform release notes](https://learn.microsoft.com/en-us/microsoft-edge/web-platform/release-notes/158)
-
----
 
 ## 2026年11月18日｜Web App Manifest仕様を更新
 
@@ -79,8 +73,6 @@ Web App ManifestのWorking Draftが更新され、`shortcuts`に指定したURL�
 ### 一次資料
 
 - [Web Application Manifest — W3C Working Draft](https://www.w3.org/TR/appmanifest/)
-
----
 
 ## このログについて
 
