@@ -67,7 +67,7 @@
     "summary": "PWAを作るなら、まずWeb App Manifestとアイコンを用意し、HTMLからmanifestを読み込んでHTTPSで公開します。manifestではアプリ名、アイコン、表示モード、ホーム画面から開くURLを設定できます。特に`start_url`には注意が必要です。`\"/\"`はサイトのルートを開き、`\".\"`は閲覧中のページではなくmanifestのURLを基準に解決されます。オフライン対応が必要ならService Workerを登録し、Cache APIなどで必要なファイルを保存します。ただし、Service Workerはホーム画面追加の絶対条件ではなく、登録しただけでオフライン対応になるわけでもありません。最後はAndroidとiPhoneの実機で、アイコン、起動先、表示方法、キャッシュ更新、オフライン時の動作を確認しましょう。",
     "category": "PWA",
     "published": "2026-02-01",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--how-to-pwa-2",
     "next_article": "pwa-manifest-minimum-recommended-fields"
   },
@@ -120,7 +120,7 @@
     "summary": "iPhoneで「ホーム画面に追加」が見つからないときは、まずSafariでWebページそのものを開き、Safariの共有メニューを確認してください。画像を長押しして開いた共有画面や、Instagram・LINEなどのアプリ内ブラウザでは、目的の項目が表示されないことがあります。共有メニューの下部にある「アクションを編集」も確認しましょう。項目は表示されるのに追加できない場合は、既存のホーム画面アイコンや一時的なブラウザの状態を切り分けます。追加後にアイコンが違う場合はapple-touch-icon、トップページが開く場合はWeb App Manifestのstart_urlが関係する可能性があります。Service Workerがないことだけで「追加できない」とは判断できません。",
     "category": "PWA",
     "published": "2026-02-01",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--home-add-cannot-3",
     "next_article": "iphone-add-to-home"
   },
@@ -277,7 +277,7 @@
     "summary": "If “Add to Home Screen” is missing on your iPhone, first open the web page itself in Safari and use Safari’s Share menu. Sharing an image is different from sharing the page, and links opened inside Instagram, LINE, or other apps may not offer Safari’s actions. Scroll down and check “Edit Actions” as well. If the option appears but adding still fails, check existing Home Screen entries and try reloading Safari. If an icon looks wrong after adding, inspect the site’s apple-touch-icon settings. If the icon opens the home page instead of the selected article or product page, the Web App Manifest start_url may explain why. A missing Service Worker alone does not prove that Home Screen addition is impossible.",
     "category": "PWA",
     "published": "2026-02-02",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "translation": "home-add-cannot",
     "next_article": "en--iphone-add-to-home-2"
   },
@@ -318,7 +318,7 @@
     "category": "PWA",
     "published": "2026-02-02",
     "translation": "how-to-pwa",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "next_article": "en--pwa-manifest-minimum-recommended-fields-2"
   },
   "en--compare-pwa-shortcut-ojapp-2": {
@@ -1120,7 +1120,7 @@
     "excerpt": "Safari（iPhone）でPWAが動かないのはなぜ？Service Workerやホーム画面アプリが制限される理由、Appleの仕様変更、2026年時点の正しい理解を初心者にもわかりやすく解説します。",
     "category": "iphone",
     "published": "2026-03-21",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--safari-pwa-not-working-2",
     "summary": "SafariではPWAが“本来の形では動かなくなっている”のが原因です。2026年時点の仕様をもとにわかりやすく解説します。まず前提として、SafariはもともとPWAへの対応が限定的でした。\n\n“PWAを本気で推しているブラウザではなかった”のです。WebKit（Safariのエンジン）の仕様を大きく変更しました。",
     "next_article": "pwa-not-working-iphone"
@@ -1134,7 +1134,7 @@
     "excerpt": "Why doesn’t your PWA work on Safari or iPhone? This guide explains the real reasons—Apple’s limitations, Service Worker issues, WebClip behavior, and what actually changed between 2024 and 2026.",
     "category": "Mobile",
     "published": "2026-03-21",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "translation": "safari-pwa-not-working",
     "summary": "This question has become increasingly common since 2024. PWAs no longer function in their original form on Safari. and what actually changed between 2024 and 2026.\n\nFirst, it’s important to understand that Safari has always had limited PWA support. In other words, Safari was never a browser that fully embraced PWAs. to comply with EU regulations.\n\nPWA became unreliable on Safari. it behaves as a WebClip, not a real PWA. In short, the “app-like” features of PWAs are mostly gone on iOS.\n\nThis is how Safari is designed now. it’s the platform’s limitation. PWAs are not completely unusable on Safari.",
     "next_article": "en--safari-pwa-limitations-2"
@@ -1174,7 +1174,7 @@
     "excerpt": "PWAとWebClipの違いをわかりやすく解説。iPhoneではなぜPWAがうまく動かないのか？代わりにWebClipを使うべき理由とは？2026年時点の最適な選択をまとめました。",
     "category": "iphone",
     "published": "2026-03-21",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--pwa-vs-webclip2",
     "summary": "PWAは、Webサイトをアプリのように動かす技術です。単純に「ホーム画面にショートカットを置く」仕組みです。iPhoneではPWAのメリットがほぼ失われています。\n\nPWAはiPhoneでは前提にできない技術になったのです。OJappは、このWebClipの仕組みを前提に設計されています。",
     "next_article": "pwa-standalone-vs-fullscreen"
@@ -1188,7 +1188,7 @@
     "excerpt": "What’s the difference between PWA and WebClip? This guide explains how both work, why PWA struggles on iPhone, and why WebClip is now the more practical choice in 2026.",
     "category": "Mobile",
     "published": "2026-03-21",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "translation": "pwa-vs-webclip",
     "summary": "Both PWA (Progressive Web Apps) and WebClip allow you to place a website on your iPhone home screen. At first glance, they may seem similar—but they are fundamentally different technologies. And in 2026, the answer to “which one should you use?” is almost already decided.\n\nA PWA is a technology that allows websites to behave like native apps. In short, it tries to turn the web into an app experience. WebClip is a built-in iPhone feature that simply creates a shortcut on your home screen.\n\nmost advantages of PWA no longer apply on iPhone. significantly limiting PWA functionality.",
     "next_article": "en--pwa-standalone-vs-fullscreen-2"
@@ -1379,7 +1379,7 @@
     "excerpt": "iPhoneでWebページをホーム画面に追加したとき、今見ていたページではなく、別のURLが保存されてしまうことがあります。 PetalまわりのPWA設定を見直していて、かなり分かりやすい罠にハマりました。 iPhoneであるページを開いて「ホーム画面に追加」したのに、追加したアイコンから開くと、さっき見ていたURLとは違うページに飛んでしまう。 最初はSa",
     "category": "Petal",
     "published": "2026-04-23",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--ios-pwa-url-change-fix",
     "summary": "iPhoneでWebページをホーム画面に追加したとき、今見ていたページではなく、別のURLが保存されてしまうことがあります。PetalまわりのPWA設定を見直していて、かなり分かりやすい罠にハマりました。iPhoneであるページを開いて「ホーム画面に追加」したのに、追加したアイコンから開くと、さっき見ていたURLとは違うページに飛んでしまう。\n\nユーザーごとのページをホーム画面に追加して、次回もそのページを直接開けるようにしたかっただけです。これなら、ユーザーは「今見ているページをホーム画面に残した」と感じます。PWAのmanifest.jsonには、starturl という項目があります。\n\nこれは、ホーム画面から起動したときに、最初に開くURLを指定するものです。今回の問題は、単なるURL指定ミスというより、PWAの設計思想のズレでした。",
     "next_article": "android-home-screen-add-install-missing"
@@ -1419,7 +1419,7 @@
     "excerpt": "Why does iOS save a different URL when adding a PWA to the home screen? Learn how manifest.json, start_url, and maskable icons cause this issue—and how to fix it.",
     "category": "Mobile",
     "published": "2026-04-29",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "translation": "ios_pwa_manifest",
     "summary": "When you add a web page to the iPhone home screen, the saved icon may open a different URL from the one you were viewing. I ran into this problem while building Petal. What I wanted was simple: open an individual page like /petal/{token} and add that exact page to the home screen.\n\nWhat I wanted to do was very simple. In other words, I wanted to keep the exact URL that was currently open on the home screen. At first glance, this looks like a normal PWA configuration.\n\nBut for this use case, starturl was completely getting in the way. At first, I thought purpose: \"maskable\" was the cause.",
     "next_article": "en--pwa-home-screen-wrong-page-start-url-2"
@@ -1563,7 +1563,7 @@
     "excerpt": "PWAのmanifest.jsonで指定できるdisplay: fullscreenを、iPhoneとAndroidで実際に比較。standaloneとの違いや実用性を解説します。",
     "category": "iphone",
     "published": "2026-05-27",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--pwa-display-fullscreen-iphone-android-2",
     "summary": "PWAのmanifest.jsonには、displayという項目があります。ここでは、PWAをホーム画面から開いたときに、どんな表示モードで起動するかを指定できます。よく使われるのはstandaloneですが、設定値の中にはfullscreenというものもあります。\n\ndisplayは、manifest.jsonの中で指定するPWAの表示モードです。このdisplayを変えることで、PWAを開いたときの見た目が変わります。Android Chromeでdisplay: fullscreenを試すと、かなり分かりやすく変化がありました。\n\n通常のstandaloneでは、上部にPWAらしいバーやシステム側の表示が残ることがあります。display: fullscreenにしても、Androidのような分かりやすい全画面化はほぼ感じませんでした。",
     "next_article": "pwa-standalone-vs-fullscreen"
@@ -1761,7 +1761,7 @@
     "excerpt": "The PWA display: fullscreen setting can make Android PWAs feel very app-like, but iPhone behavior is different. Here is what I learned from testing it in PWA LAB.",
     "category": "Mobile",
     "published": "2026-06-07",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "translation": "pwa-display-fullscreen-iphone-android",
     "summary": "In a PWA manifest, there is a setting called display. This setting controls how the PWA appears when it is opened from the home screen. The most common value is usually standalone, but there is also a value called fullscreen.\n\ndisplay is the display mode setting inside manifest.json. Changing this display value changes how the PWA looks when opened. When I tested display: fullscreen in Android Chrome, the difference was easy to see.\n\nWith normal standalone, some PWA-like top bar or system UI can remain visible. On iPhone, though, there was almost no visible change. Even when I set display: fullscreen, I did not get the obvious full-screen effect that I saw on Android.",
     "next_article": "en--pwa-scope-iphone-android-difference-2"
@@ -1774,7 +1774,7 @@
     "excerpt": "【PWA事件簿】iPhoneのミニUIを消したくて、Androidを巻き込んだら、上下から謎のAI?に挟み撃ちにされた話 こんにちは、OJappです。 今回は、ここ数日間で私が体験した、 「PWA（Progressive Web Apps）の仕様の深淵に触れて脳汁が出た後に、ブラウザの過保護なAI?にキレ散らかした」 という、実録デバッグドキュメンタリーをお",
     "category": "cache",
     "published": "2026-06-10",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "summary": "もしあなたが「iOSとAndroidの両方で完璧なPWAを作りたい」と思っているなら、この記事は未来のあなたを救う聖書（あるいは最高のエンタメ）になるはずです。最初は、アプリの体験を極限まで高めるための、ただの「綺麗で無害な実験」のはずだった。そんなに難しいことではなく、1時間もあれば終わると予想していた。\n\nPC Chrome： id による自動アップデートが見事に大成功！脳汁が溢れる。id なんて仕様はハナから無視され、1ミリも何も変わらない（知ってた）。原因は直近でいじった id、name、scope のどれかしかない。\n\n次に name を疑う： ➡️ いや、ブラウザが name ごときで同一アプリ判定をするわけがない。ここで、PWA開発史上、最も不条理なトレードオフの構図が完成してしまった。",
     "translation": "en--pwa-scope-ios-android-google-ui-debug",
     "next_article": "icon-not-updating-shadow-cache"
@@ -1787,7 +1787,7 @@
     "excerpt": "I only wanted to remove the small browser-style UI that appeared in a PWA on iPhone. That sounded like a simple Manifest adjustment. Instead, it became a cross-platform debugging puzzle",
     "category": "cache",
     "published": "2026-06-10",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "summary": "I only wanted to remove the small browser-style UI that appeared in a PWA on iPhone. That sounded like a simple Manifest adjustment. Instead, it became a cross-platform debugging puzzle involving `id`, `name`, `scope`, and some unexpected interface elements on Android. The goal was to make a page-specific home screen app feel like an app on iOS without sacrificing the ability to install multiple pages from the same origin on Android. I changed Manifest settings and compared the results on actual devices. The problem was that a configuration that improved the iPhone experience could make Android treat separate pages as belonging to the same installed app. A Manifest's `id` identifies the installed application. `name` is a display label, not a substitute for a distinct identity. `scope` defines the app's navigation boundary.",
     "translation": "pwa-scope-ios-android-google-ui-debug",
     "meta_description": "I only wanted to remove the small browser-style UI that appeared in a PWA on iPhone. That sounded like a simple Manifest adjustment. Instead, it became a c",
@@ -2010,7 +2010,7 @@
     "excerpt": "2026年最新のPWAを初心者向けに解説。1S1A・1P1Aという2つの新しい設計思想から、manifest.jsonでWebサイトをホーム画面に追加する仕組み、Service Workerの役割までわかりやすく紹介します。",
     "category": "PWA",
     "published": "2026-08-16",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--pwa-explained-2",
     "summary": "Webサイトをスマートフォンのホーム画面へ追加し、アプリのように利用できる技術です。Webサイトだけでアプリのような体験を提供できます。ブログやWebツールなどでも利用される機会が増えてきました。\n\nPWAを導入すると、Webサイトで次のようなことができるようになります。ホーム画面へ追加したときの見た目は、このManifestによって決まります。Service WorkerはPWAに必須というわけではありません。\n\nService Workerを使わない構成でも十分実現できます。PWAはHTTPSで配信されるWebサイトで利用できます。Manifestの書き方や設定項目だけが紹介されることがほとんどです。\n\nサービス全体を入口にしたいサイトには非常に向いています。現在表示しているページそのものをホーム画面へ追加できます。",
     "next_article": "pwa-manifest-json-basics"
@@ -2051,7 +2051,7 @@
     "category": "PWA",
     "published": "2026-08-16",
     "translation": "pwa-explained",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "summary": "PWA (Progressive Web Apps) is a technology that allows you to add a website to a smartphone’s home screen and use it like an app. Without publishing anything to the App Store or Google Play, you can provide an app-like experience using only your website. Today, PWAs are increasingly used not only for corporate websites and e-commerce sites, but also for blogs, web tools, and many other types of websites.\n\nOnce added, the website appears alongside other apps on the smartphone’s home screen and can be launched with a single tap. PWAs are built from several web technologies. The Web App Manifest is a configuration file for a PWA.",
     "next_article": "en--pwa-manifest-json-basics"
   },
@@ -3091,7 +3091,7 @@
     "summary": "iOS 27でPWAの画面上部に表示される広いブラーは、CSSだけで消すことができます。実機検証では、`header`を`sticky`にして`env(safe-area-inset-top)`で背景を広げる方法や、画面最上部に小さな固定要素を置く方法が有効でした。\n\n発見のきっかけは、ハンバーガーメニューを開閉するとブラーが消えるという現象です。当初はJavaScriptで透明な固定パネルを動かす方法を試しましたが、その後CSSだけでも同様の結果を確認できました。\n\nヘッダーを変更したくない場合は専用の固定要素を使い、スクロールに合わせて背景色を変えたい場合はJavaScriptを組み合わせる方法もあります。\n\nただし、これらはApple公式の解決策ではなく、iOSやWebKitの更新によって動作が変わる可能性があります。",
     "category": "iphone",
     "published": "2026-09-24",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--ios-27-pwa-top-blur-workaround-2",
     "next_article": "ios-pwa-window-print"
   },
@@ -3105,7 +3105,7 @@
     "summary": "The large blur covering the top of a home screen PWA on iOS 27 can sometimes be removed using CSS, without changing iPhone settings. In real-device testing, extending a sticky header into the safe area with `env(safe-area-inset-top)` or placing a small fixed element at the top prevented the blur from appearing.\n\nThe discovery began when opening and closing a hamburger menu unexpectedly removed the blur. Reproducing its fixed-panel animation also worked, but later experiments revealed simpler CSS-based approaches. For designs with changing header colors, a small JavaScript adjustment can make the top area transition smoothly while scrolling.\n\nNormal CSS such as `backdrop-filter: none` cannot directly disable the system-level effect, and changing the status bar meta setting did not solve it in testing.\n\nThese are experimental workarounds, not official Apple solutions. Their effectiveness may vary across devices and future iOS updates.",
     "category": "iOS",
     "published": "2026-09-24",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "translation": "ios-27-pwa-top-blur-workaround",
     "next_article": "en--ios-pwa-window-print-2"
   },
@@ -3171,7 +3171,7 @@
     "summary": "iOS 27の実機検証では、Safariで正常に動作する`window.print()`が、ホーム画面から起動したPWA（standalone）では動作しませんでした。\n\n同じHTMLとJavaScriptを使用し、どちらも`window.print()`の呼び出しまでは正常に実行されています。しかしPWAでは印刷画面が開かず、`beforeprint`、`afterprint`、`matchMedia('print')`も反応しませんでした。一方、Safariではすべて確認でき、連続印刷時の確認画面も表示されました。\n\nこの結果から、PWAでは印刷処理自体が開始されていないように見えますが、iOSの仕様なのか不具合なのかは断定できません。\n\n現時点で印刷機能が必要なら、Safariで開いて印刷するか、PDFを生成・表示する方法が現実的です。",
     "category": "iphone",
     "published": "2026-09-30",
-    "hub_key": "ios-pwa",
+    "hub": "ios-pwa",
     "translation": "en--ios-pwa-window-print-2",
     "next_article": "safari-pwa-not-working"
   },
@@ -3185,7 +3185,7 @@
     "summary": "In an iOS 27 device test, `window.print()` opened the print interface normally in Safari but did nothing when the same page was launched as a standalone PWA from the iPhone home screen.\n\nJavaScript execution reached the `window.print()` call without an obvious error, but `beforeprint`, `afterprint`, and `matchMedia('print')` showed no response in standalone mode. Safari triggered all three and also displayed a security confirmation during repeated printing attempts.\n\nThis suggests that the print process was not starting in the tested PWA environment, although the underlying cause remains unknown. It could be an iOS restriction, a bug, or another implementation detail.\n\nIf your PWA needs printing, practical alternatives include opening the content in Safari or providing a PDF. These results apply to the tested iOS 27 environment and do not prove that printing fails in every iOS PWA.",
     "category": "iOS",
     "published": "2026-09-30",
-    "hub_key": "ios-pwa-en",
+    "hub": "ios-pwa-en",
     "translation": "ios-pwa-window-print",
     "next_article": "en--pwa-detect-standalone-launch-2"
   },
