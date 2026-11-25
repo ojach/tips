@@ -1,4 +1,5 @@
-![アッピン](ghost.webp)
+![アッピン](ghost.webp)</p>
+
 こんにちは、アッピンです。
 
 OJapp Tipsの中をうろうろしながら、  
