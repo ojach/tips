@@ -440,7 +440,7 @@ const footerHtmlFor = (language, articleOnly = false) => {
   : 'OJapp Tipsは、PWA（Progressive Web Apps）とWebアプリの設計・開発を扱う技術ブログです。ホーム画面への追加やアプリのような起動体験を中心に、iOS・Androidでの動作検証、Web標準の仕様、実装方法やトラブルの解決策を、実際に試した結果をもとに紹介しています。';
   return `<footer class="footer"><div class="footer-inner">
   ${articleOnly ? toolsShowcaseFor(language) : ''}
-  <a class="footer-brand" href="${esc(withBase(basePath, language === localeKey(site.language || 'ja') ? '/' : `/${language}/`))}">${esc(site.title)}</a>
+  <div class="footer-brand-row"><a class="footer-brand" href="${esc(withBase(basePath, language === localeKey(site.language || 'ja') ? '/' : `/${language}/`))}">${esc(site.title)}</a><a class="footer-all-pages-link" href="${esc(withBase(basePath, language === localeKey(site.language || 'ja') ? '/all-pages/' : `/${language}/all-pages/`))}">${language === 'en' ? 'All Pages' : 'ページ一覧'}</a></div>
   ${pageNav}
   ${externalNav}
   <details class="footer-about">
@@ -451,6 +451,18 @@ const footerHtmlFor = (language, articleOnly = false) => {
   <p class="footer-copyright">© OJapp</p>
 </div></footer>`;
 };
+
+// The HTML sitemap shares the existing footer layout without requiring a CSS file edit.
+const allPagesStyles = `<style>
+.footer-brand-row { display:flex; align-items:baseline; flex-wrap:wrap; gap:8px 18px; }
+.footer-all-pages-link { font-size:.85em; font-weight:400; }
+.all-pages-list { list-style:none; padding:0; margin:12px 0 28px; }
+.all-pages-list li { padding:5px 0; overflow-wrap:anywhere; }
+.all-pages-section { margin-top:28px; }
+</style>`;
+
+// Add footer layout styling to every generated page.
+const footerHeadHtml = customHeadHtml + allPagesStyles;
 
 const files = (await fs.readdir(path.join(root, 'content'))).filter((file) => file.endsWith('.md'));
 const articles = [];
@@ -547,6 +559,26 @@ const makeSearchIndex = (languageArticles) => languageArticles.map((article) => 
 const defaultLanguage = localeKey(site.language || 'ja');
 const defaultLabels = localeText(defaultLanguage);
 const languages = [...new Set(articles.map((article) => article.language))];
+// Reserve the generated HTML sitemap routes to avoid overwriting content pages.
+for (const language of new Set([defaultLanguage, ...languages, ...pages.map((page) => page.language)])) {
+  const reserved = language === defaultLanguage ? 'all-pages' : `${language}/all-pages`;
+  if (permalinkOwners.has(reserved)) throw new Error(`Reserved permalink "${reserved}" conflicts with the generated page list.`);
+}
+const allPagesLanguages = [...new Set([defaultLanguage, ...languages, ...pages.map((page) => page.language)])];
+for (const language of allPagesLanguages) {
+  const english = language === 'en';
+  const route = language === defaultLanguage ? '/all-pages/' : `/${language}/all-pages/`;
+  const title = english ? 'All Pages' : 'ページ一覧';
+  const description = english ? `All articles and pages on ${site.title}.` : `${site.title}の全記事・固定ページ一覧。`;
+  const languagePages = pages.filter((page) => page.language === language);
+  const languageArticles = articles.filter((article) => article.language === language);
+  const listHtml = (items) => `<ul class="all-pages-list">${items.map((item) => `<li><a href="${esc(withBase(basePath, `/${item.permalink}/`))}">${esc(item.title)}</a></li>`).join('')}</ul>`;
+  const sectionHtml = (heading, items) => items.length ? `<section class="all-pages-section"><h2>${esc(heading)}</h2>${listHtml(items)}</section>` : '';
+  const body = `<main class="article"><header class="article-head"><h1>${esc(title)}</h1><p class="article-description">${esc(description)}</p></header><div class="prose">${sectionHtml(english ? 'Pages' : '固定ページ', languagePages)}${sectionHtml(english ? 'Articles' : '記事一覧', languageArticles)}</div></main>`;
+  const destination = path.join(out, route.replace(/^\/+|\/+$/g, ''), 'index.html');
+  await fs.mkdir(path.dirname(destination), { recursive: true });
+  await fs.writeFile(destination, shell({ title: `${title} | ${site.title}`, description, canonical: absoluteUrl(route), site, basePath, body, customHeadHtml: footerHeadHtml, customBodyHtml, footerHtml: footerHtmlFor(language), brandColor, lang: language, labels: localeText(language), homePath: language === defaultLanguage ? '/' : `/${language}/` }));
+}
 const articlesPerPage = 15;
 const languageHomePath = (language) => language === defaultLanguage ? '/' : `/${language}/`;
 for (const language of languages) {
@@ -579,7 +611,7 @@ for (const language of languages) {
   });
   const destination = path.join(out, pageRoute.replace(/^\/+|\/+$/g, ''), 'index.html');
   await fs.mkdir(path.dirname(destination), { recursive: true });
-  await fs.writeFile(destination, shell({ title: site.title, description: site.description, canonical: absoluteUrl(pageRoute), site, basePath, body: home, pwaIcon: site.pwa_icon || site.icon || '', customHeadHtml, customBodyHtml, footerHtml: footerHtmlFor(language), brandColor, lang: language, labels, homePath: route, languageHomeUrl }));
+  await fs.writeFile(destination, shell({ title: site.title, description: site.description, canonical: absoluteUrl(pageRoute), site, basePath, body: home, pwaIcon: site.pwa_icon || site.icon || '', customHeadHtml: footerHeadHtml, customBodyHtml, footerHtml: footerHtmlFor(language), brandColor, lang: language, labels, homePath: route, languageHomeUrl }));
   }
   await fs.writeFile(path.join(out, searchFilename), JSON.stringify(makeSearchIndex(languageArticles), null, 2));
 }
@@ -690,7 +722,7 @@ if (site.features?.article_pwa_icons === true && !article.pwaIcon) {
   || (site.features?.article_pwa_icons === true
     ? generatedPwaIcon
     : site.pwa_icon || site.icon || '');
-  const htmlPage = shell({ title: `${article.title} | ${site.title}`, description: article.description, canonical, site, basePath, body: articleBody, extra, ogImage, pwaIcon, customHeadHtml, customBodyHtml, footerHtml: footerHtmlFor(article.language, true), brandColor, lang: article.language, labels, homePath: articleHomePath, languageHomeUrl: articleLanguageHomeUrl });
+  const htmlPage = shell({ title: `${article.title} | ${site.title}`, description: article.description, canonical, site, basePath, body: articleBody, extra, ogImage, pwaIcon, customHeadHtml: footerHeadHtml, customBodyHtml, footerHtml: footerHtmlFor(article.language, true), brandColor, lang: article.language, labels, homePath: articleHomePath, languageHomeUrl: articleLanguageHomeUrl });
   const destination = path.join(out, article.permalink, 'index.html');
   await fs.mkdir(path.dirname(destination), { recursive: true });
   await fs.writeFile(destination, htmlPage);
@@ -720,7 +752,7 @@ for (const page of pages) {
     site,
     basePath,
     body,
-    customHeadHtml,
+    customHeadHtml: footerHeadHtml,
     customBodyHtml,
     footerHtml: footerHtmlFor(page.language),
     brandColor,
@@ -729,7 +761,7 @@ for (const page of pages) {
   }));
 }
 
-await fs.writeFile(path.join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${esc(absoluteUrl('/'))}</loc></url>${languages.filter((language) => language !== defaultLanguage).map((language) => `<url><loc>${esc(absoluteUrl(languageHomePath(language)))}</loc></url>`).join('')}${sitemap.join('')}${pages.map((page) => `<url><loc>${esc(absoluteUrl(`/${page.permalink}/`))}</loc></url>`).join('')}</urlset>`);
+await fs.writeFile(path.join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${esc(absoluteUrl('/'))}</loc></url>${languages.filter((language) => language !== defaultLanguage).map((language) => `<url><loc>${esc(absoluteUrl(languageHomePath(language)))}</loc></url>`).join('')}${sitemap.join('')}${pages.map((page) => `<url><loc>${esc(absoluteUrl(`/${page.permalink}/`))}</loc></url>`).join('')}${allPagesLanguages.map((language) => `<url><loc>${esc(absoluteUrl(language === defaultLanguage ? '/all-pages/' : `/${language}/all-pages/`))}</loc></url>`).join('')}</urlset>`);
 await fs.writeFile(path.join(out, 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${esc(site.title)}</title><link>${esc(absoluteUrl('/'))}</link><description>${esc(site.description)}</description><language>${esc(site.language || 'ja-JP')}</language>${rss.join('')}</channel></rss>`);
 await fs.writeFile(path.join(out, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${absoluteUrl('/sitemap.xml')}\n`);
 await fs.cp(path.join(root, 'public'), out, { recursive: true });
