@@ -1,4 +1,4 @@
-![アッピン](ghost.webp)</p>
+![Appin](ghost.webp)
 
 こんにちは、アッピンです。
 

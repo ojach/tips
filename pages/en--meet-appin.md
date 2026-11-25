@@ -1,4 +1,4 @@
-![Appin](ghost.webp)</p>
+![Appin](ghost.webp)
 
 Hi, I'm Appin.
 

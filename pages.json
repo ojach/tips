@@ -39,7 +39,8 @@
     "title": "アッピン",
     "permalink": "appin-2",
     "language": "ja",
-    "show_in_footer": false
+    "show_in_footer": false,
+    "description": "OJapp Tipsのキャラクター「Appin（アッピン）」を紹介します。PWAやホーム画面の仕組み、Webアプリの動作、OJappの実機検証から得られた知見などを、サイトのさまざまな場所でわかりやすく解説してくれます。"
   },
   "en--meet-appin": {
     "title": "Meet Appin: Your Guide to PWA and Home Screen Tips",
