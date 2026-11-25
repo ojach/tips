@@ -8,11 +8,11 @@
     "article": "en/pwa-explained-2"
   },
   "ios-pwa": {
-    "title": "PWA×iOSでできること完全まとめ【2026年版】できること・できないことを一発で理解",
+    "title": "PWA×iPhoneでできること完全ガイド【2026年版】Safariの制限とAndroidとの違い",
     "article": "pwa-ios-capabilities"
   },
   "ios-pwa-en": {
-    "title": "What PWAs Can and Cannot Do on iOS in 2026: A Complete Practical Guide",
+    "title": "PWA on iPhone: What You Can and Can't Do in 2026 | Safari Limitations and Android Differences",
     "article": "en/pwa-ios-2026-complete-guide"
   },
   "manifest": {

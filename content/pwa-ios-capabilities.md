@@ -1,4 +1,4 @@
-「PWAって、結局iPhoneでどこまで使えるの？」</p>
+「PWAって、結局iPhoneでどこまで使えるの？」
 
 iOSのPWAは、この数年でかなり変わりました。
 
@@ -16,7 +16,7 @@ PWA LABで実際のiPhoneを使って検証を繰り返してきた結論はシ�
 
 
 
-## 早見表：2026年のiOS PWAでできること・できないこと
+## 早見表：2026年のiPhone PWAでできること・できないこと
 
 <table>
 <thead>
@@ -320,17 +320,34 @@ PWA LABで実機検証を続けていて、特に強く感じるのがこれで�
 
 
 
-## 関連記事
+## iPhone PWAの実機検証・トラブル対策を詳しく読む
 
-PWAそのものの基本的な構造やメリットを確認したい場合は、[PWAとは？スマホのWebサイトを“アプリ化”する仕組みをわかりやすく解説](https://tips.ojapp.app/what-is-pwa/)でまとめています。
+ここまで紹介した機能は、仕様上「対応」と書かれていても、実際にホーム画面から起動すると違う結果になることがあります。PWA LABで確認した事例を、問題ごとにまとめました。
 
-Web App ManifestやService Workerの具体的な実装については、[PWAの作り方｜manifest.json・Service Worker・ホーム画面対応を丁寧に解説](https://tips.ojapp.app/how-to-pwa/)で紹介しています。
+### Safariで動かない・ホーム画面に追加できない
 
-iPhoneに昔からあるWebClipとの違いについては、[PWAとWebClipの違いとは？iPhoneではどっちを使うべきか](https://tips.ojapp.app/pwa-vs-webclip/)も参考にしてください。
+- [SafariでPWAが使えない理由｜iPhoneで動かない本当の原因](https://tips.ojapp.app/safari-pwa-not-working/)：Safariとホーム画面Webアプリの違いを整理。
+- [iPhoneで「ホーム画面に追加」が出ない原因](https://tips.ojapp.app/home-add-cannot/)：追加メニューが見つからない場合の確認ポイント。
+- [PWAとWebClipの違いとは？](https://tips.ojapp.app/pwa-vs-webclip/)：ホーム画面に置いたWebサイトの扱いを比較。
+
+### 起動URL・scope・画面表示の違い
+
+- [iOSでホーム画面に追加したURLが勝手に変わる？](https://tips.ojapp.app/ios_pwa_manifest/)：保存したページと起動URLがずれる実例。
+- [iPhoneのミニUIを消そうとしてAndroid側にも影響した話](https://tips.ojapp.app/pwa-scope-ios-android-google-ui-debug/)：`scope`の設定を両OSで検証した記録。
+- [display: fullscreenは実用的なのか？](https://tips.ojapp.app/pwa-display-fullscreen-iphone-android/)：iPhoneとAndroidの画面表示を比較。
+
+### iOS 27の実機検証
+
+- [iOS 27のPWA上部ブラーを消せる？](https://tips.ojapp.app/ios-27-pwa-top-blur-workaround/)：ハンバーガーメニュー操作から見つかった回避策の実験。
+- [iOS 27のPWAでwindow.print()が動かない？](https://tips.ojapp.app/ios-pwa-window-print/)：Safariとホーム画面起動を比較した検証。
+
+### 基礎から作りたい人へ
+
+PWAの基本から確認するなら[PWAとは？2026年最新](https://tips.ojapp.app/pwa-explained/)、実装手順なら[PWAの作り方](https://tips.ojapp.app/how-to-pwa/)を参照してください。
 
 
 
-## まとめ：iOSでもPWAは十分実用的
+## まとめ：iPhoneでもPWAは十分実用的
 
 2026年現在、iPhoneでもPWAの主要な機能は利用できます。
 

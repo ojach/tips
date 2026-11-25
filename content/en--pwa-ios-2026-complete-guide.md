@@ -1,4 +1,4 @@
-How much can a PWA actually do on an iPhone in 2026?</p>
+How much can a PWA actually do on an iPhone in 2026?
 
 PWAs on iOS have changed significantly over the last few years. Some features that once felt unreliable now work well, while other behaviors still differ from Android.
 
@@ -339,13 +339,30 @@ That is one of the areas where PWAs remain especially useful.
 
 
 
-## Related articles
+## iPhone PWA troubleshooting and real-device tests
 
-If you want to review the basic structure and benefits of PWAs, read [What Is a PWA? A Simple Explanation of How Websites Become App-Like on Smartphones](https://tips.ojapp.app/what-is-pwa/).
+A feature can be supported on paper yet behave differently when a website is launched from the iPhone Home Screen. The following articles document specific problems and experiments from PWA LAB.
 
-For concrete `manifest.json` parameters and Service Worker setup, [How to Build a PWA: manifest.json, Service Worker, and Home Screen Support](https://tips.ojapp.app/how-to-pwa/) explains the basic implementation.
+### Safari issues and Add to Home Screen
 
-If you want to understand the historical relationship between iPhone Home Screen websites and WebClip, see [PWA vs WebClip: Which Should You Use on iPhone?](https://tips.ojapp.app/pwa-vs-webclip/).
+- [Why Your PWA Doesn't Work on iPhone Safari](https://tips.ojapp.app/en/safari-pwa-not-working-2/): Common differences between Safari browsing and Home Screen web apps.
+- [Add to Home Screen Missing on iPhone?](https://tips.ojapp.app/en/home-add-cannot-3/): What to check when the option is not visible.
+- [PWA vs WebClip on iPhone](https://tips.ojapp.app/en/pwa-vs-webclip2/): How the two Home Screen experiences differ.
+
+### Launch URLs, scope, and display behavior
+
+- [Why iOS Changes Your PWA URL When Adding to Home Screen](https://tips.ojapp.app/en/ios-pwa-url-change-fix/): A real case of unexpected launch URL behavior.
+- [Fixing iPhone's Mini UI and Breaking Android](https://tips.ojapp.app/en/pwa-scope-ios-android-google-ui-debug/): A `scope` experiment across both platforms.
+- [Is display: fullscreen Practical for PWAs?](https://tips.ojapp.app/en/pwa-display-fullscreen-iphone-android-2/): A comparison of iPhone and Android display modes.
+
+### iOS 27 experiments
+
+- [Removing the Top Blur in iOS 27 PWAs](https://tips.ojapp.app/en/ios-27-pwa-top-blur-workaround-2/): An experimental workaround involving a hamburger menu.
+- [Does window.print() Work in an iOS 27 PWA?](https://tips.ojapp.app/en/ios-pwa-window-print-2/): Comparing Safari and standalone mode.
+
+### Start with the basics
+
+For a general introduction, see [What Is a PWA?](https://tips.ojapp.app/en/pwa-explained-2/). For implementation steps, see [How to Build a PWA](https://tips.ojapp.app/en/how-to-pwa-2/).
 
 
 
