@@ -369,7 +369,7 @@ const pageFiles = (await fs.readdir(pageDirectory)).filter((file) => file.endsWi
 const pages = [];
 for (const file of pageFiles) {
   const key = path.basename(file, '.md');
-    const raw = await fs.readFile(path.join(pageDirectory, file), 'utf8');
+  const raw = await fs.readFile(path.join(pageDirectory, file), 'utf8');
   const tokens = marked.lexer(raw);
   const firstHeading = tokens.find((token) => token.type === 'heading' && token.depth === 1);
   const headingText = (token) => token.tokens?.map((part) => part.text || part.raw || '').join('') || token.text || '';
@@ -406,11 +406,11 @@ const toolsShowcaseFor = (language) => {
     let url = '';
     try {
       const toolUrl = language === 'en'
-  ? (tool.url_en || tool.url)
-  : (tool.url_ja || tool.url);
+        ? (tool.url_en || tool.url)
+        : (tool.url_ja || tool.url);
 
-     const parsed = new URL(String(toolUrl || ''), siteUrl);
-     if (toolUrl && ['http:', 'https:'].includes(parsed.protocol)) url = parsed.href;
+      const parsed = new URL(String(toolUrl || ''), siteUrl);
+      if (toolUrl && ['http:', 'https:'].includes(parsed.protocol)) url = parsed.href;
     } catch { /* Leave unconfigured cards unlinked. */ }
     return url ? `<a class="tool-showcase-card" href="${esc(url)}">${content}</a>` : `<div class="tool-showcase-card">${content}</div>`;
   }).join('');
@@ -436,8 +436,8 @@ const footerHtmlFor = (language, articleOnly = false) => {
     ? `<nav class="footer-pages footer-external-links" aria-label="${language === 'en' ? 'External links' : '外部リンク'}">${externalLinks}</nav>`
     : '';
   const aboutText = language === 'en'
-  ? 'OJapp Tips is a technical blog about Progressive Web Apps (PWAs) and web app development. It covers home screen installation, app-like launch experiences, iOS and Android behavior, web standards, implementation, and troubleshooting based on hands-on testing.'
-  : 'OJapp Tipsは、PWA（Progressive Web Apps）とWebアプリの設計・開発を扱う技術ブログです。ホーム画面への追加やアプリのような起動体験を中心に、iOS・Androidでの動作検証、Web標準の仕様、実装方法やトラブルの解決策を、実際に試した結果をもとに紹介しています。';
+    ? 'OJapp Tips is a technical blog about Progressive Web Apps (PWAs) and web app development. It covers home screen installation, app-like launch experiences, iOS and Android behavior, web standards, implementation, and troubleshooting based on hands-on testing.'
+    : 'OJapp Tipsは、PWA（Progressive Web Apps）とWebアプリの設計・開発を扱う技術ブログです。ホーム画面への追加やアプリのような起動体験を中心に、iOS・Androidでの動作検証、Web標準の仕様、実装方法やトラブルの解決策を、実際に試した結果をもとに紹介しています。';
   return `<footer class="footer"><div class="footer-inner">
   ${articleOnly ? toolsShowcaseFor(language) : ''}
   <div class="footer-brand-row"><a class="footer-brand" href="${esc(withBase(basePath, language === localeKey(site.language || 'ja') ? '/' : `/${language}/`))}">${esc(site.title)}</a><a class="footer-all-pages-link" href="${esc(withBase(basePath, language === localeKey(site.language || 'ja') ? '/all-pages/' : `/${language}/all-pages/`))}">${language === 'en' ? 'All Pages' : 'ページ一覧'}</a></div>
@@ -593,25 +593,25 @@ for (const language of languages) {
     ? withBase(basePath, languageHomePath(language === 'en' ? 'ja' : 'en'))
     : '';
   for (let page = 1; page <= pageCount; page += 1) {
-  const pageRoute = page === 1 ? route : `${route.replace(/\/$/, '')}/page/${page}/`;
-  const previous = page > 1 ? `<a href="${esc(withBase(basePath, page === 2 ? route : `${route.replace(/\/$/, '')}/page/${page - 1}/`))}">${esc(labels.previousPage)}</a>` : '';
-  const next = page < pageCount ? `<a href="${esc(withBase(basePath, `${route.replace(/\/$/, '')}/page/${page + 1}/`))}">${esc(labels.nextPage)}</a>` : '';
-  const pagination = pageCount > 1 ? `<nav class="pagination" aria-label="記事一覧ページ">${previous}<span>${page} / ${pageCount}</span>${next}</nav>` : '';
-  const home = fillTemplate(homeTemplate, {
-    introTitle: esc(labels.introTitle),
-    introDescription: esc(labels.introDescription),
-    searchLabel: esc(labels.search),
-    searchPlaceholder: esc(labels.searchPlaceholder),
-    noResults: esc(language === 'en' ? 'No matching articles.' : '該当する記事はありません'),
-    searchIndexUrl: esc(searchIndexUrl),
-    articleCards: cardsFor(page) || `<li class="empty">${esc(labels.noArticles)}</li>`,
-    pagination,
-    sideDescription: esc(labels.sideDescription),
-    searchScriptUrl: esc(withBase(basePath, '/js/search.js?v=1')),
-  });
-  const destination = path.join(out, pageRoute.replace(/^\/+|\/+$/g, ''), 'index.html');
-  await fs.mkdir(path.dirname(destination), { recursive: true });
-  await fs.writeFile(destination, shell({ title: site.title, description: site.description, canonical: absoluteUrl(pageRoute), site, basePath, body: home, pwaIcon: site.pwa_icon || site.icon || '', customHeadHtml: footerHeadHtml, customBodyHtml, footerHtml: footerHtmlFor(language), brandColor, lang: language, labels, homePath: route, languageHomeUrl }));
+    const pageRoute = page === 1 ? route : `${route.replace(/\/$/, '')}/page/${page}/`;
+    const previous = page > 1 ? `<a href="${esc(withBase(basePath, page === 2 ? route : `${route.replace(/\/$/, '')}/page/${page - 1}/`))}">${esc(labels.previousPage)}</a>` : '';
+    const next = page < pageCount ? `<a href="${esc(withBase(basePath, `${route.replace(/\/$/, '')}/page/${page + 1}/`))}">${esc(labels.nextPage)}</a>` : '';
+    const pagination = pageCount > 1 ? `<nav class="pagination" aria-label="記事一覧ページ">${previous}<span>${page} / ${pageCount}</span>${next}</nav>` : '';
+    const home = fillTemplate(homeTemplate, {
+      introTitle: esc(labels.introTitle),
+      introDescription: esc(labels.introDescription),
+      searchLabel: esc(labels.search),
+      searchPlaceholder: esc(labels.searchPlaceholder),
+      noResults: esc(language === 'en' ? 'No matching articles.' : '該当する記事はありません'),
+      searchIndexUrl: esc(searchIndexUrl),
+      articleCards: cardsFor(page) || `<li class="empty">${esc(labels.noArticles)}</li>`,
+      pagination,
+      sideDescription: esc(labels.sideDescription),
+      searchScriptUrl: esc(withBase(basePath, '/js/search.js?v=1')),
+    });
+    const destination = path.join(out, pageRoute.replace(/^\/+|\/+$/g, ''), 'index.html');
+    await fs.mkdir(path.dirname(destination), { recursive: true });
+    await fs.writeFile(destination, shell({ title: site.title, description: site.description, canonical: absoluteUrl(pageRoute), site, basePath, body: home, pwaIcon: site.pwa_icon || site.icon || '', customHeadHtml: footerHeadHtml, customBodyHtml, footerHtml: footerHtmlFor(language), brandColor, lang: language, labels, homePath: route, languageHomeUrl }));
   }
   await fs.writeFile(path.join(out, searchFilename), JSON.stringify(makeSearchIndex(languageArticles), null, 2));
 }
@@ -648,15 +648,15 @@ for (const article of articles) {
   if (!article.thumbnail) await generateOgp({ root, destination: ogpPath, title: article.title, site: localizedSite, brandColor });
   const generatedPwaIcon = `pwa-icons/${slug(article.key)}.png`;
 
-if (site.features?.article_pwa_icons === true && !article.pwaIcon) {
-  await generatePwaIcon({
-    root,
-    destination: path.join(out, 'images', generatedPwaIcon),
-    title: article.title,
-    site,
-    brandColor,
-  });
-}
+  if (site.features?.article_pwa_icons === true && !article.pwaIcon) {
+    await generatePwaIcon({
+      root,
+      destination: path.join(out, 'images', generatedPwaIcon),
+      title: article.title,
+      site,
+      brandColor,
+    });
+  }
   const ogImage = article.thumbnail ? new URL(optimizedImageUrl(basePath, article.thumbnail), siteUrl).href : absoluteUrl(`/ogp/${ogpFilename}`);
   const articleIndex = articles.indexOf(article);
   const explicitNext = article.nextArticleKey
@@ -719,9 +719,9 @@ if (site.features?.article_pwa_icons === true && !article.pwaIcon) {
     : '';
   const extra = `${alternateLanguages}<script type="application/ld+json">${JSON.stringify(jsonld)}</script>`;
   const pwaIcon = article.pwaIcon
-  || (site.features?.article_pwa_icons === true
-    ? generatedPwaIcon
-    : site.pwa_icon || site.icon || '');
+    || (site.features?.article_pwa_icons === true
+      ? generatedPwaIcon
+      : site.pwa_icon || site.icon || '');
   const htmlPage = shell({ title: `${article.title} | ${site.title}`, description: article.description, canonical, site, basePath, body: articleBody, extra, ogImage, pwaIcon, customHeadHtml: footerHeadHtml, customBodyHtml, footerHtml: footerHtmlFor(article.language, true), brandColor, lang: article.language, labels, homePath: articleHomePath, languageHomeUrl: articleLanguageHomeUrl });
   const destination = path.join(out, article.permalink, 'index.html');
   await fs.mkdir(path.dirname(destination), { recursive: true });
