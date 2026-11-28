@@ -81,6 +81,7 @@
     "summary": "PWA（Progressive Web App）は、Webサイトをアプリのように使いやすくする技術です。対応環境では、ホーム画面に専用アイコンを置き、ブラウザのアドレスバーを隠して起動できます。オフライン対応や通知なども実装次第で利用できます。ただし、ホーム画面に追加できるサイトがすべて同じ機能を持つわけではありません。Web App Manifestは名前・アイコン・起動URL・表示方法を指定し、Service Workerはキャッシュやオフライン動作などを担当します。Service Workerがなくてもホーム画面追加できる環境はあります。PWAはアプリストアを経由せずURLから利用でき、Web側で更新できるのが利点ですが、更新が必ず即時反映されるとは限りません。また、iPhoneとAndroidでは表示や機能に差があり、保存データは端末容量も使います。予約ページやWebツールなど、繰り返し使うサイトに特に向いています。",
     "category": "PWA",
     "published": "2026-02-01",
+    "hub": "manifest",
     "translation": "en--what-is-pwa-2",
     "next_article": "how-to-pwa"
   },
@@ -304,6 +305,7 @@
     "summary": "A Progressive Web App (PWA) is a website enhanced with app-like capabilities. On supported devices, it can have its own Home Screen icon, launch without the usual browser address bar, and offer features such as offline access or notifications. But adding a website to the Home Screen does not automatically give it every PWA feature. A Web App Manifest defines the name, icons, launch URL, and display mode. A Service Worker can manage caching and offline behavior, although it is not universally required for Home Screen installation. PWAs can be shared through ordinary URLs and updated through the web without a native app-store release. Updates may still be delayed by caches, and capabilities vary between iPhone, Android, and different browsers. Offline data also consumes device storage. PWAs are especially useful for websites people revisit often, such as booking pages, member portals, and web tools.",
     "category": "PWA",
     "published": "2026-02-02",
+    "hub": "manifest-en",
     "translation": "what-is-pwa",
     "next_article": "en--how-to-pwa-2"
   },
@@ -1538,6 +1540,7 @@
     "excerpt": "PWAのstart_urlを「.」にすると何が起きるのか。ホーム画面に追加したページへ戻る設計や、/lab固定との違いを実験ベースで解説します。",
     "category": "PWA",
     "published": "2026-05-23",
+    "hub": "manifest",
     "translation": "en--pwa-start-url-dot",
     "summary": "PWAのmanifest.jsonには、starturlという項目があります。これは、ホーム画面に追加したPWAを開いたときに、最初に表示するURLを指定するものです。普通に考えると、\"/lab\"や\"/app\"のように固定URLを書きたくなります。\n\nstarturlは、PWAをホーム画面から起動したときに開くURLです。ホーム画面のアイコンから開くと、基本的には/labが表示されます。例えば、ユーザーが/lab/app/demoというページを見ていたとします。\n\nこのときユーザーの感覚としては、「今見ているこのページ」をホーム画面に置いたつもりです。starturl: \".\"は、相対的な開始位置を指定する考え方です。ざっくり言うと、固定のトップページへ戻すのではなく、そのPWAが置かれた文脈に近い場所から起動しやすくなります。",
     "next_article": "pwa-start-url-dot-best-practice"
@@ -1656,6 +1659,7 @@
     "excerpt": "PWAのアイコン指定でany maskableだけを使うと、AndroidとiPhoneで見え方がズレることがあります。manifest.jsonに通常アイコンとmaskableアイコンを分けて書く理由を解説します。",
     "category": "iphone",
     "published": "2026-06-02",
+    "hub": "manifest",
     "summary": "PWAのアイコン指定では、purpose: \"maskable\" 単体よりも purpose: \"any maskable\" の方が認識されやすく、挙動が安定するという話を以前書きました。実際、それに変えてからiPhone、Android、PC Chromeでの検証はかなりスムーズになったんです。……が、さらにディープに検証を進めると、新たな罠が待ち受けていました。\n\nそもそも最初にハマったのは、purpose: \"maskable\" だけを指定していたことでした。PC Chromeでのインストールが不安定になったり、iPhoneで想定外の古いアイコンが使われたり……。Androidのmaskableアイコンは、端末やランチャーによって「丸」「角丸」「しずく型」「四角」と、形が自由に変形します。",
     "translation": "en--pwa-icon-any-maskable-trap",
     "next_article": "iphone-home-icon-auto-generated-theme-color"
@@ -1669,6 +1673,7 @@
     "excerpt": "I once thought that adding `purpose: \"any maskable\"` to a single Manifest icon was the perfect cross-platform solution. It is a valid declaration, but my real-device tests revealed an i",
     "category": "iphone",
     "published": "2026-06-02",
+    "hub": "manifest-en",
     "summary": "I once thought that adding `purpose: \"any maskable\"` to a single Manifest icon was the perfect cross-platform solution. It is a valid declaration, but my real-device tests revealed an important design problem: the same image does not always look right when cropped by Android and displayed more directly on iPhone. A Manifest icon can declare `any`, `maskable`, or both. Using both keywords makes one image available for regular and maskable contexts. That looks elegant. The catch is that eligibility and appearance are different questions. Android launchers may apply a circular or other mask. A maskable icon should keep its important artwork inside the safe area. If a logo reaches the edges, it can be cut off.",
     "translation": "pwa-icon-any-maskable-trap",
     "next_article": "en--iphone-home-icon-auto-generated-theme-color-2"
@@ -1738,6 +1743,7 @@
     "excerpt": "The PWA start_url setting decides what opens from the home screen. Here is why start_url: \".\" can feel more natural when each page should become its own entrance.",
     "category": "PWA",
     "published": "2026-06-07",
+    "hub": "manifest-en",
     "translation": "pwa-start-url-dot-2",
     "summary": "In a PWA manifest, there is a setting called starturl. This setting tells the browser which URL should open first when the PWA is launched from the home screen. At first, it feels natural to write a fixed URL like \"/lab\" or \"/app\".\n\nstarturl is the URL that opens when the PWA is launched from the home screen. then opening the home screen icon will usually take the user to /lab. Imagine a user is viewing a page like /lab/app/demo.\n\nThey like that page and add it to their home screen. starturl: \".\" is a way to define the starting point relatively. Roughly speaking, instead of forcing the PWA back to a fixed top page, it makes it easier to launch from a place closer to the context where the PWA was added.",
     "next_article": "en--pwa-start-url-dot-best-practice-2"
@@ -2504,6 +2510,7 @@
     "excerpt": "PWAのWeb App Manifestで指定するdisplay: standaloneとfullscreenは何が違う？AndroidとiPhoneで実機検証した結果をもとに、ブラウザUI、アプリ感、使いやすさの違いと、どちらを選ぶべきかをわかりやすく解説します。",
     "category": "iphone",
     "published": "2026-09-09",
+    "hub": "manifest",
     "translation": "en--pwa-standalone-vs-fullscreen-2",
     "summary": "PWAのWeb App Manifestには、アプリの見え方を決める display という項目があります。その中でもよく使われるのが standalone と fullscreen です。名前だけ見ると、standaloneは「普通のアプリ表示」、fullscreenは「もっとアプリっぽく全画面」と何となく想像できます。\n\ndisplay は、ホーム画面などからPWAを起動した時に、ブラウザのUIをどの程度見せるかを指定する項目です。Manifest全体の役割については、PWAに必要なmanifest.jsonの基本｜iPhoneとAndroidで効く項目を実験ベースで解説でも詳しくまとめています。PWA LABでAndroid実機を使って確認した時、standaloneとfullscreenの違いはかなり分かりやすく出ました。",
     "next_article": "pwa-display-fullscreen-iphone-android"
@@ -2517,6 +2524,7 @@
     "excerpt": "What is the difference between display: standalone and fullscreen in a PWA Web App Manifest? Based on real iPhone and Android testing, this guide compares browser UI, app-like presentation, screen space, platform behavior, and when each display mode makes sense.",
     "category": "Mobile",
     "published": "2026-09-09",
+    "hub": "manifest-en",
     "translation": "pwa-standalone-vs-fullscreen",
     "summary": "The Web App Manifest includes a display property that controls how a PWA is presented when it launches. Two of the most common values are standalone and fullscreen. From the names alone, the difference sounds obvious: standalone feels like a regular app window, while fullscreen takes over the entire screen.\n\nThe display property tells the browser how the installed web app should be presented when launched from places such as the home screen. If you want more background on Manifest configuration, see How to Build a PWA: A Beginner-Friendly Guide to manifest.json, Service Workers, and Home Screen Setup.",
     "next_article": "en--pwa-display-fullscreen-iphone-android-2"
@@ -2686,6 +2694,7 @@
     "excerpt": "PWAをホーム画面に追加した時の名前やアイコンは何で決まる？Web App Manifestのname・short_name・iconsの役割と、iPhone・Androidで実際の表示がどう変わるのかを分かりやすく解説します。",
     "category": "PWA",
     "published": "2026-09-12",
+    "hub": "manifest",
     "translation": "en--pwa-home-screen-icon-name-short-name-icons-2",
     "summary": "PWAをホーム画面に追加すると、普通のWebページとは少し違った存在になります。ホーム画面にはアイコンが置かれ、その下には名前が表示されます。では、その名前やアイコンは何を見て決まっているのでしょうか。\n\n例えば、Web App Manifestを次のように設定したとします。starturl や display もPWAの動作には重要ですが、今回は「ホーム画面で何に見えるか」に絞って見ていきます。name は、そのWebアプリの名前を指定する項目です。\n\nアプリ名を表示できる場所では、この値が使われる候補になります。shortname は、その名前の通り短いアプリ名です。ホーム画面のように表示スペースが限られている場所では、長い名前をそのまま表示すると途中で切れてしまいます。",
     "next_article": "pwa-icon-design-guide-2026"
@@ -2699,6 +2708,7 @@
     "excerpt": "What determines the name and icon of a PWA on the home screen? Learn how the Web App Manifest fields name, short_name, and icons work, why Android maskable icons matter, and how to design clearer home screen entry points.",
     "category": "PWA",
     "published": "2026-09-12",
+    "hub": "manifest-en",
     "translation": "pwa-home-screen-icon-name-short-name-icons",
     "summary": "When you add a PWA to the home screen, it starts to look like something more permanent than a normal browser page. There is an icon, and there is usually a name displayed with it. So what actually determines those two things?\n\nOther settings such as starturl and display are important too, but here we are focusing specifically on what the PWA looks like as a home screen entry. The name field defines the name of the web application. Where the platform has enough room to show the application name, this value can be used.\n\nshortname is the shorter version of the application name. Home screens and other compact interfaces do not have much room for long labels.",
     "next_article": "en--pwa-icon-design-guide-2026"
@@ -2712,6 +2722,7 @@
     "excerpt": "PWAのstart_urlには何を指定すべき？サイトトップ、現在のページ、専用URL、start_url: \".\" の違いを整理し、1S1Aと1P1Aで設計がどう変わるのかを実機検証ベースで解説します。",
     "category": "PWA",
     "published": "2026-09-12",
+    "hub": "manifest",
     "translation": "en--pwa-start-url-top-current-page-dedicated-url-2",
     "summary": "PWAのWeb App Manifestには、starturl という項目があります。ホーム画面のアイコンからPWAを起動した時に、最初に開くURLを指定します。でも実際にPWAを作り始めると、ここで意外と悩みます。\n\n例えばManifestが次のようになっているとします。この場合、ホーム画面からPWAを開いた時の起点は / です。従来のPWAでよく見るのが、サイトトップを指定する形です。\n\n例えばニュースサイト、SNS、ECサイト、Webサービスなど、サイト全体を1つのアプリとして扱うなら分かりやすい設計です。例えばユーザーが、Web上の5分タイマーを気に入ってホーム画面へ追加したとします。その人が次に開きたいのは、サイトのトップページでしょうか。\n\nそれなら、目的のページを直接指定する方法があります。",
     "next_article": "pwa-start-url-dot-2"
@@ -2725,6 +2736,7 @@
     "excerpt": "What should a PWA start_url point to? Compare the site root, a fixed page, a dynamically resolved current page, a dedicated launch URL, and stateful URLs, including how start_url: \".\" fits page-level PWA design.",
     "category": "PWA",
     "published": "2026-09-12",
+    "hub": "manifest-en",
     "translation": "pwa-start-url-top-current-page-dedicated-url",
     "summary": "The Web App Manifest has a field called starturl. At first, it looks simple. It defines the URL a PWA should start from when launched.\n\nWhen the PWA launches, its starting point is the site root. That means the home screen icon effectively represents the website itself. This makes sense when the whole website is treated as one application.\n\nA user might add the PWA while reading an article or viewing a product, but the installed application still launches from the main site entrance. Imagine someone finds a five-minute timer on the web and decides to keep it on their home screen.",
     "next_article": "en--pwa-start-url-dot"
@@ -2792,6 +2804,7 @@
     "excerpt": "Service Workerなし、Web App ManifestだけでPWAはどこまで作れる？2026年のChromeと実機検証をもとに、ホーム画面へのインストール、アイコン、standalone表示、start_urlと、できないことを整理します。",
     "category": "OJapp Dev Log",
     "published": "2026-09-19",
+    "hub": "manifest",
     "translation": "en--pwa-manifest-only-without-service-worker-2",
     "summary": "前回の記事では、「PWAにはService Workerが必須」という昔からよく言われてきた条件を2026年現在の環境で確認しました。結論として、現在のChromeではService WorkerがなくてもPWAをインストールできます。Service Workerを完全に使わず、Web App ManifestだけならどこまでPWAとして成立するのでしょうか。\n\nHTML側ではWeb App Manifestを読み込むだけです。Service Workerの登録コードは書きません。PWA LABでは、このようにService Workerを登録していない構成でも、条件を満たしたChrome環境からインストールできることを確認しています。\n\n前回のPWAにService Workerは必須？2026年のChromeで実際に確認してみたでも整理した通り、現在はService Worker自体がインストールの必須条件ではありません。",
     "next_article": "minimal-pwa-quick-start"
@@ -2805,6 +2818,7 @@
     "excerpt": "How much of a PWA can you build with a Web App Manifest and no Service Worker? Based on 2026 Chrome behavior and real-device testing, this article covers installation, icons, standalone display, start_url, and what still requires a Service Worker.",
     "category": "OJapp Dev Log",
     "published": "2026-09-19",
+    "hub": "manifest-en",
     "translation": "pwa-manifest-only-without-service-worker",
     "summary": "In the previous article, I revisited the old rule that a PWA requires a Service Worker. In current Chrome, the conclusion is clear: a PWA can be installable without a Service Worker. That leads to a more interesting question.\n\nLet's use a very small setup. Other installability conditions, such as a secure HTTPS context, are assumed to be satisfied. In PWA LAB, I have confirmed that configurations like this can be installed in supported Chrome environments without registering a Service Worker.\n\nAs covered in Does a PWA Require a Service Worker in 2026?, current installability requirements no longer make a Service Worker mandatory.",
     "next_article": "en--minimal-pwa-quick-start-2"
@@ -2818,6 +2832,7 @@
     "excerpt": "PWAのmanifestにあるscopeは何を決める設定？scope:\"/\"やディレクトリ指定、scopeなしを比較し、Androidでのアプリ範囲とiPhoneでの表示の違いをPWA LABの実機検証から解説します。",
     "category": "iphone",
     "published": "2026-09-19",
+    "hub": "manifest",
     "translation": "en--pwa-scope-iphone-android-difference-2",
     "summary": "Web App Manifestには scope という項目があります。PWAを調べると「アプリとして扱うURLの範囲を指定するもの」と説明されることが多い設定です。ところが実際にiPhoneとAndroidでPWAを作り分けてみると、私はこの scope でかなりハマりました。\n\nこの場合、/app/ 以下をそのPWAのナビゲーション範囲として指定しています。つまりscopeは、単純に言えば「このPWAの中として扱うURLはここまで」という境界をブラウザへ伝える設定です。とすると、そのオリジンのルート以下が広い範囲でPWAのscopeに入ります。\n\nサイト全体を1つのPWAとして設計するなら、これは分かりやすい設定です。同じドメイン内に、別々のホーム画面Appとして扱いたいページやサービスがありました。",
     "next_article": "pwa-display-fullscreen-iphone-android"
@@ -2831,6 +2846,7 @@
     "excerpt": "What does the scope field in a Web App Manifest actually control? Using real PWA LAB testing, this article compares root scope, directory scope, omitted scope, and the different practical effects observed on iPhone and Android.",
     "category": "Mobile",
     "published": "2026-09-19",
+    "hub": "manifest-en",
     "translation": "pwa-scope-iphone-android-difference",
     "summary": "The Web App Manifest has a field called scope. It is commonly described as the URL range that belongs to the PWA. That sounds simple enough.\n\nHere, URLs under /app/ are within the declared scope. In simple terms, scope tells the browser: this is the navigation boundary of this web application. That gives the PWA a navigation scope covering the root of that origin and its descendants.\n\nthis can make perfect sense if all of those areas belong to one application. This is where I ran into trouble in PWA LAB. I had separate services under the same domain that I wanted to treat as different home screen applications.",
     "next_article": "en--pwa-display-fullscreen-iphone-android-2"
@@ -2844,6 +2860,7 @@
     "excerpt": "Web App Manifestのidは何のためにある？省略時はstart_urlが識別子として使われる仕組みや、同じサイトに複数PWAを作る場合の注意点を、1P1Aの実験も交えて解説します。",
     "category": "OJapp Dev Log",
     "published": "2026-09-19",
+    "hub": "manifest",
     "translation": "en--pwa-manifest-id-multiple-install-2",
     "summary": "Web App Manifestには id という項目があります。name や icons、starturl と比べると、普段ユーザーから見えるものではありません。そのため、Manifestを書いていても「これ本当に必要？」となりやすい項目です。\n\nid は、ブラウザがそのWebアプリを識別するための一意な識別子です。ブラウザ側から見て「このManifestが説明しているWebアプリはどのアプリなのか」を判断するために使われます。id の意味が分かりやすくなるのは、Manifestを変更した時です。\n\nこの場合、id が同じなので、対応ブラウザは同じPWAのManifest更新として扱えます。逆に、同じ場所からManifestを配信していても、異なる有効なidを持っていれば別のWebアプリとして識別できます。",
     "next_article": "pwa-multiple-install-same-domain"
@@ -2857,6 +2874,7 @@
     "excerpt": "What does the id field in a Web App Manifest actually do? Learn how browsers identify PWAs, why start_url becomes the identifier when id is omitted, and how id affects multiple PWA installations and page-level app design.",
     "category": "OJapp Dev Log",
     "published": "2026-09-19",
+    "hub": "manifest-en",
     "translation": "pwa-manifest-id-multiple-install",
     "summary": "The Web App Manifest includes a member called id. Unlike name, icons, or starturl, users do not normally see it. That makes it easy to wonder whether it is really necessary.\n\nThe id member provides a unique identifier for the web application. It is not based on whether two apps have the same visible name. This becomes useful when a Manifest changes.\n\nA supporting browser can therefore treat the new Manifest as an update to the same application rather than depending on the start URL itself as the identity. The launch URL is the same, but the ids are different. The id member is not something every Manifest must explicitly contain.",
     "next_article": "en--pwa-multiple-install-same-domain-2"
@@ -2870,6 +2888,7 @@
     "excerpt": "Web App Manifestのscreenshotsは何に使う？PWAの機能画面や特徴を画像で伝え、対応環境のインストールUIを充実させる方法を解説。Android Chromeでの表示やform_factor、labelの指定方法も紹介します。",
     "category": "PWA",
     "published": "2026-09-19",
+    "hub": "manifest",
     "translation": "en--pwa-manifest-screenshots-install-ui-2",
     "summary": "Web App Manifestには screenshots という項目があります。名前の通り、PWAのスクリーンショット画像をManifestへ登録するための機能です。実際、PWAを成立させるためにscreenshotsが必須なわけではありません。\n\nWeb App Manifestでは、次のように screenshots を指定できます。MDNでは、screenshotsはWebアプリのインターフェイスや機能をユーザーへプレビューしてもらうためのManifestメンバーとして定義されています。Chromium系ブラウザでPWAとしてインストール可能にするための主要なManifest条件には、name または shortname、icons、starturl、display などがありますが、screenshotsは含まれていません。",
     "next_article": "pwa-install-button-not-showing"
@@ -2883,6 +2902,7 @@
     "excerpt": "What does the screenshots member in a Web App Manifest actually do? Learn how screenshots can enrich supported PWA install experiences, how Android Chrome uses them, and how to configure form_factor, label, and platform metadata.",
     "category": "OJapp Dev Log",
     "published": "2026-09-19",
+    "hub": "manifest-en",
     "translation": "pwa-manifest-screenshots-install-ui",
     "summary": "The Web App Manifest includes a member called screenshots. As the name suggests, it lets you provide images that preview your PWA. When I first looked at this feature, though, I had a simple question.\n\nMDN defines screenshots as images that showcase the web application's interface and features. The concept is similar to screenshots in an app store listing. This is an important distinction.\n\nYou do not need screenshots simply to make a PWA installable. One of the clearest browser-facing uses is the installation experience on Android. MDN explains that the default PWA install prompt displays information such as the app name and icon.",
     "next_article": "en--android-home-screen-add-install-missing-2"
@@ -2896,6 +2916,7 @@
     "excerpt": "PWAのmanifest.jsonには何をどこまで書けばいい？2026年現在のPWAを、まず用意したい基本項目、設計に応じて追加するid・scope、screenshotsやshortcutsなどの拡張項目に分けて整理します。",
     "category": "OJapp Dev Log",
     "published": "2026-09-19",
+    "hub": "manifest",
     "translation": "en--pwa-manifest-minimum-recommended-fields-2",
     "summary": "ここまで5記事にわたって、2026年現在のPWAを昔から言われてきた常識と照らし合わせながら見直してきました。Service Workerはインストールの必須条件ではない。Manifestだけでもホーム画面へのインストール、アイコン、名前、starturl、standalone表示まで作れる。\n\nWeb App Manifestには多くのメンバーがあります。これだけ並ぶと、PWAを作るには全部設定しないといけないように見えます。最初に作るなら、例えば次のような小さなManifestから考えられます。\n\nまずはこのあたりから考えれば、PWAの基本構造が見えやすくなります。shortname は、表示スペースが限られている場合に使える短い名前です。両方を設定しておけば、ブラウザやOSが利用できる表示領域に応じて扱えます。",
     "next_article": "pwa-manifest-json-basics"
@@ -2909,6 +2930,7 @@
     "excerpt": "How much does a PWA manifest.json really need in 2026? This guide separates core Manifest fields from architecture-specific options such as id and scope, plus optional enhancements including screenshots, shortcuts, and theme colors.",
     "category": "OJapp Dev Log",
     "published": "2026-09-19",
+    "hub": "manifest-en",
     "translation": "pwa-manifest-minimum-recommended-fields",
     "summary": "Over the last five articles, I have revisited several long-standing assumptions about PWAs using current behavior and real-device testing. A Service Worker is no longer required simply for installation. A Web App Manifest alone can already define an installable home screen experience with a name, icon, start URL, and standalone presentation in supported environments.\n\nThe Web App Manifest supports many members. Seeing them together can make it look as if every PWA should define all of them. Starting with these concepts makes the structure much easier to understand.\n\nI use the same lightweight philosophy in The Fastest Way to Build a Minimal PWA.",
     "next_article": "en--pwa-manifest-json-basics"
@@ -3161,6 +3183,7 @@
     "summary": "同じドメインでも複数のPWAを設計できます。ただし、実際に別々のアプリとしてインストールできるかはブラウザやOSによって異なります。\n\nWeb App Manifestでは、`id`がアプリの識別、`start_url`が起動先、`scope`がナビゲーション範囲を担当します。これらを使い分けることで、サイト全体を1つのAppにする1S1A、ディレクトリ単位の1G1A、ページ単位の1P1Aを同じサイト内で組み合わせられます。\n\nさらにUDA（User Defined App）では、タイマーの時間などをユーザー自身が選び、その設定を含むURLを自分専用のホーム画面入口にできます。\n\nただし、`id`や`scope`を変更するだけで複数インストールが保証されるわけではありません。特にAndroidとiPhoneでは挙動が異なるため、対象端末での実機検証が重要です。",
     "category": "PWA",
     "published": "2026-09-26",
+    "hub": "manifest",
     "translation": "en--pwa-multiple-install-same-domain-2",
     "next_article": "pwa-scope-iphone-android-difference"
   },
@@ -3174,6 +3197,7 @@
     "summary": "A single domain can be designed to provide multiple PWAs, but separate installations are not guaranteed on every browser or operating system. The Web App Manifest uses `id` to identify an app, `start_url` to define its launch destination, and `scope` to define its navigation boundaries.\n\nThis allows several approaches: 1S1A (One Site. One App.) for an entire website, 1G1A (One Group. One App.) for directories such as tools or documentation, and 1P1A (One Page. One App.) for individual pages. These models can coexist on the same domain.\n\nUDA (User Defined App) extends the idea by letting users choose a URL-based state, such as a five-minute timer, and use it as their own home screen entrance. Unlike the other models, UDA focuses on who defines the final app state rather than the size of the app.\n\nHowever, changing Manifest values alone does not guarantee multiple installations. Android and iPhone can handle app identity and scope differently, so real-device testing remains essential.",
     "category": "PWA",
     "published": "2026-09-26",
+    "hub": "manifest-en",
     "translation": "pwa-multiple-install-same-domain",
     "next_article": "en--pwa-scope-iphone-android-difference-2"
   },
@@ -3241,6 +3265,7 @@
     "summary": "iPhoneでホーム画面に追加したページとは違うページが開く場合、Web App Manifestのstart_urlが原因かもしれません。\n\n例えばstart_urlが「/」に指定されたPWAでは、プロフィールや記事を追加してもサイトのトップページが開くことがあります。起動先は基本的にユーザー側で変更できないため、特定のURLを保存したいだけならSafariのブックマークが確実です。\n\n一方、サイト制作者は、ページごとに適切なManifestを用意し、start_urlを「.」にすることで、追加したページをそのままアプリの入口にできます。\n\nサイト全体を1つのアプリとして扱う1S1Aと、ページ単位で扱う1P1Aのどちらを選ぶかは、ユーザーにどのページを開いてほしいかによって決まります。",
     "category": "iphone",
     "published": "2026-10-07",
+    "hub": "manifest",
     "translation": "en--pwa-home-screen-wrong-page-start-url-2",
     "next_article": "pwa-change-launch-url-wrong-page"
   },
@@ -3254,6 +3279,7 @@
     "summary": "If your iPhone Home Screen icon opens a different page from the one you added, the website's PWA configuration may be responsible. A Web App Manifest can define a launch destination using `start_url`, such as `/`, causing the app to open the site's homepage instead of the specific article, profile, or product page you saved. Users generally cannot change this setting themselves, so a Safari bookmark is a better option when you simply want to preserve a specific URL. For developers, using `start_url: \".\"` with an appropriately configured page-specific Manifest can preserve individual pages as app entry points. This is the idea behind 1P1A (One Page. One App.), while 1S1A (One Site. One App.) treats the entire website as one application. Neither approach is inherently wrong. The right choice depends on what users expect to open when they tap the Home Screen icon.",
     "category": "Mobile",
     "published": "2026-10-07",
+    "hub": "manifest-en",
     "translation": "pwa-home-screen-wrong-page-start-url",
     "next_article": "en--pwa-change-launch-url-wrong-page-2"
   },

@@ -16,7 +16,7 @@
     "article": "en/pwa-ios-2026-complete-guide"
   },
   "manifest": {
-    "title": "PWAに必要なmanifest.jsonの基本｜iPhoneとAndroidで効く項目を実験ベースで解説",
+    "title": "manifest.jsonとは？PWAに必要な設定とiPhone・Androidでの違い",
     "article": "pwa-manifest-json-basics"
   },
   "manifest-en": {

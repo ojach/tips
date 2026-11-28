@@ -1,3 +1,7 @@
+---
+updated: 2026-11-28
+---
+
 # manifest.jsonとは？PWAに必要な設定とiPhone・Androidでの違い
 
 PWAを作るときに、まず出てくるのが`manifest.json`です。
@@ -61,7 +65,7 @@ manifest.jsonは、Webアプリの設定ファイルです。
 }
 ```
 
-これらを正しく設定することが、Androidでインストール可能なPWAを作るための基本になります。ただし、インストール候補として表示されるかどうかは、ブラウザ側の条件にも左右されます。
+これはサイト全体をアプリ範囲にする例です。ページ単位で別々のアプリにする場合は、`scope: "/"`が適切とは限りません。これらの項目を用途に合わせて設定することが、Androidでインストール可能なPWAを作るための基本になります。ただし、インストール候補として表示されるかどうかは、ブラウザ側の条件にも左右されます。
 
 その他の項目は、用途によっては必要ですが、基本的にはこのセットを正しく動かす方が大事です。
 
@@ -157,6 +161,20 @@ scope外へ移動するとSafariのミニUIが出るような挙動が確認で�
 この設計はかなり大事で、Androidでもアプリ内表示として扱われる範囲に関係します。
 
 何に効いているか分かりにくく、少しややこしい項目ではあります。
+
+## id：同じアプリとして扱うかを左右する識別子
+
+`id`は、ブラウザがインストール済みWebアプリを識別するためのManifest項目です。`start_url`は起動先、`scope`はアプリの範囲、`id`はアプリの識別に関わります。3つは似て見えて役割が違います。
+
+```json
+{
+  "id": "/app/",
+  "start_url": "/app/",
+  "scope": "/app/"
+}
+```
+
+同じドメインの複数ページを別々のアプリとして追加したい場合、`id`の付け方や省略、ブラウザによる識別の違いが問題になります。OJappとPetalでは、AndroidとiPhoneで複数のホーム画面エントリを扱うため、`id`・`scope`・`start_url`を組み合わせて検証してきました。すべての環境で同じ結果になると決めつけず、インストール済みの状態まで確認する必要があります。
 
 ## display
 
@@ -372,13 +390,42 @@ manifest.jsonまわりでよくあるミスは次の通りです。
 
 「サイトは見えているのにPWAにならない」というときは、manifest.jsonの読み込みを最初に確認してください。
 
+
+## Manifestの項目別・実機検証ガイド
+
+Manifestの項目を知るだけでは、実機での違いまで分かりません。ここからは、設定ごとの詳しい解説とPWA LABの検証記事へ進めます。
+
+### 最小構成と起動URL
+
+- [PWAのmanifest.jsonはどこまで書けばいい？最低限・推奨・用途別で整理](https://tips.ojapp.app/pwa-manifest-minimum-recommended-fields/)
+- [PWAのstart_urlは何を指定すべき？トップ・現在ページ・専用URLの違い](https://tips.ojapp.app/pwa-start-url-top-current-page-dedicated-url/)
+- [start_url: "." が最強説｜PWAで“入れたページに戻る”を成立させる考え方](https://tips.ojapp.app/pwa-start-url-dot-2/)
+- [ホーム画面に追加したページと違うページが開く原因は？PWAのstart_urlを解説](https://tips.ojapp.app/pwa-home-screen-wrong-page-start-url/)
+
+### アプリの範囲と識別
+
+- [PWAのscopeとは？設定すると何が変わるのかiPhone・Androidで比較](https://tips.ojapp.app/pwa-scope-iphone-android-difference/)
+- [PWAのmanifest idとは？省略するとどうなる？複数インストールとの関係](https://tips.ojapp.app/pwa-manifest-id-multiple-install/)
+- [PWAは同じドメインから複数インストールできる？id・scope・start_urlの関係](https://tips.ojapp.app/pwa-multiple-install-same-domain/)
+
+### 表示・名前・アイコン
+
+- [PWAのstandaloneとfullscreenの違い｜どっちを使うべき？](https://tips.ojapp.app/pwa-standalone-vs-fullscreen/)
+- [PWAのホーム画面アイコンは何を設定すればいい？name・short_name・iconsの役割](https://tips.ojapp.app/pwa-home-screen-icon-name-short-name-icons/)
+- [PWAアイコンは any maskable だけでは足りない？AndroidとiPhoneで崩れる理由](https://tips.ojapp.app/pwa-icon-any-maskable-trap/)
+- [PWAのscreenshotsは何のため？Chromeのインストール画面を強化する方法](https://tips.ojapp.app/pwa-manifest-screenshots-install-ui/)
+
+### Service Workerとの関係
+
+- [manifest.jsonだけでPWAは作れる？Service Workerなしでどこまでできるか検証](https://tips.ojapp.app/pwa-manifest-only-without-service-worker/)
+
 ## 関連記事
 
 PWAの全体像を先に知りたい場合は、[PWAとは？スマホのWebサイトを“アプリ化”する仕組みをわかりやすく解説](https://tips.ojapp.app/what-is-pwa/)が参考になります。
 
 Service Workerやホーム画面対応を含めた作り方は、[PWAの作り方｜manifest.json・Service Worker・ホーム画面対応を丁寧に解説](https://tips.ojapp.app/how-to-pwa/)でまとめています。
 
-iPhoneでPWAがどこまで使えるかは、[PWA×iOSでできること完全まとめ【2026年版】](https://tips.ojapp.app/pwa-ios-2026/)もあわせて読むと分かりやすいです。
+iPhoneでPWAがどこまで使えるかは、[PWA×iOSでできること完全まとめ【2026年版】](https://tips.ojapp.app/pwa-ios-capabilities/)もあわせて読むと分かりやすいです。
 
 ## まとめ
 
