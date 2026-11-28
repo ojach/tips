@@ -429,3 +429,9 @@ CSSでは、起動直後とスクロール後の色をCSS変数として用意�
 
 - [Zenn：iOS 27 PWAのぼかしに関する記事](https://zenn.dev/uakihir0/articles/260920-ios27-pwa-blur)
 - [Qiita：iOS PWAのぼかしに関する記事](https://qiita.com/na-trium-144/items/0add98a80ca2391e3f17)
+
+<blockquote class="reddit-embed-bq" style="height:316px" data-embed-height="316">
+<a href="https://www.reddit.com/r/PWA/comments/1woodbv/a_quick_workaround_for_the_ios_27_pwa_status_bar/">A quick workaround for the iOS 27 PWA status bar header blur glitch</a><br> by
+<a href="https://www.reddit.com/user/OJapp/">u/OJapp</a> in
+<a href="https://www.reddit.com/r/PWA/">PWA</a>
+</blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
