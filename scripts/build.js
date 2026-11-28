@@ -615,6 +615,19 @@ for (const language of languages) {
   }
   await fs.writeFile(path.join(out, searchFilename), JSON.stringify(makeSearchIndex(languageArticles), null, 2));
 }
+// Optional hub sections: only hubs with a nonempty `section` generate a link list.
+// Child membership is controlled solely by articles.json -> `hub`.
+const hubSectionsByParent = new Map();
+for (const [hubKey, config] of Object.entries(hubs)) {
+  if (!config || typeof config !== 'object' || typeof config.section !== 'string' || !config.section.trim()) continue;
+  const parent = articles.find((candidate) => candidate.key === config.article || candidate.permalink === config.article);
+  if (!parent) continue;
+  const children = articles.filter((candidate) => candidate !== parent && candidate.hubKey === hubKey && candidate.language === parent.language);
+  if (!children.length) continue;
+  const list = `<h3>${esc(config.section.trim())}</h3>\n<ul>${children.map((child) => `<li><a href="${esc(withBase(basePath, `/${child.permalink}/`))}">${esc(child.title)}</a></li>`).join('')}</ul>\n`;
+  hubSectionsByParent.set(parent.key, (hubSectionsByParent.get(parent.key) || '') + list);
+}
+
 const sitemap = [];
 const rss = [];
 for (const article of articles) {
@@ -712,7 +725,7 @@ for (const article of articles) {
     ? withBase(basePath, languageHomePath(article.language === 'en' ? 'ja' : 'en'))
     : '';
   const articleDescriptionHtml = article.visibleDescription ? `<p class="article-description">${esc(article.visibleDescription)}</p>` : '';
-  const articleBody = `<main class="article"><header class="article-head"><div class="article-meta">${article.published ? `<time datetime="${esc(article.published)}">${esc(formatDate(article.published, article.language))}</time>` : ''}${article.category ? ` · ${esc(article.category)}` : ''}${translationHtml ? ` · ${translationHtml}` : ''}</div><h1>${esc(article.title)}</h1>${articleDescriptionHtml}</header>${thumbnail}${summaryHtml}${tocHtml}<article class="prose">${html}</article>${articleActions}${nextSection}${authorSection}${recommendationSection}<p class="muted"><a href="${esc(withBase(basePath, articleHomePath))}">${esc(labels.backToArticles)}</a></p></main><script>${shareScript}</script>`;
+  const articleBody = `<main class="article"><header class="article-head"><div class="article-meta">${article.published ? `<time datetime="${esc(article.published)}">${esc(formatDate(article.published, article.language))}</time>` : ''}${article.category ? ` · ${esc(article.category)}` : ''}${translationHtml ? ` · ${translationHtml}` : ''}</div><h1>${esc(article.title)}</h1>${articleDescriptionHtml}</header>${thumbnail}${summaryHtml}${tocHtml}<article class="prose">${html}${hubSectionsByParent.get(article.key) || ''}</article>${articleActions}${nextSection}${authorSection}${recommendationSection}<p class="muted"><a href="${esc(withBase(basePath, articleHomePath))}">${esc(labels.backToArticles)}</a></p></main><script>${shareScript}</script>`;
   const defaultLanguageArticle = translation && translation.language === defaultLanguage ? translation : article;
   const alternateLanguages = translation
     ? `<link rel="alternate" hreflang="${esc(htmlLanguage(article.language))}" href="${esc(canonical)}"><link rel="alternate" hreflang="${esc(htmlLanguage(translation.language))}" href="${esc(absoluteUrl(`/${translation.permalink}/`))}"><link rel="alternate" hreflang="x-default" href="${esc(absoluteUrl(`/${defaultLanguageArticle.permalink}/`))}">`

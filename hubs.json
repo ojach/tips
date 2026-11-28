@@ -24,44 +24,54 @@
     "article": "en/pwa-manifest-json-basics"
   },
   "pwa-install": {
-    "title": "PWAのインストールと表示UX完全ガイド｜追加ボタン・アイコン・起動方法を整理",
-    "article": "pwa-install"
+    "title": "PWAのインストールと表示UX完全ガイド｜ホーム画面への追加から起動後の使い心地まで",
+    "article": "pwa-install",
+    "section": "PWAのインストール・表示UX関連記事"
   },
   "pwa-install-en": {
-    "title": "PWA Installation and Display UX Guide: Install Buttons, Icons, and Launch Behavior",
-    "article": "en/pwa-install"
+    "title": "PWA Installation and Display UX: From Adding to the Home Screen to Launching an App",
+    "article": "en/pwa-install",
+    "section": "Related articles on PWA installation and display UX"
   },
   "1p1a": {
     "title": "1P1A（One Page. One App.）というPWA設計思想",
-    "article": "1p1a-2"
+    "article": "1p1a-2",
+    "section": "1P1A・PWA設計思想の関連記事"
   },
   "1p1a-en": {
     "title": "The PWA Design Philosophy of 1P1A (One Page. One App.)",
-    "article": "en/1p1a"
+    "article": "en/1p1a",
+    "section": "Related articles on 1P1A and PWA design"
   },
   "home-marketing": {
     "title": "ホーム画面マーケティングとは？PWAで「ページを届ける」という新しいWeb戦略",
-    "article": "home-screen-marketing"
+    "article": "home-screen-marketing",
+    "section": "ホーム画面マーケティングの関連記事"
   },
   "home-marketing-en": {
     "title": "What Is Home Screen Marketing? A New Web Strategy for “Delivering Pages” with PWA",
-    "article": "en/home-screen-marketing-2"
+    "article": "en/home-screen-marketing-2",
+    "section": "Related articles on home screen marketing"
   },
   "home-design": {
     "title": "ホーム画面デザイン・カスタマイズまとめ｜アイコンと使いやすさを考える",
-    "article": "home-screen-design"
+    "article": "home-screen-design",
+    "section": "ホーム画面デザイン・カスタマイズの関連記事"
   },
   "home-design-en": {
     "title": "Home Screen Design and Customization: Icons, Layouts, and Usability",
-    "article": "en/home-screen-design"
+    "article": "en/home-screen-design",
+    "section": "Related articles on home screen design and customization"
   },
   "cache-sw": {
     "title": "【完全ガイド】PWAのキャッシュ・Service Worker・ローカル保存の仕組みと削除の罠",
-    "article": "cache-sw"
+    "article": "cache-sw",
+    "section": "キャッシュ・Service Worker・ローカル保存の関連記事"
   },
   "cache-sw-en": {
     "title": "PWA Caching, Service Workers, and Local Storage: How They Work and Deletion Traps",
-    "article": "en/cache-sw"
+    "article": "en/cache-sw",
+    "section": "Related articles on caching, Service Workers, and local storage"
   },
   "dev-seo": {
     "title": "個人開発ブログのSEO・AIO戦略｜自作サイトの運営と検索流入を伸ばす実践記録",
@@ -73,10 +83,12 @@
   },
   "pwa-security": {
     "title": "PWAは安全？危険？Webサイトとの違いとセキュリティをわかりやすく解説",
-    "article": "pwa-security-safety"
+    "article": "pwa-security-safety",
+    "section": "PWAのセキュリティ関連記事"
   },
   "pwa-security-en": {
     "title": "Are PWAs Safe? Security Risks, Permissions, Service Workers, and Web App Differences Explained",
-    "article": "en/pwa-security-safety-2"
+    "article": "en/pwa-security-safety-2",
+    "section": "Related articles on PWA security"
   }
 }

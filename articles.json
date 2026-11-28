@@ -1,4 +1,28 @@
 {
+  "pwa-install": {
+    "title": "PWAのインストールと表示UX完全ガイド｜ホーム画面への追加から起動後の使い心地まで",
+    "permalink": "pwa-install",
+    "language": "ja",
+    "show_thumbnail": false,
+    "meta_description": "PWAのホーム画面への追加方法、インストールできない原因、iPhoneとAndroidの表示モードの違い、起動URLや案内のタイミングを実機検証とOJappの開発経験から解説します。",
+    "excerpt": "追加できるだけでは完成ではない。ホーム画面からもう一度使いたくなるPWAの設計を考えます。",
+    "summary": "PWAのインストールUXは、ホーム画面に追加する操作から、アイコンを押して目的のページを使うところまでを含みます。iPhoneではSafariの共有メニュー、AndroidではChromeのメニューから追加するのが基本です。追加できない場合は、ブラウザの種類、Manifestの取得状況、HTTPS、アイコンなどを切り分けます。\n\n起動後の表示は`standalone`や`fullscreen`で指定できますが、実機検証ではiPhoneとAndroidで異なる結果が出ました。起動先を決める`start_url`も、利用者が期待するページに合わせて設計することが重要です。\n\nインストール案内は再訪する理由が生まれた場面を重視します。Chrome 158のWeb Installでは、外部PWAのインストール案内に加え、ボタンのCSSや表示状態にも注意が必要です。追加できることだけでなく、追加後に役立つことまで考えるのがPWA設計のポイントです。",
+    "category": "PWA",
+    "published": "2026-11-28",
+    "translation": "en--pwa-install"
+  },
+  "en--pwa-install": {
+    "title": "PWA Installation and Display UX: From Adding to the Home Screen to Launching an App",
+    "permalink": "en/pwa-install",
+    "language": "en",
+    "show_thumbnail": false,
+    "meta_description": "A practical guide to PWA installation, troubleshooting, iPhone and Android display modes, launch URLs, and installation prompts, based on OJapp development and real-device testing.",
+    "excerpt": "Installation is only the beginning. Design a home screen experience that gives users a reason to return.",
+    "summary": "PWA installation UX covers the entire journey from adding an icon to launching and using the intended page. On iPhone, start with Safari’s Share menu; on Android, check Chrome’s menu. If installation fails, check the browser, HTTPS, manifest retrieval, and icons.\n\nThe manifest’s `standalone` and `fullscreen` display modes can behave differently on iPhone and Android, as real-device testing shows. The `start_url` should also reflect the page users expect to open.\n\nOffer installation when users have a reason to return. Chrome 158’s Web Install capabilities introduce new ways to offer external PWA installation, but button styling and visibility can affect whether installation works. A useful PWA is designed for what happens after installation, not just for getting an icon onto the home screen.",
+    "category": "PWA",
+    "published": "2026-11-28",
+    "translation": "pwa-install"
+  },
   "dev-seo": {
     "title": "個人開発ブログのSEO・AIO戦略｜自作サイトの運営と検索流入を伸ばす実践記録",
     "meta_description": "WordPressを卒業し自作ブログエンジン「OJapp Blog Kit」で運営する個人開発者のSEO・AIO戦略まとめ。AI量産記事に負けない実体験ベースの執筆術、モバイル読者の離脱対策、Edge構成まで全10記事の知見を体系化しました。",
@@ -17,6 +41,7 @@
     "summary": "Chrome 158のWeb Installでは、PWA紹介サイトから別のWebアプリのインストールを案内できます。HTMLの`<install>`要素ならブラウザ管理のボタンを置けますが、1ページの配置数には迷惑行為対策による制限があります。大量のアプリを並べるカタログでは、JavaScriptの`navigator.install()`が候補です。ただし後者は、別アプリを入れる際にインストール確認前の追加の権限確認が入ります。\n\n作る側は、対象Manifestと`start_url`が同一オリジンであること、ManifestをHTTPSで適切に配信すること、安定した`id`を用意することを確認しましょう。`manifestid`はIDの上書き機能ではなく照合用です。サブドメインも別オリジンとして扱われます。\n\n使う側は、まずブラウザでPWAを試してからインストールするのがおすすめです。APKとは配布の仕組みが異なりますが、PWAだから安全とは限りません。提供元、URL、求められる権限を確認しましょう。配置上限やData URL対応は今後検証します。",
     "category": "PWA",
     "published": "2026-11-16",
+    "hub": "pwa-install",
     "translation": "en--chrome-158-pwa-install-catalog-safety"
   },
   "en--chrome-158-pwa-install-catalog-safety": {
@@ -29,6 +54,7 @@
     "summary": "Chrome 158's Web Install features allow a PWA catalog to offer installation of another web app directly from its page. The HTML `<install>` element provides a browser-controlled install button, but browsers limit how many such elements can appear on one page to prevent abuse. For a large catalog, `navigator.install()` is a better candidate, although installing another app through that API adds an initial permission prompt before the installation confirmation.\n\nCatalog developers must verify that the target manifest and `start_url` share an origin, that the manifest is correctly served over HTTPS, and that the app has a stable identity. The `manifestid` attribute checks an identity; it cannot override it. Subdomains count as separate origins.\n\nUsers should open a PWA in their browser before installing it. PWA installation is different from downloading an Android APK, but being a PWA does not guarantee trustworthiness. Check the operator, URL, and requested permissions. Exact element limits and Data URL manifest behavior remain subjects for later device testing.",
     "category": "PWA",
     "published": "2026-11-16",
+    "hub": "pwa-install-en",
     "translation": "chrome-158-pwa-install-catalog-safety"
   },
   "local-storage-basics": {
@@ -148,6 +174,7 @@
     "summary": "Webサイトをホーム画面に追加するには、iPhoneではSafariでページを開き、共有ボタンから「ホーム画面に追加」を選びます。AndroidではChromeの「︙」メニューから「ホーム画面に追加」または「インストール」を選びます。\n\n追加したアイコンは、通常のブラウザショートカットになる場合と、独立した画面で開くWebアプリになる場合があります。表示されるアイコンは基本的にサイト側の設定に依存し、追加時に好きな画像を自由に選べるとは限りません。\n\n項目が見つからないときは、まずSafariやChromeでWebページそのものを開いているか確認しましょう。iPhoneでは画像の共有画面やSNSのアプリ内ブラウザに注意。追加したページではなくトップページが開く場合は、サイト側のWeb App Manifestのstart_urlが関係している可能性があります。",
     "category": "OJapp Dev Log",
     "published": "2026-02-01",
+    "hub": "pwa-install",
     "translation": "en--home-add-basic-2",
     "next_article": "home-add-cannot"
   },
@@ -252,6 +279,7 @@
     "summary": "On iPhone, open the website in Safari, tap Share, and choose Add to Home Screen. On Android, open the page in Chrome, tap the three-dot menu, and choose Add to Home screen or Install, depending on what Chrome offers.\n\nA Home Screen entry may be a browser shortcut or an installed web app that opens without the normal address bar. The website usually controls the icon, although you may be able to edit its displayed name. If Add to Home Screen is missing, make sure you are sharing the web page itself rather than an image, and open links from social apps directly in Safari when needed.\n\nIf the icon launches the site’s home page instead of the page you selected, the Web App Manifest’s start_url may be responsible. For a custom image, consider iPhone Shortcuts or a URL-based Home Screen tool.",
     "category": "Web Development",
     "published": "2026-02-02",
+    "hub": "pwa-install-en",
     "translation": "home-add-basic",
     "next_article": "en--home-add-cannot-3"
   },
@@ -1242,6 +1270,7 @@
     "excerpt": "iPhoneでホーム画面にWebサイトやアプリを追加する方法をわかりやすく解説。Safariの操作手順からアイコン設定まで、2026年最新版のやり方を初心者向けにまとめました。",
     "category": "iphone",
     "published": "2026-04-06",
+    "hub": "pwa-install",
     "translation": "en--iphone-add-to-home-2",
     "summary": "ホーム画面に追加する方法をステップごとに解説します。まずはSafariで、ホーム画面に追加したいサイトを開きます。iPhoneではSafariでのみ追加が可能なので注意してください。\n\nPWAとWebClipの違いに関してはこちらで確認してください。",
     "next_article": "pwa-vs-webclip"
@@ -1255,6 +1284,7 @@
     "excerpt": "Learn how to add a website to your iPhone home screen step by step. This beginner-friendly guide explains the Safari method, how WebClips work, and tips to make it easier in 2026.",
     "category": "Mobile",
     "published": "2026-04-06",
+    "hub": "pwa-install-en",
     "translation": "iphone-add-to-home",
     "summary": "Did you know you can add any website to your iPhone home screen and use it like an app? This feature makes it easier to access your favorite tools, blogs, or services with just one tap. In this guide, we’ll walk you through how to add a website to your home screen step by step.\n\n“Add to Home Screen” allows you to save a website as an icon on your iPhone. This feature uses a system called WebClip. First, open the website you want to add using Safari.\n\nTap the share icon (a square with an arrow pointing up) at the bottom of the screen. Scroll down and tap “Add to Home Screen”. You can rename the icon if needed.",
     "next_article": "en--pwa-vs-webclip2"
@@ -1488,6 +1518,7 @@
     "excerpt": "PWAを作ったのにインストールボタンが出ない原因を、manifest.json、Service Worker、HTTPS、ブラウザ対応の違いからわかりやすく解説します。",
     "category": "PWA",
     "published": "2026-05-16",
+    "hub": "pwa-install",
     "translation": "en--pwa-install-button-not-showing-2",
     "summary": "自分でもPWA系の実験をしていると、「manifestは書いたのに、なぜかインストールできない」という場面が何度もありました。見た目は普通に動いているので、最初はどこが悪いのか分かりにくいです。PWAでは、Web App Manifestという設定ファイルが重要です。\n\nここには、アプリ名、アイコン、表示モード、開始URLなどを書きます。PWAは基本的にHTTPS環境で動かす必要があります。ローカル開発では動くのに、本番環境でうまくいかない場合、URLや配信環境を確認した方がいいです。\n\nmanifest.jsonがindex.htmlと同じ階層にあることを確認しましょう。基本的にmanifest.jsonはその配下のみに対応することしかできません。AndroidのChromeでは、条件が揃うとインストール案内が出ることがあります。",
     "next_article": "pwa-status-check"
@@ -1514,6 +1545,7 @@
     "excerpt": "PWAが正しく動いているか確認するために、MODE、ONLINE、Service Worker、Push、OS、Installableの意味を初心者向けに解説します。",
     "category": "PWA",
     "published": "2026-05-18",
+    "hub": "pwa-install",
     "translation": "en--how-to-check-pwa-status",
     "summary": "PWAの開発中、『これ本当にインストール可能になってる？』って不安になりますよね。デベロッパーツールを開いて毎回確認するの面倒だと思うので、URLを入れるだけで一発判定する『PWA自動チェッカー』を自作しました。手っ取り早く確認したい方は、目次で飛ばして一番下のツールへどうぞ！\n\nPWAを作っていると、manifest.jsonを書いて、Service Workerを登録して、ホーム画面にも追加できるようにしたはずなのに、「本当にPWAとして動いているのか？」が分かりにくいことがあります。普通のWebページとして開いているのか、ホーム画面からPWAとして開いているのか。MODEは、そのページが普通のブラウザ表示なのか、PWAとして開かれているのかを見る項目です。\n\n例えば、ブラウザのタブで開いている状態なら「WEB」。",
     "next_article": "how-to-pwa"
@@ -1581,6 +1613,7 @@
     "excerpt": "If your PWA install button is not showing, the cause is often a missing manifest setting, Service Worker issue, HTTPS problem, or browser-specific behavior.",
     "category": "Web Development",
     "published": "2026-05-29",
+    "hub": "pwa-install-en",
     "translation": "pwa-install-button-not-showing",
     "summary": "While testing PWA behavior myself, I often hit the same confusing situation: the manifest was there, the page worked, but the browser still would not offer installation. That is what makes this problem annoying. For a PWA, the Web App Manifest is one of the most important files.\n\nIt defines the app name, icon, display mode, start URL, and other app-like settings. PWAs generally need to run in a secure HTTPS environment. If something works during local development but fails in production, it is worth checking the actual URL and hosting setup.\n\nOn Android Chrome, when the conditions are met, the browser may show an install prompt or install button.",
     "next_article": "en--how-to-check-pwa-status"
@@ -1607,6 +1640,7 @@
     "excerpt": "When building a PWA, it can be hard to tell whether it is really working. Here is how to check PWA status using mode, online state, Service Worker, push permission, OS, and installable status.",
     "category": "PWA",
     "published": "2026-05-29",
+    "hub": "pwa-install-en",
     "translation": "pwa-status-check",
     "summary": "When you build a PWA, it can be surprisingly hard to tell whether it is actually working as a PWA. You may have written manifest.json, registered a Service Worker, and made the site addable to the home screen. MODE shows whether the page is currently opened as a normal web page or as a PWA.\n\nFor example, if the page is opened in a normal browser tab, it is shown as WEB. ONLINE shows whether the device currently has a network connection. If it says ONLINE, the device can communicate with the network.\n\nThe Service Worker is one of the most important parts of a PWA. It sits between the page and the network.",
     "next_article": "en--pwa-security-safety-2"
@@ -2538,6 +2572,7 @@
     "excerpt": "PWAの「ホーム画面に追加」は、いつ案内するのが効果的？初回訪問ですぐ表示するのではなく、記事を読み終えた時、Webツールを使った後、再訪した時など、ユーザーが「また使いたい」と感じるタイミングからホーム画面追加のUXを考えます。",
     "category": "PWA",
     "published": "2026-09-09",
+    "hub": "pwa-install",
     "translation": "en--pwa-add-to-home-screen-best-timing-2",
     "summary": "PWAを作ったら、できればユーザーにホーム画面へ追加してもらいたい。そこで考えるのが、「ホーム画面に追加できます」という案内をどこで出すかです。技術的にはどこでも出せますが、私は「追加できます」と伝えるタイミングより、「また使いたい」と思ったタイミングの方が重要だと思っています。\n\n初めて開いたWebサイトで、いきなり「ホーム画面に追加してください」と言われたらどうでしょう。その状態では、ユーザー側にホーム画面へ残す理由がありません。そもそも、なぜユーザーはWebページをホーム画面へ置くのでしょう。\n\n一度しか使わないページなら、ホーム画面に残しておく必要はありません。最後まで読んだということは、少なくともその内容に一定の興味があった可能性があります。> この記事やサイトをまた読みたい場合は、ホーム画面に追加しておくとすぐ戻れます。",
     "next_article": "home-add-cannot"
@@ -2551,6 +2586,7 @@
     "excerpt": "When is the best time to suggest adding a PWA to the home screen? Instead of asking immediately on the first visit, consider moments when users have already experienced value: after reading an article, completing a web tool task, returning to the site, or finishing a booking.",
     "category": "PWA",
     "published": "2026-09-09",
+    "hub": "pwa-install-en",
     "translation": "pwa-add-to-home-screen-best-timing",
     "summary": "Once you build a PWA, you probably want users to add it to their home screen. That creates another question: when should you actually ask them? You could show a large message immediately, place a suggestion halfway through the page, or wait until the user finishes using a web tool.\n\nImagine opening a website for the first time and immediately being asked to add it to your home screen. You have not read the article yet. Why would someone keep a web page on their home screen?\n\nA page used once may not need a permanent icon. For blog content, the end of the article is one obvious option.",
     "next_article": "en--pwa-home-screen-benefits-return-visits-2"
@@ -3157,6 +3193,7 @@
     "summary": "PWAとしてホーム画面に追加したアイコンは、後からユーザーが起動URLだけを自由に変更することは基本的にできません。\n\n違うページが開く場合は、まずアイコンを削除し、目的のページをブラウザで開いてから追加し直しましょう。それでもトップページが開くなら、サイト側のWeb App Manifestで`start_url`が`/`などに固定されている可能性があります。\n\n制作者側では、ページごとに適切なManifestを用意し、`start_url`に`.`を指定することで、個別ページを起動先にする設計も可能です。ただし、`.`はManifestのURLを基準に解決されるため、単純な書き換えだけでは実現できません。\n\n特定のURLを保存したいだけなら、ブラウザのブックマークが適しています。PWAはサイト側が設計するアプリの入口、ブックマークはユーザーが保存するURLという違いがあります。",
     "category": "iphone",
     "published": "2026-09-26",
+    "hub": "pwa-install",
     "translation": "en--pwa-change-launch-url-wrong-page-2",
     "next_article": "ios_pwa_manifest"
   },
@@ -3170,6 +3207,7 @@
     "summary": "You generally cannot edit an installed PWA's launch URL directly. If your home screen icon opens the wrong page, first remove it, open the exact URL you want in your browser, and add it to the home screen again.\n\nIf it still opens the homepage, the website's Web App Manifest may define a fixed launch destination through `start_url`, such as `/`. This is controlled by the website, not something users can normally change after installation.\n\nFor developers, a page-specific Manifest using `start_url: \".\"` can support individual page entrances, but the relative URL must resolve to the intended page. Simply changing a shared Manifest is not enough.\n\nIf you only want to reopen a specific URL later, a browser bookmark is often the better choice. A PWA follows the website's application design, while a bookmark preserves the URL selected by the user.",
     "category": "iOS",
     "published": "2026-09-26",
+    "hub": "pwa-install-en",
     "translation": "pwa-change-launch-url-wrong-page",
     "next_article": "en--ios-pwa-url-change-fix"
   },
@@ -3239,6 +3277,7 @@
     "summary": "Androidで「ホーム画面に追加」が見つからない場合、まずChromeのメニューに「インストール」がないか確認しましょう。Webサイトのショートカット追加とPWAのインストールは異なる仕組みで、表示される項目や起動後の動作も変わります。\n\n項目が見つからない場合は、LINEやInstagramなどのアプリ内ブラウザではなくChromeで直接開き、すでにインストールされていないか確認してください。アイコンにChromeのマークが付いていても、追加自体が失敗したとは限りません。\n\n制作者側ではHTTPS、Web App Manifest、アイコン、start_urlを確認します。Service Workerはインストールの必須条件ではありません。複数PWAではidやscopeも重要です。\n\n「ホーム画面に追加できない」のか「期待したPWAとしてインストールされない」のかを区別することが解決への近道です。",
     "category": "PWA",
     "published": "2026-10-01",
+    "hub": "pwa-install",
     "translation": "en--android-home-screen-add-install-missing-2",
     "next_article": "pwa-install-button-not-showing"
   },
@@ -3252,6 +3291,7 @@
     "summary": "If Add to Home Screen is missing on Android, first check whether Chrome shows Install instead. Installing a PWA and creating a website shortcut are different actions, even though both can place an icon on your home screen.\n\nIf neither option appears, open the website directly in Chrome rather than an in-app browser such as LINE or Instagram. Also check whether the web app is already installed.\n\nFor developers, verify HTTPS, the Web App Manifest, icon settings, and start_url. A Service Worker is not strictly required for PWA installation. If the icon looks incorrect, check the any and maskable icon configurations. If it opens the wrong page, inspect start_url. Multiple PWAs on the same domain may also require careful configuration of id and scope.\n\nThe key is to distinguish between being unable to add a website to the home screen and being unable to install it as the PWA you expected.",
     "category": "Mobile",
     "published": "2026-10-01",
+    "hub": "pwa-install-en",
     "translation": "android-home-screen-add-install-missing",
     "next_article": "en--pwa-install-button-not-showing-2"
   },
