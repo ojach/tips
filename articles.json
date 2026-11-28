@@ -1,4 +1,52 @@
 {
+  "cache-sw": {
+    "title": "PWAのキャッシュ・Service Worker完全ガイド｜データ保存・オフライン対応・更新の仕組み",
+    "permalink": "cache-sw",
+    "language": "ja",
+    "show_thumbnail": false,
+    "meta_description": "ブラウザキャッシュ、localStorage、Cache API、Service Workerの違いから、オフライン対応、アイコン更新、Safariのサイトデータ削除まで解説。PWA LABの検証とOJappの設計をもとに、必要な保存技術を考えます。",
+    "excerpt": "PWAを作るために、すべてをキャッシュする必要はありません。保存とアプリ化の仕組みを整理します。",
+    "summary": "PWAのホーム画面への追加とオフライン対応は別の仕組みです。HTTPキャッシュは通信を減らし、localStorageは設定などを保存し、Cache APIはレスポンスを明示的に保存します。Service Workerは制御対象のページの通信を扱い、用途に応じてCache FirstやNetwork Firstなどを実装できます。\n\n更新が反映されない場合は、HTTPキャッシュ、Workerの更新状態、Cache Storage、端末に登録されたアイコンを切り分けます。サイトデータ削除ではログインや設定も失われる可能性があります。\n\nOJappでは独自のService Workerを必須とせず、動的Manifestでホーム画面の入口を作っています。対応ブラウザではManifest中心の構成でもアプリ化できるため、オフライン処理は必要な機能に合わせて設計するのが重要です。",
+    "category": "cache",
+    "published": "2026-11-29",
+    "translation": "en--cache-sw"
+  },
+  "en--cache-sw": {
+    "title": "PWA Cache and Service Worker Guide: Storage, Offline Support, and Updates",
+    "permalink": "en/cache-sw",
+    "language": "en",
+    "show_thumbnail": false,
+    "meta_description": "Understand browser caching, localStorage, Cache API, Service Workers, offline strategies, icon updates, and website data through PWA LAB and OJapp development.",
+    "excerpt": "Separate home screen installation from storage and offline behavior.",
+    "summary": "Home screen installation and offline support are separate mechanisms. HTTP caching reduces network traffic, localStorage preserves small settings, and the Cache API explicitly stores responses. Service Workers can handle requests from controlled pages using strategies such as Cache First or Network First.\n\nWhen updates fail to appear, distinguish HTTP caching, worker lifecycle, Cache Storage, and installed icon metadata. Clearing website data can also remove login sessions and preferences.\n\nOJapp uses dynamically generated manifests without requiring a custom Service Worker. Supporting browsers can provide app-like launching without one. Design offline behavior around actual feature requirements rather than treating caching as a mandatory part of every PWA.",
+    "category": "cache",
+    "published": "2026-11-29",
+    "translation": "cache-sw"
+  },
+  "home-design": {
+    "title": "スマホのホーム画面デザイン完全ガイド｜PWAアイコンの作り方と設計思想",
+    "permalink": "home-design",
+    "language": "ja",
+    "show_thumbnail": false,
+    "meta_description": "スマホのホーム画面カスタマイズからPWAアイコンの作り方、画像サイズ、maskable、name・short_name・iconsの役割まで解説。OJappやPetalの開発経験と1ヶ月のアイコン更新実験から、ホーム画面に馴染むデザインを考えます。",
+    "excerpt": "綺麗な画像を作るだけではない。自分のホーム画面に残したくなる入口の設計を考えます。",
+    "summary": "ホーム画面デザインでは、見た目の統一感だけでなく、目的のページを見つけやすいことが重要です。アイコンの原稿は512×512px以上の正方形を目安にし、縮小や端末側のマスクを考慮して余白を確保します。壁紙やウィジェットは表示枠に合わせて作ります。\n\nPWAではManifestの`name`・`short_name`・`icons`で名前や画像の候補を指定できます。iPhoneでは`apple-touch-icon`が優先される場合もあります。OJappやPetalでは、ページごとに識別できる入口を作ることを重視しています。\n\n実機検証では、画像変更後に1ヶ月放置してもiPhone・Androidのアイコンは変わらず、何度起動しても更新されませんでした。再追加では新しい画像が反映され、PCでは更新案内が表示されました。既存アイコンの即時更新を前提にせず、長く使えるデザインを考えることが大切です。",
+    "category": "PWA",
+    "published": "2026-11-28",
+    "translation": "en--home-design"
+  },
+  "en--home-design": {
+    "title": "Home Screen Design Guide: Creating PWA Icons That Belong on Your Phone",
+    "permalink": "en/home-design",
+    "language": "en",
+    "show_thumbnail": false,
+    "meta_description": "Explore smartphone home screen customization, PWA icon sizes, maskable icons, app names, and icon updates through OJapp development and real-device testing.",
+    "excerpt": "Design recognizable home screen entries, not just attractive images.",
+    "summary": "Home screen design combines visual customization with recognizable entry points. Start with a square icon master of at least 512 × 512 px, keep essential artwork away from the edges, and prepare ordinary and maskable assets as needed. Wallpaper and widget dimensions depend on their display areas.\n\nA PWA manifest provides `name`, `short_name`, and `icons`, while the browser and operating system determine the actual presentation. On iPhone, `apple-touch-icon` may take precedence. OJapp and Petal illustrate why page-specific icons can be useful.\n\nIn my one-month test, installed iPhone and Android icons retained the old image even after repeated launches. Re-adding the apps displayed the new image, while PC offered an update notice. Design icons as recognizable, lasting entry points rather than assuming they will update immediately.",
+    "category": "PWA",
+    "published": "2026-11-28",
+    "translation": "home-design"
+  },
   "pwa-install": {
     "title": "PWAのインストールと表示UX完全ガイド｜ホーム画面への追加から起動後の使い心地まで",
     "permalink": "pwa-install",
@@ -22,6 +70,18 @@
     "category": "PWA",
     "published": "2026-11-28",
     "translation": "pwa-install"
+  },
+  "en--dev-seo": {
+    "title": "SEO and AIO for Indie Developers: Building a Blog for Search and AI Citations",
+    "permalink": "en/dev-seo",
+    "language": "en",
+    "show_thumbnail": false,
+    "meta_description": "A practical guide to SEO and AIO for indie developers, covering self-built blogs, firsthand content, Cloudflare infrastructure, and mobile reader experience.",
+    "excerpt": "Ten articles on building your own blog, improving search visibility, and writing for mobile readers in the age of AI search.",
+    "summary": "Independent developers can build search visibility by combining a fast, maintainable website with original content grounded in firsthand experience. My approach uses OJapp Blog Kit, a self-built static site generator, alongside Cloudflare services where needed.\n\nFor SEO and AIO, I focus on clear answers, supporting evidence, and original experiments. AI helps organize and edit the material, while the developer remains responsible for its accuracy and originality.\n\nMobile readability matters too: readers should find answers without unnecessary scrolling or confusing layouts. This guide connects ten articles covering infrastructure, AI search, and reader experience. None of these techniques guarantees rankings or AI citations.",
+    "category": "SEO",
+    "published": "2026-11-25",
+    "translation": "dev-seo"
   },
   "dev-seo": {
     "title": "個人開発ブログのSEO・AIO戦略｜自作サイトの運営と検索流入を伸ばす実践記録",
@@ -67,6 +127,7 @@
     "summary": "キャッシュ・Cookie・ローカルストレージは、どれも端末に保存されるWebデータですが、役割は異なります。キャッシュは画像やCSSなどを再利用して読み込みを効率化する仕組み。削除すると必要なファイルを再取得するため、次回の表示が一時的に遅くなることがあります。\n\nCookieはログイン状態の識別やサイト設定などに使われ、消すとログアウトする場合があります。`localStorage`はWebアプリの設定や状態を保存する仕組みで、削除すると未同期の入力内容などが失われる可能性があります。\n\nPWAではService WorkerとCache APIによる別の保存も使われるため、通常のキャッシュ削除だけで問題が解決するとは限りません。ブラウザの「サイトデータを削除」は複数の保存領域に影響することもあります。容量整理や不具合対策では、削除対象を確認し、必要なデータまで一括削除しないことが大切です。",
     "category": "Web Dev",
     "published": "2026-02-01",
+    "hub": "cache-sw",
     "translation": "en--local-storage-basics-2",
     "next_article": "localstorage-limit"
   },
@@ -121,6 +182,7 @@
     "summary": "2026年のホーム画面カスタマイズは、既製テーマで見た目を統一するだけでなく、自分に必要なアイコンやWebページを選んで置く方向へ変わりつつあります。2024年以降、iPhoneの純正機能でアイコンの色味やダーク表示、サイズなどを調整しやすくなり、簡単な統一感を出すためだけに外部テーマを使う必要性は小さくなりました。一方、好きなWebサイトやショップ、個人ページを専用の入口としてホーム画面に置きたいという用途は残ります。ショートカットは個人の自由な設定に向いていますが、他人にも同じ設定を使ってもらうには手順が必要です。この記事では、完成品を買うより自分で必要なものを組み合わせる方向に価値が移る、という見方を紹介します。これは市場全体の確定的な統計ではなく、純正機能の進化と制作経験から考えた傾向です。",
     "category": "UI/UX",
     "published": "2026-02-01",
+    "hub": "home-design",
     "translation": "en--trend-2026-2",
     "next_article": "safari-pwa-end"
   },
@@ -134,6 +196,7 @@
     "summary": "ホーム画面アイコンを自作するなら、まず512×512px以上の正方形画像を用意します。デザインを統一したいならCanva、写真をそのまま使うならスマホの写真編集アプリが手軽です。1024×1024pxで作っても構いませんが、すべての端末で必須というわけではありません。\n\n重要なのは、画像を作ることとホーム画面に設定することは別だという点です。iPhoneではショートカットを使って、好きな画像からアプリやURLを開くアイコンを作れます。ただし元のアプリのアイコン自体が変わるわけではありません。Webページを独自のアイコンで置くなら、OJappなどのURL用ツールやサイト側の設定が候補になります。\n\nAndroidはブラウザやホームアプリによって設定方法が異なります。画像は端に余白を取り、細かい文字を避けると見やすくなります。表示が古い場合は追加し直して確認しましょう。",
     "category": "Web Dev",
     "published": "2026-02-01",
+    "hub": "home-design",
     "translation": "en--make-icon-2",
     "next_article": "home-add-basic"
   },
@@ -187,6 +250,7 @@
     "excerpt": "ショートカット不要でホーム画面アイコンを自由に変更する方法を解説。",
     "category": "スマホお役立ち",
     "published": "2026-02-01",
+    "hub": "home-design",
     "translation": "en--icon-change-3",
     "summary": "iPhoneの「ホーム画面に追加」で設定されるWebサイトのアイコンは、本来ユーザーが自由に変更できません。しかし OJapp を使えば、ショートカットを使わずにホーム画面のアイコンと名前を、好きなデザインに変更できます。多くのWebサイトでは、ホーム画面に追加した際に “サービス側のアイコン” が使われる仕様になっています。\n\nこれは「そのサイト自身のアイコンが使われる」というSafariの標準的な仕組みによるものです。ショートカットを使えばアイコンを変更できますが、次のようなデメリットがあります。「毎回この作業をするのは面倒…」という人も多く、綺麗に統一したいのに途中で挫折しがちです。\n\nOJapp は、Webサイトをホーム画面に追加する際の アイコン・アプリ名・URL を自由に設定できるツールです。",
     "next_article": "shortcut-compare"
@@ -200,6 +264,7 @@
     "excerpt": "BOOTHやBASEのショップをホーム画面に追加したときのアイコン問題と対策",
     "category": "スマホお役立ち",
     "published": "2026-02-01",
+    "hub": "home-design-en",
     "translation": "en--icon-change-2-2",
     "summary": "Webサイト側に設定されている apple-touch-icon を参照してアイコンを決めます。が使われるのは、サービスがそう設定しているためです。ショップをホーム画面に置いてもらえるのは嬉しいことです。\n\n次の理由でお客さんにやってもらうのは現実的ではありません。アイコン・タイトル・URL を自由に設定できるWebツールです。",
     "next_article": "icon-change"
@@ -293,6 +358,7 @@
     "summary": "To create a custom Home Screen icon, start with a square image of at least 512 × 512 pixels. Canva is useful for matching designs, while a basic photo editor is often enough for a personal photo. Designing at 1024 × 1024 pixels is fine, but it is not a universal requirement.\n\nCreating the image and placing it on the Home Screen are separate steps. On iPhone, Apple Shortcuts can create a custom icon that launches an app or URL, without changing the original app icon. For websites, URL-based tools such as OJapp or the site’s own Web App Manifest can provide a branded entry.\n\nOn Android, the available options depend on the browser and launcher. Keep important details away from image edges, avoid tiny text, and test on a real device. If an older icon persists, removing and re-adding the Home Screen entry may help.",
     "category": "Web Development",
     "published": "2026-02-02",
+    "hub": "home-design-en",
     "translation": "make-icon",
     "next_article": "en--home-add-basic-2"
   },
@@ -320,6 +386,7 @@
     "summary": "Home Screen customization in 2026 is less about buying a complete matching theme and more about choosing how your phone should look and work. Since 2024, iOS has added built-in options for tinted and dark icons, larger icons, and a more coordinated appearance. That means users who simply want consistent colors may no longer need a separate theme pack. But customization has not disappeared. People may still want their own icons, layouts, and shortcuts without committing to someone else’s design. The article argues that flexible creation tools could become more valuable than preset collections as Apple’s built-in options improve. This is an interpretation of changing features and user needs, not a measured claim that theme sales have collapsed or that every user prefers the same approach.",
     "category": "Web Development",
     "published": "2026-02-02",
+    "hub": "home-design-en",
     "translation": "trend-2026",
     "next_article": "en--history-of-ios-webclip-shadow-cache"
   },
@@ -374,6 +441,7 @@
     "summary": "Cache, cookies, and localStorage all keep data on your device, but they serve different purposes. Browser cache reuses downloaded resources such as images and CSS. Clearing it usually means those files must be downloaded again, so the next page load may be slower.\n\nCookies often support login sessions and site preferences. Deleting them can sign you out. The `localStorage` API saves web app settings and state; clearing it may erase unsynced information.\n\nPWAs may also store offline resources using Service Workers and the Cache API, which is separate from ordinary browser cache. Clearing all site data can affect several storage systems at once. Check the selected categories before deleting anything, especially if you rely on saved app data.",
     "category": "Web Dev",
     "published": "2026-02-02",
+    "hub": "cache-sw-en",
     "translation": "local-storage-basics",
     "next_article": "en--localstorage-limits"
   },
@@ -387,6 +455,7 @@
     "summary": "localStorageはブラウザに文字列を保存する仕組みで、容量は一般にオリジンごと約5MiBが目安です。保存期限はありませんが、ユーザーによる削除やSafariのプライバシー保護、保存領域の管理によってデータが消える可能性があります。読み書きは同期処理で、大きなデータには不向きです。またJavaScriptから参照できるため、XSSによる情報流出にも注意が必要です。UI設定など消えても復旧できる小さな値に使い、重要なデータはサーバー側で管理しましょう。",
     "category": "cache",
     "published": "2026-02-02",
+    "hub": "cache-sw",
     "translation": "en--localstorage-limits",
     "next_article": "delete-home-screen-website-data"
   },
@@ -400,6 +469,7 @@
     "summary": "localStorage stores string values in the browser and commonly has a quota of about 5 MiB per origin. It has no built-in expiration date, but browser privacy policies, user actions, and storage management can remove data. Its synchronous API is unsuitable for frequent large reads and writes, and values are accessible to same-origin JavaScript, creating risks when XSS vulnerabilities exist. Use it for small, recoverable preferences. Choose IndexedDB for larger structured data and keep important records backed up on a properly secured server.",
     "category": "Web Development",
     "published": "2026-02-02",
+    "hub": "cache-sw-en",
     "translation": "localstorage-limit",
     "next_article": "en--delete-home-screen-website-data-2"
   },
@@ -413,6 +483,7 @@
     "summary": "ブラウザキャッシュは、HTML・CSS・JavaScriptなどを保存して再利用し、表示を高速化する仕組みです。実務でいう「強キャッシュ」は有効期間内の再利用、「弱キャッシュ」はETagやLast-Modifiedを使った再検証を指します。`no-cache`は保存禁止ではなく、再利用前の確認を要求する指定です。更新が反映されない原因はブラウザだけでなく、CDN、Service Worker、デプロイの問題も考えられます。対策の基本はCSS・JSのURLにバージョンやハッシュを付け、HTMLを適切に再検証させること。原因調査ではNetworkパネルでレスポンスとキャッシュの状態を確認し、各層を切り分けます。",
     "category": "cache",
     "published": "2026-02-02",
+    "hub": "cache-sw",
     "translation": "en--browser-cache-explained",
     "next_article": "safari-cache-delete"
   },
@@ -426,6 +497,7 @@
     "summary": "Browser caching stores responses such as HTML, CSS, and JavaScript to speed up repeat visits. “Strong cache” generally means reusing a response while it is fresh; “weak cache” refers to checking with the server using validators such as ETag or Last-Modified. `no-cache` allows storage but requires revalidation, while `no-store` prevents HTTP cache storage. If an update does not appear, the cause may be the browser cache, a CDN, a Service Worker, or the deployment itself. A reliable strategy is to give CSS and JavaScript versioned or content-hashed URLs and configure HTML for appropriate revalidation. Use the Network panel to identify which layer is returning outdated content.",
     "category": "Web Development",
     "published": "2026-02-02",
+    "hub": "cache-sw-en",
     "translation": "browser-cache-how-it-works",
     "next_article": "en--safari-cache-delete-2"
   },
@@ -568,6 +640,7 @@
     "excerpt": "iPhoneでホーム画面アイコンが更新されない原因は、通常のキャッシュとは別にSafariが保持する“影キャッシュ”にあります。表示が変わらない理由と正しい更新方法をわかりやすく解説します。",
     "category": "cache",
     "published": "2026-02-02",
+    "hub": "cache-sw",
     "translation": "en--iphone-icon-not-updating-shadow-cache",
     "summary": "iPhoneでホーム画面アイコンが“更新されない”問題は、多くのユーザーがつまずくポイントです。Safari の “影キャッシュ（Shadow Cache）” にあります。apple-touch-icon または manifest.json の icons を探索します。\n\nこの時、以下のデータが “影キャッシュ” に保存されます。実際、OJapp の開発中にもかなりの頻度で発生しました…。このようにファイル名またはパラメータを変えるのがもっとも確実。\n\nタイミングは完全にランダムなので現実的ではありません。“毎回ユニークな画像パスを生成する仕組み” を採用しています。ユーザーが作ったアイコンが必ず最新の状態で保存されるようになっています。\n\nこれが “影キャッシュ” の正体で、特徴は以下の通りです。",
     "next_article": "browser-cache-how-it-works"
@@ -581,6 +654,7 @@
     "excerpt": "iPhone home screen icons often fail to update due to Safari’s hidden “shadow cache.” Learn why this happens, how Web Clips store icons, and how to force an update.",
     "category": "Web Development",
     "published": "2026-02-02",
+    "hub": "cache-sw-en",
     "translation": "icon-not-updating-shadow-cache",
     "summary": "you’ve run into one of Safari’s most confusing behaviors. and how tools like OJapp avoid the problem entirely. iOS stores the icon in a dedicated cache separate from normal browser cache.\n\nonce iOS saves an icon, it treats it like an app icon — stable and persistent. even if the server image changes. This is why “uploading a new icon” rarely works on iPhone.\n\nApple treats home screen bookmarks like mini-apps. which includes the hidden shadow cache. During OJapp development, this behavior caused countless hours of debugging.\n\niOS identifies icons by URL. If the URL changes, iOS MUST fetch a new file.",
     "next_article": "en--history-of-ios-webclip-shadow-cache"
@@ -659,6 +733,7 @@
     "excerpt": "OJappで作ったホーム画面アイコンが綺麗に見える理由をCSS視点で解説。画像の最適化、角丸、背景処理、解像度など、WebClipが採用するCSS的ルールとその限界を初心者向けにまとめます",
     "category": "CSS",
     "published": "2026-02-02",
+    "hub": "home-design",
     "translation": "en--why-ojapp-icons-look-good-2",
     "summary": "OJapp で作ったホーム画面アイコンは、iPhone・Android のどちらでも綺麗に表示されます。CSSが裏側でどう関わっているかを初心者向けに解説します。ホーム画面アイコンが綺麗に見えるには、CSS 的に次の3つが重要です。\n\nCSS では background-size: cover; のように、画像が引き伸ばされると粗くなります。WebClip も同様で、もとの画像が小さいとぼやけます。CSS の object-fit と同じで、縦長や横長の画像は内部でトリミングされます。\n\nOJapp が正方形に揃えるのは、このズレを回避するためです。ホーム画面アイコンは iOS・Android どちらも自動で角丸処理をします。CSS で言う border-radius と同じ考えです。",
     "next_article": "css-can-and-cannot"
@@ -672,6 +747,7 @@
     "excerpt": "OJapp icons look clean on both iPhone and Android. This article explains why—from high-resolution images to CSS-like WebClip rules and platform limitations.",
     "category": "Web Development",
     "published": "2026-02-02",
+    "hub": "home-design-en",
     "translation": "why-ojapp-icons-look-good",
     "summary": "Icons created with OJapp look surprisingly clean on both iPhone and Android home screens. To understand why icons look clean, it helps to view the process through the logic of CSS. When CSS uses something like background-size: cover;, low-resolution images get blurry.\n\nWebClip behaves similarly—small images lose clarity. Just like object-fit: cover; in CSS, non-square images get cropped. OJapp enforces a perfect square to prevent unpredictable trimming.\n\nHome screen icons automatically receive rounded corners—similar to border-radius. Transparent PNGs naturally blend with these shape rules.",
     "next_article": "en--safari-pwa-limitations-2"
@@ -711,6 +787,7 @@
     "excerpt": "Safariのキャッシュは全消しより“ピンポイント削除”が正解。Webツール開発者が1000回以上試して辿り着いた、影キャッシュまで確実に消えるSafariの正しいキャッシュ削除手順を解説します。",
     "category": "cache",
     "published": "2026-02-02",
+    "hub": "cache-sw",
     "translation": "en--safari-cache-delete-2",
     "summary": "Safari のキャッシュは「悪者」と思われがちですが、実は正しく使えばブラウジングを高速化してくれる重要な仕組みです。ただし Webツール開発や WebClip（ホーム画面アイコン）を扱う時だけは別。「全部消したのに更新されない！」という現象も普通に起きます。\n\nこれが1000回以上の試行錯誤で辿り着いた “100%反映される” 手順です。これをしないとキャッシュが生きたままのことが多いです。Safari は内部で複数のキャッシュ領域を使っています。\n\nSafari 内部の “そのサイトの全キャッシュ領域” をまとめて削除します。特定サイトだけピンポイント削除するのが最も効率的です。正しく削除すれば、開発効率も更新反映も劇的に良くなります。\n\nWebツール開発者になって初めて知る「Safariキャッシュのリアル」。",
     "next_article": "clear-cache"
@@ -724,6 +801,7 @@
     "excerpt": "Safari’s cache shouldn’t be cleared entirely—doing so can break logins and still leave hidden WebClip cache behind. This guide explains the precise, developer-proven method that reliably clears Safari cache for a single website without affecting everything else.",
     "category": "Web Development",
     "published": "2026-02-02",
+    "hub": "cache-sw-en",
     "translation": "safari-cache-delete",
     "summary": "Safari’s cache often gets treated as the “enemy,” especially when web tools stop updating or icons refuse to refresh. But in reality, cache is a performance booster — until you're developing a tool. After clearing Safari’s cache more than 1,000 times while building WebClip and PWA-related tools, I finally arrived at a method that clears every hidden cache layer without breaking logins or wiping unrelated data.\n\nYes — even after clearing everything, Safari may still keep a shadow cache that prevents updated files or icons from appearing. Safari stores cache per domain, which means you can safely delete data for just one website without affecting anything else.",
     "next_article": "en--clear-cache-2"
@@ -737,6 +815,7 @@
     "excerpt": "SafariやChromeのキャッシュは便利だが、消すべき時と絶対に消さない方がいい時がある。Webツール開発者の実体験をもとに、キャッシュ削除の基準をわかりやすく解説。",
     "category": "cache",
     "published": "2026-02-03",
+    "hub": "cache-sw",
     "translation": "en--clear-cache-2",
     "summary": "とりあえずキャッシュを全部消そうとする人が多いです。しかしキャッシュには大きな役割があり、必要以上に削除すると逆にデメリットが大きくなることがあります。キャッシュを消すべきタイミング / 消さないべきタイミング をわかりやすく整理します。\n\nHTML・CSS・JS の更新が見えない状態は、ほぼ確実にキャッシュが原因です。特に iOS Safari はキャッシュが“粘る”ので、影響が大きいです。この場合は Safari → 詳細 → Webサイトデータ → 該当ドメイン削除 が確実です。\n\nページが壊れたように見える場合、一時ファイルが壊れている可能性があります。裏側のキャッシュとブラウザキャッシュのダブルパンチで更新が遅れます。Safari の「履歴とWebサイトデータを消去」は両方消えるため要注意。",
     "next_article": "browser-cache-how-it-works"
@@ -750,6 +829,7 @@
     "excerpt": "Many users delete browser cache too often without knowing the risks. This guide explains when clearing cache is helpful, when it causes problems, and how developers handle Safari’s stubborn caching.",
     "category": "Web Development",
     "published": "2026-02-03",
+    "hub": "cache-sw-en",
     "translation": "clear-cache",
     "summary": "But cache plays an important role, and deleting it too often can slow things down or even break certain web apps. As someone who builds Web tools and has manually cleared Safari cache hundreds of times while debugging, here’s a practical guide on when you should clear your cache — and when you absolutely shouldn’t.\n\nIf HTML, CSS, or JS changes aren’t appearing, cache is almost always the reason — especially on iOS Safari, which holds onto files aggressively. For developers: clearing the cache for only the affected domain is the most effective approach. iOS uses a separate “shadow cache” for WebClip icons, which is NOT cleared by normal cache deletion.",
     "next_article": "en--browser-cache-explained"
@@ -765,7 +845,8 @@
     "published": "2026-02-03",
     "translation": "en--why-cookie-popups-2",
     "summary": "昔はこんなのほとんど無かったのに、急にあちこちで出るようになりましたよね。こういった便利なことは、実は全部 Cookie がこっそり手伝ってくれています。→ つまり基本的には「便利にするための仕組み」 です。\n\nという法律で、世界中のサイトがこれに合わせる流れになりました。→ これが「Cookieを許可しますか？」の正体です。Cookieを拒否しても、ほとんどのサイトは普通に動きます。\n\nプライバシーのルールが世界的に厳しくなったからです。Cookie自体は便利な仕組みで、危険なものではありません。",
-    "next_article": "cookie-consent-tech"
+    "next_article": "cookie-consent-tech",
+    "hub": "pwa-security"
   },
   "en--why-cookie-popups-2": {
     "title": "Why Do Websites Ask “Do You Accept Cookies?” So Often Now? A Beginner-Friendly Guide",
@@ -778,7 +859,8 @@
     "published": "2026-02-03",
     "translation": "why-cookie-popups",
     "summary": "If you browse the web on your phone or computer, you’ve probably noticed that almost every website now asks: Years ago, these pop-ups barely existed. So why are they everywhere today?\n\nCookies are small pieces of data that websites save on your device. Think of them as tiny notes that help the site remember things. because privacy laws became much stricter.\n\nGDPR (General Data Protection Regulation). which is why cookie pop-ups suddenly appeared everywhere. Cookies themselves are not dangerous.\n\nThe important part is what kind of data is stored. These do not track you across the internet.",
-    "next_article": "en--cookie-consent-tech-2"
+    "next_article": "en--cookie-consent-tech-2",
+    "hub": "pwa-security-en"
   },
   "cookie-consent-tech": {
     "title": "Cookie同意バナーの本当の理由｜GDPR・トラッキング・規制をわかりやすく解説",
@@ -791,7 +873,8 @@
     "published": "2026-02-03",
     "translation": "en--cookie-consent-tech-2",
     "summary": "実際にはもっと複雑で、Web技術とプライバシー規制の両方の変化が絡んでいます。Cookie同意バナーが必要になった本当の理由 を技術的視点でわかりやすく解説します。サードパーティCookieの使用を許可するかどうか確認すること です。\n\n2018年の GDPR で義務化されたのは以下の2つ。ePrivacy Directive（クッキー法）。これが「Cookieの保存には同意が必要」という土台を作りました。\n\nCookie同意バナーが増えた背景には、広告業界の問題もあります。ユーザーからすると「知らないうちに追跡されている」状態でした。ITP（Intelligent Tracking Prevention） を導入しています。\n\n「Cookie同意が必要な時代」へ強制的に進めている と言えます。",
-    "next_article": "samesite-basics"
+    "next_article": "samesite-basics",
+    "hub": "pwa-security"
   },
   "en--cookie-consent-tech-2": {
     "title": "The Real Reason Cookie Consent Banners Exist: GDPR, Tracking, and Modern Web Regulations Explained",
@@ -804,7 +887,8 @@
     "published": "2026-02-03",
     "translation": "cookie-consent-tech",
     "summary": "Cookie consent banners appear on almost every website today. a mix of web technology, privacy regulations, and modern tracking limits. why cookie consent is required and what technical changes created this situation.\n\nwho creates them and what they’re used for. Used for login sessions, language settings, shopping carts, etc. Cookie banners exist mainly because of third-party cookies.\n\nBecause websites serve users globally, GDPR rules effectively became worldwide standards. Users were being tracked without knowing. Regulations tightened because tracking became too effective.\n\nSafari essentially forced the web into a “consent-required” world by restricting unapproved tracking.",
-    "next_article": "en--samesite-basics-2"
+    "next_article": "en--samesite-basics-2",
+    "hub": "pwa-security-en"
   },
   "samesite-basics": {
     "title": "SameSite属性を初心者でも理解できるように図解説明｜なぜCookieは勝手に送られなくなったのか？",
@@ -817,7 +901,8 @@
     "published": "2026-02-03",
     "translation": "en--samesite-basics-2",
     "summary": "Webを触り始めると必ず出てくるワードですが、実は仕組みはとてもシンプルです。SameSite=Lax／Strict／None の違い を丁寧に説明します。SameSite は、Cookie が “どんな状況で送られるか” を決める設定です。\n\nChrome が 2020年以降に厳格化し、Web全体で重要になりました。自分のサイトからのアクセス以外では Cookie が一切送られない。基本は Strict と同じですが、“リンクをクリックしたとき” だけ Cookie が送られます。\n\nサードパーティCookie（＝外部サイトでも使えるCookie）を使うときだけ必要になる設定です。これを設定しないと、Cookieが送られずログインできない／決済が失敗することがあります。",
-    "next_article": "local-storage-basics"
+    "next_article": "local-storage-basics",
+    "hub": "pwa-security"
   },
   "en--samesite-basics-2": {
     "title": "SameSite Cookies Explained for Beginners: A Simple Visual Guide",
@@ -830,7 +915,8 @@
     "published": "2026-02-03",
     "translation": "samesite-basics",
     "summary": "The SameSite attribute sounds technical, but the idea behind it is actually simple. It controls when a browser is allowed to send your cookies. Modern browsers like Chrome changed their default behavior, which is why cookies are no longer sent automatically across different websites.\n\nSameSite decides under what conditions a cookie will be sent. Before SameSite became strict, cookies were sent everywhere — even when loading images or iframes from another domain. Strict means the cookie is sent ONLY when navigating inside the same site.\n\nThis is very secure, but too strict for most login-based websites — because clicking a link from another site would break the session.",
-    "next_article": "en--local-storage-basics-2"
+    "next_article": "en--local-storage-basics-2",
+    "hub": "pwa-security-en"
   },
   "petal-worker-r2": {
     "title": "Petal開発記録：GitHub Pages を卒業して Worker + R2 に移行した理由",
@@ -906,6 +992,7 @@
     "excerpt": "スマホだけでホーム画面をおしゃれにしたい人向けに、壁紙・アイコン・ウィジェットの最適な画像サイズをまとめて解説。iPhoneの安全領域、アイコンの視認性、SNS用比率、OJappアイコン生成に最適なサイズも紹介。",
     "category": "スマホお役立ち",
     "published": "2026-02-06",
+    "hub": "home-design",
     "translation": "en--homescreen-image-sizes-2",
     "summary": "スマホはそれぞれに「見た目が崩れない推奨サイズ」が決まっています。1024px は、iPhone / Android の両方で一番きれいに表示されるサイズ。OJapp でアイコンを作るときも、このサイズが自動で使われています。\n\n理由は、iPhone が「視差効果」や「ホーム画面の安全領域」を自動で調整するため。壁紙の構図確認には OJapp Splitter の「3:4」で分割するのが便利です。正方形 or 3:4 の写真をベースに加工すると作りやすいです。\n\n「どのサイズを選べばいいの？」と迷う場面がほぼありません。“最適なサイズを知るだけ” で一気に完成度が上がります。画像サイズの基準を知っておくとデザインの自由度が一気に広がります。",
     "next_article": "icon-change"
@@ -919,6 +1006,7 @@
     "excerpt": "A complete guide to the best image sizes for designing your smartphone home screen. Covers wallpapers, icons, widgets, safe areas on iPhone, recommended SNS ratios, and the ideal size for OJapp icons. Perfect for users who want to design everything directly on their phone.",
     "category": "Web Development",
     "published": "2026-02-06",
+    "hub": "home-design-en",
     "translation": "homescreen-image-sizes",
     "summary": "knowing the optimal image sizes makes everything cleaner and easier. that prevents distortion and keeps your layout consistent. for anyone designing a home screen directly on their phone.\n\nThe 1024px size ensures crisp visuals on both iPhone and Android. OJapp also uses this size as the default for icon generation. OJapp Splitter → 3:4 mode.\n\nDesigning in Square or 3:4 format first makes resizing easier. because these cover most mobile-oriented layouts. knowing the correct image sizes is the real key.\n\nyou can build a clean, unified home screen with nothing but a smartphone.",
     "next_article": "en--make-icon-2"
@@ -1096,6 +1184,7 @@
     "excerpt": "PWAの仕組みで最も重要な「キャッシュ戦略」。Cache First・Network First・Stale-While-Revalidate の違いを、初心者にもわかる図解レベルで解説。表示速度・更新反映・ユーザー体験がどう変わるのかをわかりやすくまとめています。",
     "category": "cache",
     "published": "2026-02-14",
+    "hub": "cache-sw",
     "translation": "en--pwa-cache-strategy-2",
     "summary": "PWA（Progressive Web Apps）の中で最もつまずきやすいポイントが、キャッシュ戦略です。Service Worker を導入すると、ページの表示は速くなりますが、同時に「更新されない問題」や「古いデータが残る問題」も発生します。Webは基本的にネット経由でデータを取りますが、PWAではローカルのキャッシュを利用できます。\n\nこのキャッシュが強力なため、表示が速くなる反面、更新が届きにくくなるという弱点もあります。ブログや頻繁に更新するサービスには向いていない戦略です。更新頻度の高いサイトやSEO重視のサイトは、基本的にこの戦略が安全です。\n\n表示の速さと更新の両立を目指した最もバランスの良い戦略。Cache First は“更新されない”のが正常挙動である。",
     "next_article": "pwa-offline-support-basics"
@@ -1109,6 +1198,7 @@
     "excerpt": "Learn how PWA cache strategies work and why your site sometimes “doesn’t update.” This beginner-friendly guide explains Cache First, Network First, and Stale-While-Revalidate with clear examples, helping you choose the best strategy for speed, reliability, and SEO.",
     "category": "PWA",
     "published": "2026-02-14",
+    "hub": "cache-sw-en",
     "translation": "pwa-cache-strategy",
     "summary": "Among all PWA features, cache strategy is the part that confuses beginners the most. in a way that even complete beginners can understand. Because PWAs cache files locally, they can load extremely fast.\n\nBut if the strategy is wrong, updates fail to appear and the user keeps seeing outdated content. Super fast — but rarely updates. This strategy is not suitable for blogs or frequently updated content.\n\nBest for websites with frequent updates. If your site content changes often, this strategy is the safest choice. The most balanced strategy: fast and up-to-date.\n\nit prioritizes speed over freshness.",
     "next_article": "en--how-pwa-offline-support-works"
@@ -1348,6 +1438,7 @@
     "excerpt": "Webサイトをスマホの「ホーム画面」に違和感なく馴染ませるためのPWAアイコン設計を解説。manifest.jsonの秘匿プロパティから、iOS/Androidで美しく見せるアセット書き出しのコツまで。",
     "category": "PWA",
     "published": "2026-04-11",
+    "hub": "home-design",
     "summary": "「ホーム画面に追加」されたアイコンが、単なるブラウザのショートカットとして浮いて見えてしまうのか、それとも最初からそこにいた「アプリ」として馴染むのか。その境界線は、わずか数行のコードと、数ピクセルのこだわりで決まります。PWAをホーム画面の一部として機能させるための核心は manifest.json です。\n\n単にアイコン画像を指定するだけでなく、以下のプロパティを最適化することで、ブラウザの「外枠」を消し去ることができます。2026年現在も、iOSでのホーム画面体験を最大化するには、マニフェストファイルとは別に apple-touch-icon の指定が欠かせません。iOSは透過情報を無視し、自動的に背景を黒く塗りつぶしてしまうため、あらかじめ背景色を含めた 180x180px の専用アセットを用意するのが「職人」の作法です。",
     "translation": "en--pwa-icon-design-guide-2026",
     "next_article": "pwa-maskable-icon-any-maskable"
@@ -1361,6 +1452,7 @@
     "excerpt": "When someone adds a website to their home screen, its icon can look like an awkward browser shortcut—or like an app that has always belonged there. The difference often comes down to a",
     "category": "PWA",
     "published": "2026-04-11",
+    "hub": "home-design-en",
     "summary": "When someone adds a website to their home screen, its icon can look like an awkward browser shortcut—or like an app that has always belonged there. The difference often comes down to a few lines of configuration and careful visual design. A Web App Manifest defines the name, launch behavior, display mode, and icons of a web app. It is more than a technical checklist: it tells the operating system how to present your website on the home screen. For Android, consider the safe area used when the launcher crops a maskable icon. A design that fills the entire square may lose important details when displayed as a circle or another shape. Safari on iPhone may use `apple-touch-icon` when creating a home screen icon. That means a perfectly configured Manifest does not necessarily guarantee that iOS will choose the image you expect.",
     "translation": "pwa-icon-design-guide-2026",
     "next_article": "en--pwa-maskable-icon-any-maskable"
@@ -1532,6 +1624,7 @@
     "excerpt": "PWAをオフラインでも使えるようにする仕組みを、Service Worker、Cache API、保存するファイルの考え方から初心者向けに解説します。",
     "category": "cache",
     "published": "2026-05-16",
+    "hub": "cache-sw",
     "translation": "en--how-pwa-offline-support-works",
     "summary": "PWAをオフライン対応させるときに、最低限考えるものは主に3つです。Service Workerは、ページとネットワークの間に入る裏方のような存在です。Service Workerは、通常のJavaScriptとは少し違います。\n\nページ上のボタンを動かすためのJavaScriptではなく、通信やキャッシュを管理するためのJavaScriptです。自分でOJ-Passを作ったときも、オフライン対応はかなり意識しました。OJ-Passは、マスターキー、サービス名、作成月からパスワードを再生成するツールです。\n\nオフライン対応でよくある失敗が、「必要なファイルをキャッシュし忘れる」ことです。HTMLだけ保存しても、CSSがなければデザインが崩れます。ただし、何でもかんでもキャッシュすればいいわけではありません。",
     "next_article": "pwa-status-check"
@@ -1627,6 +1720,7 @@
     "excerpt": "PWA offline support works by caching required files in advance with a Service Worker. Here is how it works, what to cache, and what to watch out for.",
     "category": "Web Development",
     "published": "2026-05-29",
+    "hub": "pwa-install-en",
     "translation": "pwa-offline-support-basics",
     "summary": "When you add offline support to a PWA, there are three main things to think about. A Service Worker works like a background layer between the page and the network. A Service Worker is different from regular JavaScript.\n\nIt is not mainly used to move buttons or update UI elements on the page. When I built OJ-Pass, offline support was one of the things I cared about most. OJ-Pass is a tool that regenerates a password from a master key, service name, and creation month.\n\nA common mistake with offline support is forgetting to cache a file that the page actually needs. If you only cache the HTML, the page may appear, but the design can break without CSS.",
     "next_article": "en--pwa-manifest-only-without-service-worker-2"
@@ -1926,7 +2020,8 @@
     "published": "2026-07-11",
     "translation": "en--pwa-start-url-dot-best-practice-2",
     "summary": "PWAでユーザーごとのプロフィールページや商品ページをホーム画面へ追加したい。そう考えたとき、多くの人が starturl にユーザーIDや商品IDを書こうとします。ところがPWA LABで実際に検証を重ねるうちに、それよりもシンプルで柔軟な方法があることに気付きました。\n\nPWAでは、ホーム画面から起動したときに最初に開くページを starturl で指定できます。例えばプロフィールページをホーム画面へ追加したい場合、次のように書きたくなるかもしれません。しかし問題は、ホーム画面へ追加した場所がどこだったとしても、起動時にはトップページへ戻ってしまうことです。\n\nせっかく目的のページをホーム画面へ追加したのに、毎回トップページが開いてしまうのでは使い勝手が良いとは言えません。",
-    "next_article": "pwa-home-screen-wrong-page-start-url"
+    "next_article": "pwa-home-screen-wrong-page-start-url",
+    "hub": "1p1a"
   },
   "en--pwa-start-url-dot-best-practice-2": {
     "title": "PWAs Can Do This: How to Add User-Specific Pages to the Home Screen",
@@ -1939,7 +2034,8 @@
     "published": "2026-07-11",
     "translation": "pwa-start-url-dot-best-practice",
     "summary": "You want users to add individual profile pages or product pages to the home screen as PWAs. When developers think about this, many of them try to put a user ID or product ID directly into starturl. That was my first idea too.\n\nIn a PWA, starturl defines the page that opens when the app is launched from the home screen. For example, if you want to add a profile page to the home screen, you may be tempted to write something like this: The problem is that no matter which page the user adds to the home screen, launching the PWA always sends them back to the top page.\n\nIf the user adds a specific page to the home screen but is sent back to the top page every time, the experience is not very useful.",
-    "next_article": "en--pwa-home-screen-wrong-page-start-url-2"
+    "next_article": "en--pwa-home-screen-wrong-page-start-url-2",
+    "hub": "1p1a-en"
   },
   "1p1a-2": {
     "title": "1P1A（One Page. One App.）というPWA設計思想",
@@ -1980,7 +2076,8 @@
     "published": "2026-08-09",
     "translation": "en--pwa_marketing_wp-plugin-2",
     "summary": "最近ではWordPress向けのPWAプラグインも増えてきました。しかし、実際に導入するメリットや、どんなサイトに向いているのかまで詳しく書かれている記事はあまり多くありません。WordPressサイトへPWA（Progressive Web Apps）機能を追加するプラグインです。\n\nこれまでは手作業で設定する必要がありましたが、プラグインを使えば比較的簡単に導入できるようになります。例えばブログなら、ホーム画面へ追加すると、どの記事から追加してもトップページから始まることが多くあります。これは企業サイトやポータルサイトには非常に相性の良い設計です。\n\nお気に入りの記事や商品ページを、そのままホーム画面へ置けるという考え方です。ログインページやダッシュボードをホーム画面へ追加できます。",
-    "next_article": "ojapp-pwa-code"
+    "next_article": "ojapp-pwa-code",
+    "hub": "home-marketing"
   },
   "home-screen-marketing": {
     "title": "ホーム画面マーケティングとは？PWAで「ページを届ける」という新しいWeb戦略",
@@ -2019,7 +2116,8 @@
     "published": "2026-08-15",
     "translation": "pwa_marketing_wp-plugin",
     "summary": "PWA plugins for WordPress have become increasingly common in recent years. However, there still aren’t many articles that clearly explain the real benefits of using one, or what types of websites can benefit from PWA functionality. A PWA plugin is a plugin that adds Progressive Web App features to a WordPress site.\n\nTraditionally, many of these settings had to be configured manually. Turn the entire website into a single app. For example, on a blog, even if a user adds the site to their home screen while reading an individual article, the installed PWA will often start from the top page.",
-    "next_article": "en--pwa-home-screen-benefits-return-visits-2"
+    "next_article": "en--pwa-home-screen-benefits-return-visits-2",
+    "hub": "home-marketing-en"
   },
   "en--1p1a": {
     "title": "The PWA Design Philosophy of 1P1A (One Page. One App.)",
@@ -2140,7 +2238,8 @@
     "published": "2026-08-19",
     "summary": "PWA（Progressive Web Apps）は、Webサイトをホーム画面へ追加し、アプリのように起動できる技術です。ブラウザからアクセスしていたWebサイトがホーム画面にアイコンとして残り、そこから直接起動できる。しかし、従来のPWAには一つ、大きな前提がありました。\n\n一般的なPWAでは、Web App Manifestにアプリの情報を記述します。サイト全体を一つのアプリとして定義し、ホーム画面から起動するとサイトの入口から始まる。Webブラウザのブックマークは、昔からページ単位です。\n\nをブックマークしたら、次回もそのURLを直接開きます。もちろん、従来型のPWAでも starturl に個別ページを指定することはできます。として、それぞれ独立してホーム画面に残すことを前提としていないため、できません。",
     "translation": "en--pwa-problem-1p1a",
-    "next_article": "1p1a-2"
+    "next_article": "1p1a-2",
+    "hub": "1p1a"
   },
   "en--pwa-problem-1p1a": {
     "title": "The Problem with Traditional PWAs—and the New 1P1A Design Philosophy",
@@ -2153,7 +2252,8 @@
     "published": "2026-08-19",
     "summary": "Progressive Web Apps let websites appear on the home screen and launch in an app-like window. Traditionally, many PWA implementations treat an entire website as one application. That makes sense for some services—but it does not always match what the user wants to save. A typical Manifest launches the site root: When someone adds a product page or article to the home screen, tapping the icon may open the site's home page instead. From the developer's perspective, the PWA is working. From the user's perspective, the page they wanted has disappeared. Think about a particular product, a booking form, a favorite article, or a personal profile. The value is in returning to that exact destination.",
     "translation": "pwa-problem-1p1a",
-    "next_article": "en--1p1a"
+    "next_article": "en--1p1a",
+    "hub": "1p1a-en"
   },
   "pwa-home-screen-add-missing-1s1a": {
     "title": "「ホーム画面に追加」が消えた原因はPWAだった？1S1Aで起きる意外な問題",
@@ -2166,7 +2266,8 @@
     "published": "2026-08-21",
     "summary": "PWAについて調べていたところ、こんな内容の質問を見つけました。> 他のサイトでは「ホーム画面に追加」が出るのに、普段見ているサイトでは表示されなくなった。> 代わりに「○○を起動」のような表示になってしまう。\n\n実際のサイト名やURLは伏せますが、manifest.jsonの構造はだいたい次のようなものでした。注目したいのは starturl と scope です。全部まとめて「Example」という1つのアプリです。\n\nWebサービスそのものをアプリ化したいなら、これは非常に自然な設計です。ここで、サイト運営者とユーザーの意図がズレています。PWAとして認識されるサイトでは、Chromeのホーム画面関連の表示が通常のWebページとは異なる場合があります。\n\nさらに、そのPWAがすでにインストールされていれば、ブラウザ側からすれば新しく同じアプリを追加する必要はありません。",
     "translation": "en--pwa-home-screen-add-missing-1s1a",
-    "next_article": "home-add-cannot"
+    "next_article": "home-add-cannot",
+    "hub": "1p1a"
   },
   "en--pwa-home-screen-add-missing-1s1a": {
     "title": "Did a PWA Make “Add to Home Screen” Disappear? An Unexpected 1S1A Problem",
@@ -2179,7 +2280,8 @@
     "published": "2026-08-21",
     "summary": "I came across a question from someone who could add other websites to their home screen but no longer saw the expected option for one site they used frequently. At first glance, that sounds like a browser problem. But the site's PWA configuration may also be part of the explanation. A site-oriented PWA often uses settings such as: This tells the browser that the site root is the launch destination and that a broad set of pages belongs to the same app experience. I call this 1S1A (One Site. One App.). It is a reasonable design for a service intended to have one installed identity.",
     "translation": "pwa-home-screen-add-missing-1s1a",
-    "next_article": "en--home-add-basic-2"
+    "next_article": "en--home-add-basic-2",
+    "hub": "1p1a-en"
   },
   "pwa-benefits-2026": {
     "title": "PWAのメリットとは？2026年は「ホーム画面に置ける」だけでも十分な理由",
@@ -2218,7 +2320,8 @@
     "published": "2026-08-24",
     "translation": "en--pwa-1s1a-1p1a-manifest-2",
     "summary": "たった \"/\" と \".\" の違いが、PWAの設計そのものを変える。PWA（Progressive Web Apps）を作るとき、Web App Manifestには name、starturl、scope、icons など、アプリとして動作するための情報を設定します。一般的なPWAでは、1つのWebサイトに対して1つのManifestを用意します。\n\nサイト全体で1つの manifest.json を使用します。各ページの から同じManifestを読み込みます。それぞれを独立したアプリとしてホーム画面へ追加したいとします。\n\nそれぞれ違う名前、違うアイコンを持ったアプリとしてホーム画面に置く設計です。1S1Aでは、サイト全体で同じManifestを使えました。各ページから、それぞれ専用のManifestを読み込みます。",
-    "next_article": "pwa-user-defined-app"
+    "next_article": "pwa-user-defined-app",
+    "hub": "1p1a"
   },
   "en--pwa-1s1a-1p1a-manifest-2": {
     "title": "A New Standard for PWAs: Two Designs Shaped by the Web App Manifest",
@@ -2231,7 +2334,8 @@
     "published": "2026-08-25",
     "translation": "pwa-1s1a-1p1a-manifest",
     "summary": "A difference as small as \"/\" and \".\" can change the entire architecture of a PWA. When building a PWA (Progressive Web App), the Web App Manifest defines information such as name, starturl, scope, and icons that determines how the app behaves. In a typical PWA, one Manifest is created for one website.\n\nFirst, let's look at a typical PWA structure. The entire website uses a single manifest.json. Now let's change the way we think about the site.\n\nto be independently installable on the home screen. With 1S1A, the entire website can use the same Manifest. With 1P1A, things are different.",
-    "next_article": "en--pwa-user-defined-app-2"
+    "next_article": "en--pwa-user-defined-app-2",
+    "hub": "1p1a-en"
   },
   "pwa-user-benefits": {
     "title": "PWAのメリットをユーザー側から考える。ホーム画面に追加したくなる理由の作り方",
@@ -2352,7 +2456,8 @@
     "published": "2026-08-31",
     "translation": "en--pwa-user-defined-app-2",
     "summary": "PWAでは、WebサイトやWebページをホーム画面に追加し、Appのような入口として使うことができます。これまでPWAについて考えるとき、「開発者がどのようなAppを作るか」という視点が中心でした。それとも、特定のページを1つのAppとして設計するのか。\n\nURLは、単にWebページの場所を表すだけではありません。Query Parameterなどを使えば、同じページでも異なる状態をURLとして表現できます。PWA UDAは、開発者が完成したAppの使い方をすべて固定するのではなく、ユーザーがWeb上の機能・ページ・状態から自分に必要なものを選び、自分のAppとして定義できるようにする設計思想です。\n\nここでいう「User Defined」は、ユーザー自身がプログラムを書いてAppを開発するという意味ではありません。",
-    "next_article": "pwa-start-url-dot-best-practice"
+    "next_article": "pwa-start-url-dot-best-practice",
+    "hub": "1p1a"
   },
   "minimal-pwa-quick-start": {
     "title": "PWA開発を一瞬で終わらせる「とりあえず入れるPWA」",
@@ -2403,7 +2508,8 @@
     "published": "2026-09-07",
     "translation": "en--pwa-vs-external-apk-2",
     "summary": "AndroidアプリをGoogle Play以外から配布する方法として、Webサイト上にAPKファイルを置いて直接インストールしてもらう方法があります。一方、PWAもWebサイトから直接ホーム画面へ追加・インストールできるため、Google Playを必ずしも必要としません。どちらもストアを経由せず配布できるという点では似ています。\n\n「ストアを使わずにアプリっぽく配れる」という一点だけを見ると似ています。外部APKの場合、WebサイトなどからAPKファイルをダウンロードします。そしてAndroidへ、そのAPKをアプリとしてインストールします。\n\nPWAの場合、APKファイルをユーザーへ配る必要はありません。対応しているブラウザやOSなら、そこからインストールしたり、ホーム画面へ追加したりできます。",
-    "next_article": "what-is-pwa"
+    "next_article": "what-is-pwa",
+    "hub": "pwa-security"
   },
   "home-screen-website-app-or-bookmark": {
     "title": "ホーム画面に追加したWebサイトはアプリ？ブックマーク？PWAとの違いを解説",
@@ -2441,6 +2547,7 @@
     "excerpt": "iPhoneやAndroidのホーム画面に追加したWebサイトやPWAを削除すると、ログイン情報やCookie、localStorage、キャッシュまで消えるのでしょうか。ホーム画面のアイコン削除とWebサイト側のデータ削除は別物です。何が消えて何が残るのかをわかりやすく解説します。",
     "category": "cache",
     "published": "2026-09-08",
+    "hub": "cache-sw",
     "translation": "en--delete-home-screen-website-data-2",
     "summary": "Webサイトをホーム画面に追加してしばらく使ったあと、「もう使わないから消そう」と思うことがあります。でも、普通のアプリと同じようなアイコンが並んでいると少し気になるのが、これを削除したら中のデータも全部消えるのか？ということです。ログインし直しになる？ Cookieは消える？ localStorageに保存した設定は？ PWAならService Workerのキャッシュも一緒に消える？\n\n前の記事で、ホーム画面に追加したWebサイトはアプリなのか、ブックマークなのかを整理しました。ホーム画面にあるWebサイトのアイコンは、そのページやWebアプリへアクセスするための入口です。ホーム画面のWebサイトを削除しても、そのサービスに作ったユーザーアカウント自体が削除されるわけではありません。",
     "next_article": "home-screen-website-app-or-bookmark"
@@ -2454,6 +2561,7 @@
     "excerpt": "What happens when you remove a website or PWA from your iPhone or Android home screen? Learn what happens to your account, login session, cookies, localStorage, Service Worker caches, and other web data—and why deleting a home screen icon is not the same as deleting your account.",
     "category": "Cache",
     "published": "2026-09-08",
+    "hub": "cache-sw-en",
     "translation": "delete-home-screen-website-data",
     "summary": "After using a website from your home screen for a while, you may eventually decide to remove it. Because the icon sits next to regular apps, that can raise an important question: if I delete this icon, does all of the website's data disappear too? What about settings stored in localStorage?\n\nIn the previous article, I explained whether a website added to the home screen is an app, bookmark, or PWA. A home screen icon gives you an entry point to a website or web app. This part is relatively straightforward.\n\nIf you created an account on a web service, removing its home screen icon does not normally delete that account from the service's servers.",
     "next_article": "en--local-storage-basics-2"
@@ -2469,7 +2577,8 @@
     "published": "2026-09-08",
     "translation": "en--pwa-detect-standalone-launch-2",
     "summary": "PWAを作っていると、「今このページは普通のブラウザから見られているのか、それともホーム画面から開かれたのか」を判定したくなることがあります。例えば、ホーム画面から開いた時だけ案内を変えたり、PWA起動だけをアクセス解析したりする場合です。この判定は、JavaScriptの matchMedia() を使うとかなり簡単にできます。\n\nwindow.matchMedia() は、CSSのMedia Queryと同じような条件をJavaScriptから確認できる仕組みです。という条件に現在の表示状態が一致しているかを見ています。PWAのWeb App Manifestでは、display を使って起動時の表示方法を指定できます。\n\nstandalone は、通常のブラウザUIを減らし、独立したアプリのような画面でWebページを表示するモードです。",
-    "next_article": "pwa-home-screen-only-content"
+    "next_article": "pwa-home-screen-only-content",
+    "hub": "home-marketing"
   },
   "en--pwa-detect-standalone-launch-2": {
     "title": "How to Detect If a PWA Was Opened from the Home Screen with display-mode: standalone",
@@ -2482,7 +2591,8 @@
     "published": "2026-09-08",
     "translation": "pwa-detect-standalone-launch",
     "summary": "When building a PWA, you may want to know whether the current page was opened in a normal browser or launched as an installed, standalone web app. That distinction becomes useful when you want to change the interface for home screen users, measure PWA launches, or show something only when the web app is running in its app-like mode. Fortunately, the basic JavaScript check is very small.\n\nwindow.matchMedia() lets JavaScript evaluate a media query, much like CSS does. The .matches property becomes true when the current display mode matches standalone and false when it does not.",
-    "next_article": "en--pwa-home-screen-only-content-2"
+    "next_article": "en--pwa-home-screen-only-content-2",
+    "hub": "home-marketing-en"
   },
   "pwa-home-screen-only-content": {
     "title": "PWAをホーム画面から開いた時だけ表示を変える方法｜限定案内・クーポンにも使える",
@@ -2494,7 +2604,8 @@
     "published": "2026-09-08",
     "translation": "en--pwa-home-screen-only-content-2",
     "summary": "PWAがホーム画面から開かれたか判定できるようになると、その次にやりたくなるのが「ホーム画面から開いた時だけ表示を変える」ことです。でもホーム画面のアイコンから開いた時だけ、専用メニューを出したり、「おかえりなさい」と表示したり、限定案内を見せたりする。前回使った display-mode: standalone の判定結果を、そのまま表示切り替えに使えます。\n\nmatchMedia('(display-mode: standalone)') でstandalone表示を確認し、iPhone向けとして navigator.standalone も合わせています。この判定については、PWAの状態を確認する方法｜MODE・Service Worker・Installableの意味でも実機確認を含めて紹介しています。",
-    "next_article": "home-screen-marketing"
+    "next_article": "home-screen-marketing",
+    "hub": "home-marketing"
   },
   "en--pwa-home-screen-only-content-2": {
     "title": "How to Show Content Only When a PWA Is Opened from the Home Screen",
@@ -2507,7 +2618,8 @@
     "published": "2026-09-08",
     "translation": "pwa-home-screen-only-content",
     "summary": "Once you can detect whether a PWA is running from the home screen, the next interesting step is to change what users see in that mode. The normal browser version can remain an ordinary website, while a standalone launch can show a dedicated menu, a welcome-back message, a special offer, or another home-screen-specific element. The implementation is surprisingly small.\n\nThe first condition checks whether the current display mode is standalone. The second provides an iOS-oriented fallback using navigator.standalone. Open the website normally in Safari or Chrome and the message stays hidden.",
-    "next_article": "en--home-screen-marketing-2"
+    "next_article": "en--home-screen-marketing-2",
+    "hub": "home-marketing-en"
   },
   "pwa-home-screen-launch-analytics": {
     "title": "PWAのホーム画面起動をアクセス解析する方法｜UTMだけでは分からない再訪を計測",
@@ -2520,7 +2632,8 @@
     "published": "2026-09-09",
     "translation": "en--pwa-home-screen-launch-analytics-2",
     "summary": "PWAをホーム画面に追加してもらったあと、本当にそこから再訪されているのか。これ、普通のアクセス解析だけを見ていると意外と分かりません。ページビューは増えていても、Google検索から来たのか、ブックマークなのか、ホーム画面のアイコンを押して戻ってきたのかが混ざってしまいます。\n\nアクセス元を分ける方法として、まず思い浮かぶのがUTMパラメータです。これをPWAの starturl に入れておけば、ホーム画面から起動したアクセスへ印を付けることはできます。display-mode: standalone に一致しているかを確認し、iPhone向けに navigator.standalone も合わせて見ています。\n\nこの判定を使えば、通常のブラウザ表示と、ホーム画面側のPWA表示を分けられます。",
-    "next_article": "pwa-detect-standalone-launch"
+    "next_article": "pwa-detect-standalone-launch",
+    "hub": "home-marketing"
   },
   "en--pwa-home-screen-launch-analytics-2": {
     "title": "How to Track PWA Home Screen Launches in Analytics Beyond UTM Parameters",
@@ -2533,7 +2646,8 @@
     "published": "2026-09-09",
     "translation": "pwa-home-screen-launch-analytics",
     "summary": "After users add your PWA to their home screen, an important question comes next: are they actually returning through that icon? Standard web analytics does not always make that obvious. You may see page views increasing, but those visits can include Google Search, bookmarks, direct browser visits, links, and home screen launches all mixed together.\n\nA common idea is to put UTM parameters in the PWA launch URL. If that URL is used as the PWA's start URL, analytics can recognize visits carrying those parameters. The first condition checks for display-mode: standalone, while navigator.standalone provides an additional iOS-oriented check.",
-    "next_article": "en--pwa-detect-standalone-launch-2"
+    "next_article": "en--pwa-detect-standalone-launch-2",
+    "hub": "home-marketing-en"
   },
   "pwa-standalone-vs-fullscreen": {
     "title": "PWAのstandaloneとfullscreenの違い｜どっちを使うべき？",
@@ -2602,7 +2716,8 @@
     "published": "2026-09-09",
     "translation": "en--pwa-after-add-to-home-screen-2",
     "summary": "PWAを作る時、どうしても「ホーム画面に追加できた！」というところがゴールになりがちです。Manifestを設定して、アイコンを用意して、ホーム画面に追加。そこからstandaloneで起動できたら、とりあえずPWAとして形になった感じがします。\n\nPWAでは、ホーム画面への追加が分かりやすい成果に見えます。自分のWebサイトに専用アイコンが付き、普通のアプリと同じようにホーム画面へ並ぶ。通常、Webサイトへ戻ってくる入口はいくつかあります。\n\nPWAでは、ここにスマホのホーム画面を追加できます。ホーム画面からPWAとして開かれている場合、JavaScriptから現在の表示モードを確認できます。これによって、通常のブラウザから見ている状態と、ホーム画面側からstandaloneで開いている状態を分けられます。",
-    "next_article": "pwa-home-screen-benefits-return-visits"
+    "next_article": "pwa-home-screen-benefits-return-visits",
+    "hub": "home-marketing"
   },
   "en--pwa-after-add-to-home-screen-2": {
     "title": "A PWA Really Starts After It's Added to the Home Screen",
@@ -2615,7 +2730,8 @@
     "published": "2026-09-09",
     "translation": "pwa-after-add-to-home-screen",
     "summary": "When building a PWA, it is easy to treat “successfully added to the home screen” as the finish line. You configure the Manifest, prepare the icon, add the site to the home screen, and confirm that it launches in standalone mode. At that point, it feels like the PWA is complete.\n\nA home screen icon is a very visible result. Your website now has its own icon sitting next to regular apps. A PWA adds another possibility: the phone's home screen.\n\nA frequently used web tool no longer needs to be searched for every time. This is where things become more interesting. JavaScript can check whether the current page is running in a standalone PWA context.",
-    "next_article": "en--pwa-home-screen-benefits-return-visits-2"
+    "next_article": "en--pwa-home-screen-benefits-return-visits-2",
+    "hub": "home-marketing-en"
   },
   "en--pwa-future-web-vs-app-2": {
     "title": "What If We Have the PWA Question Backwards? The Future of Web vs. Apps",
@@ -2641,7 +2757,8 @@
     "published": "2026-09-09",
     "translation": "pwa-user-defined-app",
     "summary": "PWAs allow websites and individual web pages to be added to the home screen and used as app-like entry points. Until now, most discussions around PWA design have focused on one question: what kind of app should the developer create? Should the entire site become one app?\n\nA URL does more than identify the location of a web page. With query parameters, the same page can represent different states through different URLs. PWA UDA is a design philosophy where the developer does not completely fix the final form and usage of the app in advance.\n\nInstead, the user chooses the web feature, page, or state they need and defines that as their own app.",
-    "next_article": "en--pwa-start-url-dot-best-practice-2"
+    "next_article": "en--pwa-start-url-dot-best-practice-2",
+    "hub": "1p1a-en"
   },
   "en--minimal-pwa-quick-start-2": {
     "title": "The Fastest Way to Add a PWA: A Minimal Setup You Can Start With",
@@ -2693,7 +2810,8 @@
     "published": "2026-09-09",
     "translation": "pwa-vs-external-apk",
     "summary": "One way to distribute an Android app without Google Play is to host an APK file on a website and let users install it directly. PWAs can also be installed or added to the home screen directly from a website, so they do not necessarily require Google Play either. They do have one thing in common: both can reach users without going through an app store.\n\nThis is the most important distinction. It is built with technologies such as HTML, CSS, and JavaScript, accessed through a browser, and in supported environments it can be added to the home screen as an app-like entry point.",
-    "next_article": "en--pwa-security-safety-2"
+    "next_article": "en--pwa-security-safety-2",
+    "hub": "pwa-security-en"
   },
   "pwa-home-screen-benefits-return-visits": {
     "title": "PWAをホーム画面に追加するメリットは？「再訪」から考える本当の価値",
@@ -2706,7 +2824,8 @@
     "published": "2026-09-12",
     "translation": "en--pwa-home-screen-benefits-return-visits-2",
     "summary": "PWAのメリットを調べると、よく「オフライン対応」「Push通知」「アプリのような表示」といった機能が紹介されます。でも私はPWA LABやOJappを作りながら、もっと単純なところにPWAの強さがあると感じるようになりました。一度見つけたWebページへ、次から検索せず戻ってこられる。\n\n知りたいことをGoogleで検索して記事を見つける。最初の出会いを作ることについて、Webはかなり強いです。Webページを探す対象から、いつもの入口へ変えられる。\n\n私はここが、ホーム画面に追加できるPWAのかなり大きなメリットだと思っています。PWAという言葉を聞くと、高機能なWebアプリを想像するかもしれません。Service Workerを作り、キャッシュ戦略を考え、オフライン対応をして、Push通知まで実装する。",
-    "next_article": "pwa-add-to-home-screen-best-timing"
+    "next_article": "pwa-add-to-home-screen-best-timing",
+    "hub": "home-marketing"
   },
   "en--pwa-home-screen-benefits-return-visits-2": {
     "title": "Why Add a PWA to the Home Screen? The Real Benefit Is Returning",
@@ -2719,7 +2838,8 @@
     "published": "2026-09-12",
     "translation": "pwa-home-screen-benefits-return-visits",
     "summary": "When people explain the benefits of PWAs, the same features often appear: offline support, push notifications, and an app-like interface. Those are real capabilities, but while building OJapp and running experiments in PWA LAB, I started to think that one of the most useful benefits is much simpler. A user can find a web page once and return to it later without searching for it again.\n\nThe web has extremely powerful discovery channels. You can find an article through Google, open a product from social media, or follow a URL someone sent you. Imagine a web tool you use every week.",
-    "next_article": "en--pwa-add-to-home-screen-best-timing-2"
+    "next_article": "en--pwa-add-to-home-screen-best-timing-2",
+    "hub": "home-marketing-en"
   },
   "pwa-home-screen-icon-name-short-name-icons": {
     "title": "PWAのホーム画面アイコンは何を設定すればいい？name・short_name・iconsの役割",
@@ -2982,7 +3102,8 @@
     "published": "2026-09-19",
     "translation": "en--blog-pwa-home-screen-return-visits-2",
     "summary": "「アプリみたいに表示できる」「オフラインでも読める」といった機能を思い浮かべるかもしれません。でも、私がブログとPWAの組み合わせで一番面白いと思っているのは、もっと単純な部分です。読者がブログへの入口を、自分のスマホのホーム画面に残せること。\n\n特に検索流入が多いブログでは、「知りたいことを検索する → 記事を読む → ブラウザを閉じる」という使われ方が多くなります。記事が役に立ったとしても、次に同じブログへ戻ってきてもらえるとは限りません。ブログをPWAにしたからといって、記事そのものが特別なコンテンツになるわけではありません。\n\n検索エンジンからアクセスするWebサイトであることも変わりません。一番分かりやすいのは、ブログ全体を1つのPWAとして扱う方法です。これはサイト全体を1つのAppとして考える設計です。",
-    "next_article": "ecommerce-pwa-product-page-home-screen"
+    "next_article": "ecommerce-pwa-product-page-home-screen",
+    "hub": "home-marketing"
   },
   "en--blog-pwa-home-screen-return-visits-2": {
     "title": "What Changes When You Turn a Blog into a PWA? Using the Home Screen for Return Visits",
@@ -2995,7 +3116,8 @@
     "published": "2026-09-19",
     "translation": "blog-pwa-home-screen-return-visits",
     "summary": "What actually changes when you turn a blog into a PWA? You might think about app-like display modes, offline reading, or other technical PWA features. But for blogs, I think one of the most interesting changes is much simpler.\n\nFor a search-driven blog, a common journey is simple: search for a question, read an article, and close the browser. Even if the article was useful, there is no guarantee that the reader will remember the site next time. A blog does not stop being a normal website when it becomes a PWA.\n\nThe articles still have URLs. The most obvious approach is to treat the entire blog as one PWA.",
-    "next_article": "en--pwa-home-screen-benefits-return-visits-2"
+    "next_article": "en--pwa-home-screen-benefits-return-visits-2",
+    "hub": "home-marketing-en"
   },
   "ecommerce-pwa-product-page-home-screen": {
     "title": "ECサイトをPWAにするメリットは？商品ページをホーム画面に置くという考え方",
@@ -3008,7 +3130,8 @@
     "published": "2026-09-19",
     "translation": "en--ecommerce-pwa-product-page-home-screen-2",
     "summary": "ECサイトをPWAにすると聞くと、ショップ全体を1つのアプリにするイメージが強いかもしれません。でもECサイトには、もう1つ面白い使い方があります。気になっている商品、次に買いたい商品、定期的に購入する商品。\n\n一般的なECサイトをPWA化する場合、サイト全体を1つのAppとして設計する方法があります。Amazonや大規模なECサービスのように、ユーザーがショップ自体を目的として訪れるなら、この設計は自然です。PWAは必ずしもサイト全体を1つのAppにする必要はありません。\n\n商品ページごとにManifestを用意すれば、それぞれの商品を個別のホーム画面エントリとして設計できます。ECサイトで一度見た商品へ戻る時、意外と手順があります。SNSで見つけた商品なら、元の投稿を探し直すこともあります。",
-    "next_article": "store-website-pwa-reservation-menu-coupon"
+    "next_article": "store-website-pwa-reservation-menu-coupon",
+    "hub": "home-marketing"
   },
   "en--ecommerce-pwa-product-page-home-screen-2": {
     "title": "Why Use PWA for E-Commerce? Putting Individual Product Pages on the Home Screen",
@@ -3021,7 +3144,8 @@
     "published": "2026-09-19",
     "translation": "ecommerce-pwa-product-page-home-screen",
     "summary": "When people talk about PWA for e-commerce, the usual idea is to turn the entire online store into one app-like experience. That is a perfectly valid PWA architecture. But e-commerce also creates another interesting possibility.\n\nThe conventional PWA model treats the entire e-commerce site as one application. That makes sense when people intentionally return to the store itself, especially for large marketplaces or established retail brands. A PWA does not always have to represent an entire website.\n\nIf product pages can provide their own Manifest information, each product can be designed as an individual home screen entry.",
-    "next_article": "en--blog-pwa-home-screen-return-visits-2"
+    "next_article": "en--blog-pwa-home-screen-return-visits-2",
+    "hub": "home-marketing-en"
   },
   "web-tool-pwa-home-screen-launch": {
     "title": "WebツールをPWAにする意味は？よく使う機能をホーム画面から1タップで起動",
@@ -3034,7 +3158,8 @@
     "published": "2026-09-19",
     "translation": "en--web-tool-pwa-home-screen-launch-2",
     "summary": "WebツールとPWAは、かなり相性のいい組み合わせだと思っています。タイマー、計算機、画像変換、パスワード生成、文字数カウント。ブラウザだけで動く便利なツールはたくさんありますが、毎回検索したりURLを探したりするなら少し面倒です。\n\nWebツールの大きなメリットは、インストールせずすぐ使えることです。でも、そのツールが気に入って何度も使うようになると話が変わります。使う側からすると、もうURLを覚える必要はありません。\n\nスマホに入っている計算機や時計を開くのと同じように、必要な時にアイコンをタップします。Webツールなら何でもPWAにすれば便利になるわけではありません。こうしたツールは、巨大なアプリである必要がありません。\n\n私が作ったOJ-Passも、この考え方とかなり相性のいいWebツールです。",
-    "next_article": "pwa-home-screen-benefits-return-visits"
+    "next_article": "pwa-home-screen-benefits-return-visits",
+    "hub": "home-marketing"
   },
   "en--web-tool-pwa-home-screen-launch-2": {
     "title": "Why Turn a Web Tool into a PWA? Launch Frequently Used Tools from the Home Screen",
@@ -3047,7 +3172,8 @@
     "published": "2026-09-19",
     "translation": "web-tool-pwa-home-screen-launch",
     "summary": "I think web tools are one of the most natural use cases for PWAs. The more useful a tool is, the more often you tend to use it. Timers, calculators, image converters, password generators, and text utilities can all work perfectly well in a browser.\n\nOne of the biggest advantages of a web tool is that the first visit is easy. There is no app-store installation step before trying it. The user no longer needs to remember the URL.\n\nThere is no need to find a bookmark first. Not every web utility needs to become a PWA. The strongest candidates are small functions people use again and again.",
-    "next_article": "en--blog-pwa-home-screen-return-visits-2"
+    "next_article": "en--blog-pwa-home-screen-return-visits-2",
+    "hub": "home-marketing-en"
   },
   "membership-site-pwa-login-home-screen": {
     "title": "会員サイトをPWAにすると便利？ログイン後のページをホーム画面の入口にする",
@@ -3060,7 +3186,8 @@
     "published": "2026-09-19",
     "translation": "en--membership-site-pwa-login-home-screen-2",
     "summary": "会員サイトは、PWAとかなり相性のいいWebサイトの1つだと思っています。理由は、会員サイトには「何度も戻ってくるユーザー」が最初から存在するからです。予約管理、学習サービス、顧客ページ、管理画面、コミュニティ。\n\n一般的なWebページは、一度読まれて終わることもあります。アカウントを作ったユーザーは、その後も何度かサービスへ戻ってきます。PWAでは、ホーム画面から起動した時の入口を starturl で設計できます。\n\nなら、PWAの起動先としてそのページを使う設計が考えられます。ホーム画面から会員ページを直接開けるようにしても、PWAがログイン認証を無効にするわけではありません。ログイン状態が有効なら、その状態でページを開ける場合があります。\n\n実際の使いやすさは、会員サイト側の認証設計にも左右されます。",
-    "next_article": "ecommerce-pwa-product-page-home-screen"
+    "next_article": "ecommerce-pwa-product-page-home-screen",
+    "hub": "home-marketing"
   },
   "en--membership-site-pwa-login-home-screen-2": {
     "title": "Is PWA Useful for Membership Sites? Making Logged-In Pages a Home Screen Entry",
@@ -3073,7 +3200,8 @@
     "published": "2026-09-19",
     "translation": "membership-site-pwa-login-home-screen",
     "summary": "Membership sites are one of the web experiences that can fit PWA particularly well. The reason is simple: they already have users who are expected to return. Reservation systems, learning platforms, customer portals, dashboards, and communities are often used repeatedly.\n\nMany ordinary web pages are visited once and never opened again. A membership service is different. A PWA can define its launch destination with starturl.\n\nthe application can be designed around that destination. Giving a member page a home screen entrance does not disable the website's authentication system. If the user's authenticated session is still valid, the service may be able to open the account area in that state.",
-    "next_article": "en--pwa-home-screen-benefits-return-visits-2"
+    "next_article": "en--pwa-home-screen-benefits-return-visits-2",
+    "hub": "home-marketing-en"
   },
   "store-website-pwa-reservation-menu-coupon": {
     "title": "店舗サイトをPWAにするメリットは？予約・メニュー・クーポンへの再訪導線を作る",
@@ -3086,7 +3214,8 @@
     "published": "2026-09-19",
     "translation": "en--store-website-pwa-reservation-menu-coupon-2",
     "summary": "飲食店、美容室、サロン、クリニック、小売店などの店舗サイトも、PWAと相性のいい使い方があります。ただし、必ずしも「店舗専用アプリを作る」という話ではありません。店舗サイトには、ユーザーが来店前に何度も確認する情報があります。\n\n店舗を初めて知った時は、Google検索やSNS、地図サービスなどからサイトへアクセスすることが多いと思います。つまり店舗サイトには、初回訪問だけでなく再訪する理由があります。でも、その店舗を何度も利用する人なら、毎回検索する必要はありません。\n\nWebサイト自体を作り直すのではなく、既存のWebサイトへ戻る距離を短くする考え方です。店舗によっては、トップページより予約ページの方が繰り返し使われます。飲食店なら席の予約、クリニックなら診療予約、サロンなら施術予約など、ユーザーが毎回行う操作へ直接つなげられます。",
-    "next_article": "ecommerce-pwa-product-page-home-screen"
+    "next_article": "ecommerce-pwa-product-page-home-screen",
+    "hub": "home-marketing"
   },
   "en--store-website-pwa-reservation-menu-coupon-2": {
     "title": "Why Use PWA for a Local Business Website? Reservations, Menus, Coupons, and Return Visits",
@@ -3099,7 +3228,8 @@
     "published": "2026-09-19",
     "translation": "store-website-pwa-reservation-menu-coupon",
     "summary": "Restaurants, salons, clinics, shops, and other local businesses can use PWA in a very practical way. That does not necessarily mean building a complete custom app for the business. A local business website already contains information customers may check repeatedly before a visit.\n\nThe first time someone discovers a business, they may arrive through Google Search, social media, maps, or another discovery service. After the first visit, the user's needs can change. That works, but a repeat customer may not need the discovery step anymore.\n\nThe website does not need to be rebuilt.",
-    "next_article": "en--pwa-home-screen-benefits-return-visits-2"
+    "next_article": "en--pwa-home-screen-benefits-return-visits-2",
+    "hub": "home-marketing-en"
   },
   "pwa-suitable-websites-use-cases": {
     "title": "PWAに向いているサイト・向いていないサイトは？用途別に考えてみる",
@@ -3140,7 +3270,8 @@
     "category": "PWA",
     "published": "2026-09-22",
     "translation": "en--pwa-start-url-root-problem-2",
-    "next_article": "pwa-start-url-dot-2"
+    "next_article": "pwa-start-url-dot-2",
+    "hub": "1p1a"
   },
   "en--pwa-start-url-root-problem-2": {
     "title": "Is start_url:\"/\" Holding PWAs Back? Rethinking the Idea of Turning an Entire Site into an App",
@@ -3153,7 +3284,8 @@
     "category": "PWA",
     "published": "2026-09-22",
     "translation": "pwa-start-url-root-problem",
-    "next_article": "en--pwa-start-url-dot"
+    "next_article": "en--pwa-start-url-dot",
+    "hub": "1p1a-en"
   },
   "ios-27-pwa-top-blur-workaround": {
     "title": "iOS 27のPWA上部ブラーを消せる？ハンバーガーメニューから見つけた回避策",
@@ -3360,6 +3492,7 @@
     "excerpt": "アイコンだけ変更して1ヶ月放置。iPhone・Androidは変わらず、PCでは更新案内が出ました。",
     "summary": "PWAのアイコン画像を変更しても、今回の実機検証ではiPhoneとAndroidのホーム画面アイコンは自動更新されませんでした。OJappのアイコンをOJapp PROへ変更し、`id`はそのままにして1ヶ月間アプリを開かずに放置しましたが、両端末とも古いアイコンのままでした。その後、ホーム画面から何度起動しても変化はありませんでした。\n\n一方、古いホーム画面アイコンを削除して同じページを追加し直すと、新しいOJapp PROアイコンが表示されました。つまり、変更後の画像は新規追加時には使われるものの、既存のアイコンには反映されなかったという結果です。\n\nPCでは挙動が異なり、インストール済みPWAを開くと更新案内が表示され、更新できました。スマホのホーム画面アイコンとPCのインストール済みPWAでは、更新の扱いが異なることを確認しました。既存アイコンの即時更新は期待できません。",
     "category": "PWA",
+    "hub": "home-design",
     "published": "2026-11-08",
     "translation": "en--pwa-icon-update-one-month-test"
   },
@@ -3372,6 +3505,7 @@
     "excerpt": "One month, two phones, one unchanged icon. The PC told a different story.",
     "summary": "Changing a PWA's icon image did not update the existing home screen icons on the iPhone and Android devices in this experiment. I changed the icon from OJapp to OJapp PRO while leaving the app's `id` unchanged, then avoided opening the installed apps for one month. Both phones continued to display the original icon. Opening the apps repeatedly afterward still made no difference.\n\nRemoving the old home screen entries and adding the same page again displayed the new OJapp PRO icon. The replacement image was therefore available for new installations, but it had not been applied to the existing entries.\n\nThe PC behaved differently. Opening the installed PWA produced an update notification, and I could apply the update without removing and re-adding the app. The practical takeaway is that changing a site's icon metadata and refreshing an icon already installed on a phone are separate concerns. If your product depends on changing its home screen artwork, do not assume existing phone icons will immediately follow the new image.",
     "category": "PWA",
+    "hub": "home-design-en",
     "published": "2026-11-08",
     "translation": "pwa-icon-update-one-month-test"
   }

@@ -54,17 +54,17 @@
     "section": "Related articles on home screen marketing"
   },
   "home-design": {
-    "title": "ホーム画面デザイン・カスタマイズまとめ｜アイコンと使いやすさを考える",
+    "title": "スマホのホーム画面デザイン完全ガイド｜PWAアイコンの作り方と設計思想",
     "article": "home-screen-design",
     "section": "ホーム画面デザイン・カスタマイズの関連記事"
   },
   "home-design-en": {
-    "title": "Home Screen Design and Customization: Icons, Layouts, and Usability",
+    "title": "Home Screen Design Guide: Creating PWA Icons That Belong on Your Phone",
     "article": "en/home-screen-design",
     "section": "Related articles on home screen design and customization"
   },
   "cache-sw": {
-    "title": "【完全ガイド】PWAのキャッシュ・Service Worker・ローカル保存の仕組みと削除の罠",
+    "title": "PWAのキャッシュ・Service Worker完全ガイド｜データ保存・オフライン対応・更新の仕組み",
     "article": "cache-sw",
     "section": "キャッシュ・Service Worker・ローカル保存の関連記事"
   },
