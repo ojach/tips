@@ -1367,6 +1367,7 @@
     "excerpt": "PWAはiPhoneでどこまで使える？2026年時点での「できること」「できないこと」を完全整理。Safariの制限やWebClipとの違いも含めて、初心者にもわかりやすく解説します。",
     "category": "iphone",
     "published": "2026-04-11",
+    "hub": "pwa-basics",
     "translation": "en--pwa-ios-2026-complete-guide",
     "summary": "以前は不安定だった機能が普通に使えるようになった一方で、現在でもAndroidとは挙動が異なる部分があります。PWA LABで実際のiPhoneを使って検証を繰り返してきた結論はシンプルです。2026年のiOSではPWAの主要機能はかなり実用的。\n\nホーム画面からワンタップで起動する軽量なWebアプリを作るのであれば、必要な機能はかなり揃っています。問題になりやすいのは「iOSでPWAが使えるか」ではなく、Androidとまったく同じ動きをすると思って実装してしまうことです。まず、PWAの基本となるホーム画面からの起動はiPhoneでも利用できます。\n\nWebサイトをホーム画面へ追加すると専用のアイコンから起動でき、Webアプリとして開いた場合は通常のSafariとは異なるアプリ風の画面で利用できます。",
     "next_article": "safari-pwa-limitations"
@@ -1709,6 +1710,7 @@
     "excerpt": "PWAに必要なmanifest.jsonの基本を初心者向けに解説。iPhoneで効く項目、Android Chromeでインストール候補にするための設定、アイコンやscopeの注意点をまとめます。",
     "category": "iphone",
     "published": "2026-06-07",
+    "hub": "pwa-basics",
     "summary": "PWAを作るときに、まず出てくるのがmanifest.jsonです。名前だけ見ると少し難しそうですが、役割はかなりシンプルです。manifest.jsonは、そのWebページをホーム画面に追加したときの名前・アイコン・起動URL・表示方法をブラウザに伝える設定ファイルです。\n\nmanifest.jsonは、Webアプリの設定ファイルです。普通のWebページは、ブラウザで開くだけならHTML、CSS、JavaScriptがあれば表示できます。最小構成に近いmanifest.jsonは、次のような形です。\n\nこれが書いてあれば、Androidでもインストールが表示されるようになります。manifest.jsonは、HTMLのhead内で読み込みます。PWA LABでは、manifestの読み込みパスを間違えてハマりました。",
     "translation": "en--pwa-manifest-json-basics",
     "next_article": "pwa-home-screen-icon-name-short-name-icons"
@@ -1722,6 +1724,7 @@
     "excerpt": "When you start building a PWA, one of the first things you encounter is `manifest.json`. The name sounds technical, but its job is straightforward: it describes how a website should app",
     "category": "iphone",
     "published": "2026-06-07",
+    "hub": "pwa-basics-en",
     "summary": "When you start building a PWA, one of the first things you encounter is `manifest.json`. The name sounds technical, but its job is straightforward: it describes how a website should appear and launch when added to a home screen. A Web App Manifest is a JSON document containing information such as the app's name, icons, launch URL, and display mode. The browser reads it when determining the available installation and home screen experience. Reference the file from HTML: The paths must resolve correctly from the page and Manifest locations. A typo or a missing file can prevent the browser from using the intended settings.",
     "translation": "pwa-manifest-json-basics",
     "next_article": "en--pwa-home-screen-icon-name-short-name-icons-2"
@@ -1802,6 +1805,7 @@
     "excerpt": "What can PWAs really do on iPhone in 2026? This guide explains iOS PWA support, Safari limitations, home screen behavior, scope, icons, offline support, and common traps.",
     "category": "Mobile",
     "published": "2026-06-13",
+    "hub": "pwa-basics-en",
     "translation": "pwa-ios-capabilities",
     "summary": "How much can a PWA actually do on an iPhone in 2026? PWAs on iOS have changed significantly over the last few years. Some features that once felt unreliable now work well, while other behaviors still differ from Android.\n\nIf your goal is to create a lightweight app-like entrance from the iPhone Home Screen, the core PWA features are already practical. The problems usually begin when developers expect iOS to interpret every PWA setting exactly like Android. The most basic PWA experience works well on current iPhones.\n\nUsers can add a website to the Home Screen and launch it from its own icon.",
     "next_article": "en--safari-pwa-limitations-2"
@@ -1906,6 +1910,7 @@
     "excerpt": "1P1A（One Page. One App.）とは、Webサイト全体ではなく、1ページを1つのアプリとして扱うPWAの設計思想です。ページごとのアイコンや起動URLを活用し、従来の「1サイト＝1アプリ」を超えた新しいホーム画面体験を解説します。",
     "category": "PWA",
     "published": "2026-08-05",
+    "hub": "pwa-basics",
     "translation": "en--1p1a",
     "summary": "PWAでは一般的に、1つのWebサイトを1つのアプリとして扱います。ホーム画面へ追加すると、サイト全体を表すアイコンが作成され、起動するとそのWebサイトが開きます。もちろんこれは現在のPWAでは最も一般的な設計です。\n\nホーム画面へ追加される対象はWebサイトではありません。これらをそれぞれ独立したアプリとしてホーム画面へ追加します。ホーム画面を見るだけで、どのページなのかが分かります。\n\n1P1Aでは、アプリを起動したときに開くURLもページ単位で制御されます。ホーム画面のアイコンを「サイトのトップドア」ではなく、「特定のコンテンツへ直行する専用の入口」として利用する考え方です。1P1Aは、何か新しいPWAの技術や仕様を追加するものではありません。\n\nすでに存在するPWAの技術をどう捉え、どう活かすかという「設計思想」です。",
     "next_article": "pwa-1s1a-vs-1p1a"
@@ -1919,6 +1924,7 @@
     "excerpt": "PWAには「One Site. One App.（1S1A）」と「One Page. One App.（1P1A）」という2つの設計思想があります。本記事では、なぜ従来のPWAでは個別ページを独立したアプリにできないのか、scope・start_url・同一オリジンの仕組みを交えながら、それぞれの特徴とトレードオフを解説します。",
     "category": "PWA",
     "published": "2026-08-07",
+    "hub": "pwa-basics",
     "translation": "en--pwa-1s1a-vs-1p1a-2",
     "summary": "しかし、実際にPWAを設計・検証していくと、大きく2つの思想に分かれることに気付きました。これは機能の違いではなく、PWAをどう設計するかという思想の違いです。ページ単体を独立したアプリとして扱うことができません。\n\n同一オリジン内での scope と starturl の管理構造にあります。トップページ（またはハブページ）をアプリ化しない代わりに、全ページを独立したアプリにする。PWAという仕組みそのものが持つ設計上のトレードオフです。\n\nあなたのWebサイトは、どちらの思想で設計するべきか。",
     "next_article": "pwa-1s1a-1p1a-manifest"
@@ -1984,6 +1990,7 @@
     "excerpt": "Learn about 1P1A (One Page. One App.), a PWA design philosophy that treats each web page as its own app. Explore how page-specific icons and launch URLs create a new home screen experience beyond the traditional one-site, one-app model.",
     "category": "PWA",
     "published": "2026-08-15",
+    "hub": "pwa-basics-en",
     "translation": "1p1a-2",
     "summary": "PWAs generally treat one website as one app. When a user adds the site to their home screen, an icon representing the entire website is created. Tapping that icon launches the website.\n\nWhat gets added to the home screen is not the website itself. Each of these can be added to the home screen as an independent app. In other words, each page uses an icon that represents the meaning of that specific page.\n\nJust by looking at the home screen, users can immediately tell which page each icon represents. With 1P1A, the URL that opens when the app is launched is also controlled on a page-by-page basis.",
     "next_article": "en--pwa-1s1a-vs-1p1a-2"
@@ -1997,6 +2004,7 @@
     "excerpt": "PWA design can be approached through two different philosophies: One Site. One App. (1S1A) and One Page. One App. (1P1A). This article explains why traditional PWAs cannot easily treat individual pages as independent apps, exploring how scope, start_url, and same-origin behavior work, along with the key characteristics and trade-offs of each approach.",
     "category": "PWA",
     "published": "2026-08-15",
+    "hub": "pwa-basics-en",
     "translation": "pwa-1s1a-vs-1p1a",
     "summary": "However, as I continued designing and testing PWAs, I realized that PWA architecture can be divided into two major design philosophies. This is not a difference in features. It is a difference in how you choose to design a PWA.\n\nMost traditional PWAs follow this design philosophy. Treat the entire website as a single app. So even if a user adds the PWA while viewing an individual article, launching it from the home screen takes them back to the top page.\n\nSometimes users do not want the entire website on their home screen. With the 1S1A model, however, launching the app ultimately takes the user back to the main entry point.",
     "next_article": "en--pwa-1s1a-1p1a-manifest-2"
@@ -2006,7 +2014,7 @@
     "permalink": "pwa-explained",
     "language": "ja",
     "show_thumbnail": false,
-    "meta_description": "2026年最新のPWAを初心者向けに解説。1S1A・1P1Aという2つの新しい設計思想から、manifest.jsonでWebサイトをホーム画面に追加する仕組み、Service Workerの役割までわかりやすく紹介します。",
+    "meta_description": "PWAとは何かを2026年版で解説。ホーム画面への追加、manifest.json、Service Worker、作り方、メリットから1S1A・1P1Aの設計思想まで、実例と関連記事でわかる完全ガイド。",
     "excerpt": "2026年最新のPWAを初心者向けに解説。1S1A・1P1Aという2つの新しい設計思想から、manifest.jsonでWebサイトをホーム画面に追加する仕組み、Service Workerの役割までわかりやすく紹介します。",
     "category": "PWA",
     "published": "2026-08-16",
@@ -2046,7 +2054,7 @@
     "permalink": "en/pwa-explained-2",
     "language": "en",
     "show_thumbnail": false,
-    "meta_description": "A beginner-friendly guide to the latest PWA developments in 2026. Learn about two new design philosophies—1S1A (One Site. One App.) and 1P1A (One Page. One App.)—how manifest.json enables websites to be added to the home screen, and the role of Service Workers.",
+    "meta_description": "Learn what a PWA is in 2026: Home Screen apps, Web App Manifest, Service Workers, implementation options, and the 1S1A vs 1P1A design approaches.",
     "excerpt": "A beginner-friendly guide to the latest PWA developments in 2026. Learn about two new design philosophies—1S1A (One Site. One App.) and 1P1A (One Page. One App.)—how manifest.json enables websites to be added to the home screen, and the role of Service Workers.",
     "category": "PWA",
     "published": "2026-08-16",
@@ -2194,6 +2202,7 @@
     "excerpt": "PWAのメリットをユーザー側から考えます。ホーム画面へ追加する理由、start_urlによる起動体験、ページごとのアイコン、standalone表示、限定オファーなど、ユーザーがPWAを使いたくなるメリットの作り方を実例とともに解説します。",
     "category": "PWA",
     "published": "2026-08-26",
+    "hub": "pwa-basics",
     "summary": "PWA（Progressive Web Apps）のメリットを調べると、よくこんな説明が出てきます。しかし、これらの多くはPWAを導入するWebサイト側から見たメリットです。では、実際にホーム画面へ追加するユーザー側から見るとどうでしょうか。\n\nPWAを導入すると、WebサイトやWebページをスマートフォンのホーム画面へ追加できます。ブラウザからではなく、ホーム画面のアイコンから起動できる。例えば、ブラウザで便利なWebツールを見つけたとします。\n\nここでPWAの設計によっては、ユーザーの期待と実際の動作がズレることがあります。便利だったので、そのページからホーム画面へ追加しました。という用途なら、ユーザーが追加したページへ直接戻れる方が自然です。\n\nのように、現在のページを基準に設計する方法があります。",
     "translation": "en--pwa-user-benefits",
     "next_article": "pwa-home-screen-benefits-return-visits"
@@ -2207,6 +2216,7 @@
     "excerpt": "PWA benefits are often described from a developer's perspective: no app-store submission, offline support, push notifications, and faster loading. Those are useful capabilities, but the",
     "category": "PWA",
     "published": "2026-08-26",
+    "hub": "pwa-basics-en",
     "summary": "PWA benefits are often described from a developer's perspective: no app-store submission, offline support, push notifications, and faster loading. Those are useful capabilities, but they do not answer the user's most important question: Why would I keep this website on my home screen? People already have a browser and bookmarks. A home screen icon takes up personal space, so it needs to earn its place. A favorite tool, a booking page, a product, or an article may be worth keeping because the user expects to revisit it. Opening it directly is more convenient than searching for it again. But that convenience disappears if the icon opens the site's home page instead of the page the user saved.",
     "translation": "pwa-user-benefits",
     "next_article": "en--pwa-home-screen-benefits-return-visits-2"
@@ -2363,6 +2373,7 @@
     "excerpt": "iPhoneやAndroidでWebサイトをホーム画面に追加すると、これはアプリ？それともブックマーク？通常のWebサイトへのショートカットとPWAの違いを、アイコン、起動方法、manifest、standalone表示などからわかりやすく解説します。",
     "category": "PWA",
     "published": "2026-09-08",
+    "hub": "pwa-basics",
     "translation": "en--home-screen-website-app-or-bookmark-3",
     "summary": "iPhoneやAndroidでWebサイトを見ていると、「ホーム画面に追加」という機能があります。追加するとホーム画面にアイコンが現れて、タップすればそのWebサイトを開けます。では、これはアプリになったのか、それとも単なるブックマークなのか。\n\nホーム画面に追加できるWebサイト＝すべてPWA、ではありません。普通のWebサイトでも、ブラウザやOSの機能を使ってホーム画面へ入口を置ける場合があります。ここで大事なのは、PWAになったからWebではなくなるわけではないということです。\n\nWebのページや機能を、ホーム画面から使いやすい形に設計できるのがPWA、と考えると分かりやすいと思います。PWAで重要になるのがWeb App Manifestです。これによって、ホーム画面で使う名前やアイコン、どこから起動するか、どのような表示モードで開くかなどを設計できます。",
     "next_article": "delete-home-screen-website-data"
@@ -2376,6 +2387,7 @@
     "excerpt": "When you add a website to your iPhone or Android home screen, does it become an app or is it just a bookmark? This guide explains the difference between ordinary home screen website shortcuts and PWAs, including manifests, icons, launch URLs, standalone display, offline support, and more.",
     "category": "Mobile",
     "published": "2026-09-08",
+    "hub": "pwa-basics-en",
     "translation": "home-screen-website-app-or-bookmark",
     "summary": "Both iPhone and Android let you add websites to your home screen. Once added, the website gets an icon that sits alongside your regular apps. Tap it, and the website opens.\n\nThis is probably the most important distinction. A website that can be added to the home screen is not automatically a PWA. At a high level, the difference looks like this.\n\nOne thing is worth emphasizing: a PWA does not stop being part of the web. A key part of PWA design is the Web App Manifest. This can define the name used for the app experience, its icon, where it launches, and how the browser should present it.",
     "next_article": "en--iphone-add-to-home-2"
@@ -2752,6 +2764,7 @@
     "excerpt": "「PWAにはService Workerが必須」と今でも思っていませんか？2026年現在のChromeでは、Service WorkerなしでもPWAのインストールは可能です。PWA LABでの実機検証と現在のMDNの記述をもとに、Service Workerが本当に必要な場面を整理します。",
     "category": "OJapp Dev Log",
     "published": "2026-09-19",
+    "hub": "pwa-basics",
     "translation": "en--pwa-service-worker-required-2026-2",
     "summary": "PWAの作り方を調べると、昔からよく出てくる構成があります。私も長い間、Service WorkerはPWAを成立させるための基本セットのようなものだと思っていました。ところがPWA LABでいろいろな構成を実機検証していると、Service Workerを登録していないページでもChromeからインストールできることに気付きました。\n\n仕様だけではなく、PWA LABでもService Workerを使わない構成を何度も試しています。例えば、ページ側からWeb App Manifestを読み込み、そこにアプリ名、アイコン、starturl、displayなどを設定します。Service Workerは、PWAと非常に深い関係があります。\n\nService Workerを使えば、ネットワークリクエストを制御し、Cache APIなどと組み合わせてオフライン対応を実装できます。",
     "next_article": "pwa-manifest-only-without-service-worker"
@@ -2765,6 +2778,7 @@
     "excerpt": "Does a PWA still require a Service Worker in 2026? Modern Chrome can install PWAs without one. This article compares the old PWA rule with current MDN guidance and real-device testing, and explains when Service Workers are actually needed.",
     "category": "PWA",
     "published": "2026-09-19",
+    "hub": "pwa-basics-en",
     "translation": "pwa-service-worker-required-2026",
     "summary": "For years, PWA tutorials have often presented the same basic formula. I also used to think of the Service Worker as part of the minimum package required to make a PWA. But while testing different configurations in PWA LAB, I found that pages without any registered Service Worker could still be installed through Chrome.\n\nAs of 2026, a Service Worker is not a requirement for PWA installation. Current MDN documentation explicitly notes that a Service Worker is not required for a PWA to be installable. This is not only a documentation detail.\n\nI have repeatedly tested PWA configurations without Service Workers in PWA LAB.",
     "next_article": "en--pwa-manifest-only-without-service-worker-2"
@@ -3038,6 +3052,7 @@
     "excerpt": "PWAはどんなサイトに向いている？ブログ、EC、Webツール、会員サイト、店舗サイトなど用途別に整理。重要なのはサイトの種類ではなく、ユーザーがそのURLへもう一度戻る理由があるかどうかです。",
     "category": "PWA",
     "published": "2026-09-19",
+    "hub": "pwa-basics",
     "translation": "en--pwa-suitable-websites-use-cases-2",
     "summary": "PWAは、どんなWebサイトに向いているのでしょうか。ECサイト、ブログ、会員サイト、Webアプリなどがよく例として挙げられます。でも、いろいろなPWAを作って実機で試しているうちに、私はサイトの種類だけで考える必要はないと思うようになりました。\n\nPWAにはオフライン、Service Worker、Push通知、standalone表示など、いろいろな機能があります。そのため「これらの機能が必要なサイトだけPWAに向いている」と考えたくなります。ブログは、記事の性質によってPWAとの相性が変わります。\n\nニュースのように一度読んで終わる記事だけなら、個別記事をホーム画面へ残す理由はそれほど強くありません。ショップ自体を繰り返し利用するなら、ショップ全体を1つのPWAとしてホーム画面へ置けます。",
     "next_article": "blog-pwa-home-screen-return-visits"
@@ -3052,6 +3067,7 @@
     "summary": "The best websites for PWA are not defined by industry or website type. The most important question is whether users have a reason to return to a particular URL.\n\nBlogs with reusable guides or recipes, online stores with products people revisit, frequently used web tools, membership dashboards, and local business reservation pages can all benefit from one-tap home screen access. Even a page used only once every few months may be worth keeping if users know they will need it again.\n\nOn the other hand, one-time announcements, advertising landing pages, and corporate information pages may offer little value as PWAs when visitors have no reason to return.\n\nOffline support, Service Workers, and Push notifications are not essential to this decision. A useful home screen entrance can provide value on its own.\n\nWith 1S1A, the entire website becomes the app entrance. With 1P1A, an individual page does. The right choice depends on what users actually want to reopen.",
     "category": "PWA",
     "published": "2026-09-19",
+    "hub": "pwa-basics-en",
     "translation": "pwa-suitable-websites-use-cases",
     "next_article": "en--store-website-pwa-reservation-menu-coupon-2"
   },
